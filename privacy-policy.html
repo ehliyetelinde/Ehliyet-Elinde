@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <title>Ehliyet Elinde - Gizlilik Politikası ve KVKK Aydınlatma Metni</title>
+  <style>
+    /* AÇIK TEMA (Telefon Açık Moddaysa - Saf Beyaz & Nötr Gri, Kesinlikle Lacivertsiz) */
+    :root {
+      --bg: #F9FAFB;
+      --card-bg: #FFFFFF;
+      --section-bg: #F3F4F6;
+      --border: #E5E7EB;
+      --text: #111827;
+      --text-muted: #6B7280;
+      --badge-bg: #E5E7EB;
+      --badge-text: #1F2937;
+      --badge-border: #D1D5DB;
+      --quote-bg: #FFFFFF;
+      --quote-border: #2563EB;
+      --primary: #111827;
+      --num-bg: #111827;
+      --num-text: #FFFFFF;
+      --fab-bg: #111827;
+      --fab-text: #FFFFFF;
+      --fab-border: #1F2937;
+      --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    /* KOYU TEMA (Telefon Koyu Moddaysa - Saf Siyah AMOLED & Kömür Grisi, Kesinlikle Lacivertsiz) */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #000000;
+        --card-bg: #121212;
+        --section-bg: #181818;
+        --border: #262626;
+        --text: #FFFFFF;
+        --text-muted: #A1A1AA;
+        --badge-bg: #222222;
+        --badge-text: #E4E4E7;
+        --badge-border: #333333;
+        --quote-bg: #141414;
+        --quote-border: #3B82F6;
+        --primary: #FFFFFF;
+        --num-bg: #27272A;
+        --num-text: #FFFFFF;
+        --fab-bg: #181818;
+        --fab-text: #FFFFFF;
+        --fab-border: #333333;
+        --shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      padding: 24px 16px 80px 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      padding: 36px 28px;
+      position: relative;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 32px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header h1 {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+
+    .header p {
+      font-size: 15px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 6px 16px;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      border: 1px solid var(--badge-border);
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: 50px;
+      margin-top: 14px;
+    }
+
+    .section-card {
+      background: var(--section-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    h2 .num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      background: var(--num-bg);
+      color: var(--num-text);
+      border-radius: 50%;
+      font-size: 13px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .quote-box {
+      background: var(--quote-bg);
+      border-left: 3px solid var(--quote-border);
+      padding: 14px 16px;
+      border-radius: 8px;
+      font-size: 14.5px;
+      line-height: 1.65;
+      color: var(--text);
+      border-top: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .footer {
+      margin-top: 36px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    .footer a {
+      color: var(--primary);
+      text-decoration: underline;
+      font-weight: 500;
+    }
+
+    /* SAĞ ALT SABİT GOOGLE PLAY BUTONU */
+    .playstore-fab {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--fab-bg);
+      color: var(--fab-text);
+      border: 1px solid var(--fab-border);
+      padding: 10px 18px;
+      border-radius: 50px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+      text-decoration: none;
+      z-index: 9999;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+      transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s ease;
+    }
+
+    .playstore-fab:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+    }
+
+    .playstore-fab:active {
+      transform: translateY(0) scale(0.97);
+    }
+
+    .playstore-fab svg {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+
+    .playstore-info {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      line-height: 1.15;
+    }
+
+    .playstore-info .tag {
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      opacity: 0.75;
+      text-transform: uppercase;
+    }
+
+    .playstore-info .name {
+      font-size: 14.5px;
+      font-weight: 800;
+      letter-spacing: -0.2px;
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding: 12px 8px 90px 8px;
+      }
+      .container {
+        padding: 24px 16px;
+        border-radius: 16px;
+      }
+      .header h1 {
+        font-size: 24px;
+      }
+      h2 {
+        font-size: 15.5px;
+      }
+      .quote-box {
+        font-size: 13.5px;
+        padding: 12px;
+      }
+      .playstore-fab {
+        bottom: 16px;
+        right: 16px;
+        padding: 8px 14px;
+        gap: 10px;
+      }
+      .playstore-fab svg {
+        width: 22px;
+        height: 22px;
+      }
+      .playstore-info .tag {
+        font-size: 8.5px;
+      }
+      .playstore-info .name {
+        font-size: 13px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <h1>Ehliyet Elinde</h1>
+    <p>Gizlilik Politikası ve KVKK Aydınlatma Metni</p>
+    <div class="badge">Son Güncelleme: 1 Ekim 2026 &bull; Sürüm 2.0</div>
+  </div>
+
+  <!-- 1. Madde -->
+  <div class="section-card">
+    <h2><span class="num">1</span> Toplanan Kişisel Veriler ve Hesap Bilgileri</h2>
+    <div class="quote-box">
+      Ehliyet Elinde uygulamasını kullanırken, sistem güvenliğini sağlamak ve size özel bir profil oluşturmak amacıyla adınız, e-posta adresiniz ve belirlediğiniz kullanıcı adınız işlenmektedir. Ayrıca uygulama deneyimini iyileştirmek için bağlantı ve kullanım verileriniz (uygulamaya giriş zamanı, aktiflik durumu, son görülme zamanı, günlük sorular ve deneme sınavı istatistikleri) ile cihaz bilgileriniz (cihaz modeli, işletim sistemi versiyonu, IP adresi) otomatik olarak toplanabilmektedir.
+    </div>
+  </div>
+
+  <!-- 2. Madde -->
+  <div class="section-card">
+    <h2><span class="num">2</span> Verilerin İşlenme Amacı</h2>
+    <div class="quote-box">
+      Toplanan bu veriler KVKK uyarınca; uygulama içi güvenliği sağlamak, sunucu ve altyapı performansını analiz etmek, hataları gidermek, deneme sınavı ile yanlış yapılan soruların kayıtlarını tutmak ve ilgili yasal mevzuat kapsamındaki log tutma yükümlülüklerini yerine getirmek amacıyla işlenmektedir.
+    </div>
+  </div>
+
+  <!-- 3. Madde -->
+  <div class="section-card">
+    <h2><span class="num">3</span> Liderlik Tablosu, Anlık Çevrim İçi Durumu ve Çalışma Serileri</h2>
+    <div class="quote-box">
+      Uygulama içerisindeki "Liderlik Tablosu" ve çalışma serisi özelliklerinde; çözdüğünüz sorulardan aldığınız puanlar, çalışma seriniz (günlük streak) ve belirlediğiniz kullanıcı adınız sıralamalarda görüntülenebilecektir. Anlık aktiflik ve çevrim içi (online) durumunuz ise kullanıcı oturum zamanına dayalı olarak sistem altyapısı ve yetkili yönetici paneli üzerinden çalışma istatistiklerinin takibi amacıyla gerçek zamanlı olarak güvenle işlenmektedir; üçüncü şahıslara veya diğer kullanıcılara hassas verileriniz aktarılmaz. Profilinizi oluştururken gerçek adınız yerine anonim bir kullanıcı adı seçme hakkınız bulunmaktadır.
+    </div>
+  </div>
+
+  <!-- 4. Madde -->
+  <div class="section-card">
+    <h2><span class="num">4</span> Verilerin Aktarımı ve Analiz Araçları</h2>
+    <div class="quote-box">
+      Kullanım, aktiflik ve sınav istatistik verileriniz hiçbir şekilde üçüncü şahıslara satılmaz veya pazarlama amacıyla paylaşılmaz. Ancak uygulamanın sorunsuz çalışması, veri tabanı yönetimi, çökme raporlaması ve kullanıcı analizlerinin yapılabilmesi için güvenilir, anonim istatistik sağlayan bulut altyapı servisleri ile veri güvenliği standartlarına uygun olarak paylaşılabilir.
+    </div>
+  </div>
+
+  <!-- 5. Madde -->
+  <div class="section-card">
+    <h2><span class="num">5</span> Reklam Hizmetleri</h2>
+    <div class="quote-box">
+      Uygulamamızın ücretsiz sunulabilmesi amacıyla üçüncü taraf reklam ağları kullanılmaktadır. Bu ağlar, size daha uygun reklamlar sunabilmek (kişiselleştirilmiş reklamcılık) için cihazınıza ait reklam tanımlayıcılarını toplayabilir ve işleyebilir.
+    </div>
+  </div>
+
+  <!-- 6. Madde -->
+  <div class="section-card">
+    <h2><span class="num">6</span> Veri Güvenliği ve Yetkili Erişimi</h2>
+    <div class="quote-box">
+      Kullanıcıların aktiflik durumları, IP adresleri ve bağlantı bilgileri şifrelenmiş veri tabanlarında saklanmaktadır. Bu verilere sadece uygulamanın yetkili yöneticileri, sistemin güvenliği ve teknik destek taleplerinin çözülmesi amacıyla erişebilir. Diğer kullanıcılar sizin IP adresinizi veya gizli verilerinizi göremez.
+    </div>
+  </div>
+
+  <!-- 7. Madde -->
+  <div class="section-card">
+    <h2><span class="num">7</span> Veri ve Hesap Silme</h2>
+    <div class="quote-box">
+      Kullanıcılarımız diledikleri zaman uygulama içindeki iletişim bölümünü kullanarak bize ulaşabilir ve hesaplarının, ayrıca ilişkili tüm verilerinin (sınav istatistikleri, yanlış yapılan sorular, liderlik tablosu geçmişi vb.) kalıcı olarak silinmesini talep edebilirler. Silme işlemi onaylandığında verileriniz sunucularımızdan geri döndürülemez şekilde yok edilir.
+    </div>
+  </div>
+
+  <!-- 8. Madde -->
+  <div class="section-card">
+    <h2><span class="num">8</span> Kullanıcı Hakları (KVKK Madde 11)</h2>
+    <div class="quote-box">
+      Kullanıcılarımız KVKK'nın 11. maddesi uyarınca; kişisel verilerinin işlenip işlenmediğini öğrenme, işlenmişse buna ilişkin bilgi talep etme, verilerin eksik veya yanlış işlenmiş olması hâlinde bunların düzeltilmesini isteme ve verilerin silinmesini talep etme hakkına sahiptir. Tüm bu talepleriniz için uygulama içerisindeki iletişim ekranından veya destek e-posta adresimizden bize ulaşabilirsiniz.
+    </div>
+  </div>
+
+  <div class="footer">
+    &copy; 2026 Ehliyet Elinde &bull; İletişim & Destek: <a href="mailto:ehliyetelinde@gmail.com">ehliyetelinde@gmail.com</a>
+  </div>
+</div>
+
+<!-- SAĞ ALT KÖŞE: GOOGLE PLAY STORE LOGOSU VE BUTONU -->
+<a href="https://play.google.com/store/apps/details?id=com.ehliyetelinde.app" 
+   target="_blank" 
+   rel="noopener noreferrer" 
+   class="playstore-fab" 
+   title="Google Play'den Ehliyet Elinde İndir">
+  <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+    <path fill="#4285F4" d="M37.3 12.8C25.4 25.3 18.5 44.5 18.5 68.2v375.6c0 23.7 6.9 42.9 18.8 55.4l2.8 2.6L246 295.9v-5.8L40.1 8.2l-2.8 4.6z"/>
+    <path fill="#FBBC04" d="M314.9 364.7l-68.9-68.8v-5.8l68.9-68.8 1.6.9 81.6 46.4c23.3 13.2 23.3 35 0 48.3l-81.6 46.4-1.6 1.6z"/>
+    <path fill="#EA4335" d="M316.5 363.1L246 290.1 40.1 496c7.7 8.2 20.4 9.2 34.6 1.1l241.8-134z"/>
+    <path fill="#34A853" d="M316.5 148.9L74.7 14.9C60.5 6.8 47.8 7.8 40.1 16L246 221.9l70.5-73z"/>
+  </svg>
+  <div class="playstore-info">
+    <span class="tag">Google Play'den</span>
+    <span class="name">Hemen İndir</span>
+  </div>
+</a>
+
+</body>
+</html>
