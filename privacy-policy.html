@@ -22,6 +22,10 @@
       --primary: #111827;
       --num-bg: #111827;
       --num-text: #FFFFFF;
+      --tab-active-bg: #111827;
+      --tab-active-text: #FFFFFF;
+      --tab-inactive-bg: #E5E7EB;
+      --tab-inactive-text: #4B5563;
       --fab-bg: #111827;
       --fab-text: #FFFFFF;
       --fab-border: #1F2937;
@@ -45,6 +49,10 @@
         --primary: #FFFFFF;
         --num-bg: #27272A;
         --num-text: #FFFFFF;
+        --tab-active-bg: #FFFFFF;
+        --tab-active-text: #000000;
+        --tab-inactive-bg: #222222;
+        --tab-inactive-text: #A1A1AA;
         --fab-bg: #181818;
         --fab-text: #FFFFFF;
         --fab-border: #333333;
@@ -77,6 +85,39 @@
       border: 1px solid var(--border);
       padding: 36px 28px;
       position: relative;
+    }
+
+    /* Üst Navigasyon Sekmeleri */
+    .nav-tabs {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+
+    .nav-tab {
+      padding: 8px 18px;
+      border-radius: 50px;
+      font-size: 13.5px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid var(--border);
+      background: var(--tab-inactive-bg);
+      color: var(--tab-inactive-text);
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+
+    .nav-tab:hover {
+      transform: translateY(-2px);
+    }
+
+    .nav-tab.active {
+      background: var(--tab-active-bg);
+      color: var(--tab-active-text);
+      border-color: var(--tab-active-bg);
     }
 
     .header {
@@ -270,6 +311,12 @@
 <body>
 
 <div class="container">
+  <!-- Üst Sekmeler -->
+  <div class="nav-tabs">
+    <a href="privacy-policy.html" class="nav-tab active">🛡️ Gizlilik Politikası</a>
+    <a href="terms.html" class="nav-tab">📜 Kullanım Koşulları</a>
+  </div>
+
   <div class="header">
     <h1>Ehliyet Elinde</h1>
     <p>Gizlilik Politikası ve KVKK Aydınlatma Metni</p>
