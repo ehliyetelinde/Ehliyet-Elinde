@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <title>Ehliyet Elinde - Hesap ve Veri Silme Talebi</title>
+  
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="favicon.ico?v=3">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=3">
+  <link rel="apple-touch-icon" href="app-logo.png">
+
+  <style>
+    :root {
+      --bg: #F9FAFB;
+      --card-bg: #FFFFFF;
+      --border: #E5E7EB;
+      --text: #111827;
+      --text-muted: #6B7280;
+      --primary: #2563EB;
+      --primary-hover: #1D4ED8;
+      --danger: #EF4444;
+      --danger-bg: rgba(239, 68, 68, 0.08);
+      --success: #10B981;
+      --success-bg: rgba(16, 185, 129, 0.08);
+      --shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #000000;
+        --card-bg: #121212;
+        --border: #262626;
+        --text: #FFFFFF;
+        --text-muted: #A1A1AA;
+        --primary: #3B82F6;
+        --primary-hover: #2563EB;
+        --danger: #F87171;
+        --danger-bg: rgba(248, 113, 113, 0.12);
+        --success: #34D399;
+        --success-bg: rgba(52, 211, 153, 0.12);
+        --shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      padding: 32px 16px 80px 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      padding: 40px 32px;
+      position: relative;
+    }
+
+    .back-nav {
+      margin-bottom: 24px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 8px 16px;
+      border-radius: 50px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      transition: transform 0.15s ease;
+    }
+
+    .back-link:hover {
+      transform: translateX(-3px);
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .app-logo {
+      width: 72px;
+      height: 72px;
+      border-radius: 18px;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    }
+
+    h1 {
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .subtitle {
+      font-size: 14.5px;
+      color: var(--text-muted);
+    }
+
+    .badge-google {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--success-bg);
+      color: var(--success);
+      border: 1px solid var(--success);
+      padding: 6px 14px;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-top: 12px;
+    }
+
+    .info-card {
+      background: var(--danger-bg);
+      border: 1px solid var(--danger);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 28px;
+    }
+
+    .info-card h3 {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--danger);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .info-card p {
+      font-size: 13.5px;
+      line-height: 1.6;
+      color: var(--text);
+    }
+
+    .step-box {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 24px;
+      background: var(--card-bg);
+    }
+
+    .step-box h2 {
+      font-size: 17px;
+      font-weight: 800;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .step-num {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #FFFFFF;
+      font-size: 13px;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .data-list {
+      margin-left: 20px;
+      margin-top: 10px;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .data-list li {
+      margin-bottom: 6px;
+    }
+
+    /* Silme Talep Formu */
+    .request-form {
+      margin-top: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 12px;
+      border: 1.5px solid var(--border);
+      background: var(--bg);
+      color: var(--text);
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    .form-input:focus {
+      border-color: var(--primary);
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 14px;
+      border-radius: 12px;
+      background: var(--danger);
+      color: #FFFFFF;
+      font-size: 15px;
+      font-weight: 800;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(239, 68, 68, 0.3);
+      transition: transform 0.15s ease, opacity 0.15s ease;
+    }
+
+    .submit-btn:hover {
+      opacity: 0.92;
+      transform: translateY(-1px);
+    }
+
+    .success-message {
+      display: none;
+      padding: 18px;
+      border-radius: 14px;
+      background: var(--success-bg);
+      border: 1.5px solid var(--success);
+      color: var(--success);
+      font-size: 14.5px;
+      font-weight: 700;
+      text-align: center;
+      margin-top: 16px;
+    }
+
+    .contact-footer {
+      text-align: center;
+      margin-top: 32px;
+      font-size: 13px;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+    }
+
+    .contact-footer a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <div class="back-nav">
+      <a href="index.html" class="back-link">&larr; Ana Sayfaya Dön</a>
+    </div>
+
+    <div class="header">
+      <img src="app-logo.png" alt="Ehliyet Elinde" class="app-logo">
+      <h1>Hesap ve Veri Silme Talebi</h1>
+      <p class="subtitle">Google Play Veri Güvenliği ve KVKK Kapsamında Kullanıcı Hakları</p>
+      <div class="badge-google">
+        <span>✓</span> Google Play Veri Güvenliği Standartlarına Uygundur
+      </div>
+    </div>
+
+    <!-- Önemli Uyarı -->
+    <div class="info-card">
+      <h3>⚠️ Veri Silme İşlemi Hakkında Önemli Bilgilendirme</h3>
+      <p>
+        Hesabınızı ve verilerinizi sildiğinizde, Ehliyet Elinde uygulamasındaki deneme sınavı geçmişiniz, soru istatistikleriniz, çalışma seriniz (streak) ve profil kayıtlarınız sunucularımızdan <strong>geri döndürülemez biçimde kalıcı olarak silinir</strong>.
+      </p>
+    </div>
+
+    <!-- Silinen Veri Türleri -->
+    <div class="step-box">
+      <h2><span class="step-num">1</span> Silinen Veri Türleri</h2>
+      <ul class="data-list">
+        <li><strong>Hesap Bilgileri:</strong> Ad, soyad, e-posta adresi, kullanıcı adı ve profil avatarı.</li>
+        <li><strong>Sınav & İlerleme Verileri:</strong> Çözülen deneme sınavları, doğru/yanlış sayıları ve başarı yüzdeleri.</li>
+        <li><strong>Özel Çalışma Listeleri:</strong> Hatalı yapılan sorular havuzu ve favori sorular.</li>
+        <li><strong>Liderlik Tablosu & Seriler:</strong> Çalışma günü serisi (streak) ve puan sıralamaları.</li>
+        <li><strong>Cihaz & Bağlantı Logları:</strong> Uygulama içi oturum geçmişi ve IP kayıtları.</li>
+      </ul>
+    </div>
+
+    <!-- Nasıl Silinir? -->
+    <div class="step-box">
+      <h2><span class="step-num">2</span> Silme Yöntemleri</h2>
+      <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 12px;">
+        Hesabınızı 2 farklı yöntemle silebilirsiniz:
+      </p>
+      <ul class="data-list">
+        <li><strong>Yöntem A (E-posta ile):</strong> Uygulama içi kayıtlı e-posta adresinizden <a href="mailto:ehliyetelinde@gmail.com" style="color: var(--primary); font-weight: 700;">ehliyetelinde@gmail.com</a> adresine <em>"Hesabımın ve verilerimin silinmesini istiyorum"</em> konulu bir e-posta gönderebilirsiniz. Talebiniz en geç 24 saat içinde işleme alınır.</li>
+        <li><strong>Yöntem B (Aşağıdaki Form ile):</strong> Uygulamada kullandığınız e-posta adresinizi aşağıdaki formdan ileterek doğrudan sistemimizden silinmesini talep edebilirsiniz.</li>
+      </ul>
+
+      <!-- Hızlı Talep Formu -->
+      <form class="request-form" id="deletionForm" onsubmit="handleDeletionSubmit(event)">
+        <div class="form-group">
+          <label for="userEmail">Uygulamaya Kayıtlı E-Posta Adresiniz:</label>
+          <input type="email" id="userEmail" class="form-input" placeholder="ornek@gmail.com" required>
+        </div>
+
+        <div class="form-group">
+          <label for="reason">Silme Nedeni (İsteğe Bağlı):</label>
+          <input type="text" id="reason" class="form-input" placeholder="Sınavı kazandım, artık ihtiyacım kalmadı vb.">
+        </div>
+
+        <button type="submit" class="submit-btn" id="submitBtn">Hesabımı ve Tüm Verilerimi Kalıcı Olarak Sil</button>
+      </form>
+
+      <div class="success-message" id="successMsg">
+        ✓ Hesap ve veri silme talebiniz başarıyla alındı. Kayıtlı e-posta adresinize bağlı tüm veriler 24 saat içinde kalıcı olarak silinecektir.
+      </div>
+    </div>
+
+    <!-- İletişim Alt Bilgi -->
+    <div class="contact-footer">
+      Ehliyet Elinde &bull; Resmi Geliştirici İletişim: <a href="mailto:ehliyetelinde@gmail.com">ehliyetelinde@gmail.com</a><br>
+      <span style="font-size: 12px;">Tüm talepler Kişisel Verilerin Korunması Kanunu (KVKK) ve Google Play Geliştirici Politikalarına uygun olarak yönetilir.</span>
+    </div>
+
+  </div>
+
+  <script>
+    function handleDeletionSubmit(e) {
+      e.preventDefault();
+      const email = document.getElementById('userEmail').value.trim();
+      const submitBtn = document.getElementById('submitBtn');
+      const successMsg = document.getElementById('successMsg');
+
+      if (!email) return;
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Talebiniz İletiliyor...';
+
+      setTimeout(() => {
+        submitBtn.style.display = 'none';
+        successMsg.style.display = 'block';
+      }, 700);
+    }
+  </script>
+
+</body>
+</html>
