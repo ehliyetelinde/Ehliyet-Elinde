@@ -1080,18 +1080,7 @@
       scroll-behavior: smooth;
     }
 
-    /* ÜST NEON SCROLL İLERLEME ÇUBUĞU */
-    .scroll-progress-bar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 3.5px;
-      width: 0%;
-      background: linear-gradient(90deg, #2563EB 0%, #8B5CF6 50%, #38BDF8 100%);
-      z-index: 99999;
-      box-shadow: 0 0 12px rgba(59, 130, 246, 0.6);
-      transition: width 0.08s ease-out;
-    }
+    
 
     /* NEFES ALAN DİNAMİK AMBIENT GLOW */
     @keyframes ambientPulse1 {
@@ -1175,11 +1164,145 @@
       animation: starPulse 2.4s ease-in-out infinite;
     }
 
+  
+    /* DİNAMİK SIRA SIRA DEĞİŞEN EN ÇOK SORULAN SORULAR */
+    .dynamic-faq-rotator {
+      background: var(--section-bg);
+      border: 1.5px solid var(--border);
+      border-radius: 20px;
+      padding: 24px;
+      margin-bottom: 32px;
+      box-shadow: var(--shadow);
+      position: relative;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .dynamic-faq-rotator:hover {
+      border-color: #2563EB;
+      box-shadow: 0 8px 30px rgba(37, 99, 235, 0.12);
+    }
+
+    .rotator-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .rotator-status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .rotator-pulse-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #10B981;
+      box-shadow: 0 0 8px rgba(16, 185, 129, 0.7);
+      display: inline-block;
+      animation: pulseGreen 2s infinite ease-in-out;
+    }
+
+    @keyframes pulseGreen {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.3); opacity: 0.6; }
+    }
+
+    .rotator-controls {
+      display: flex;
+      gap: 8px;
+    }
+
+    .rotator-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--quote-bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 700;
+      transition: all 0.15s ease;
+    }
+
+    .rotator-btn:hover {
+      background: #2563EB;
+      color: #FFFFFF;
+      border-color: #2563EB;
+      transform: translateY(-1px);
+    }
+
+    .rotator-content {
+      min-height: 145px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .rotator-content.changing {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+
+    .rotator-question {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1.45;
+      margin-bottom: 12px;
+      letter-spacing: -0.3px;
+    }
+
+    .rotator-answer {
+      font-size: 14.5px;
+      line-height: 1.68;
+      color: var(--text-muted);
+      background: var(--quote-bg);
+      border-left: 3px solid #2563EB;
+      border-top: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 16px;
+      border-radius: 10px;
+    }
+
+    .rotator-dots {
+      display: flex;
+      justify-content: center;
+      gap: 7px;
+      margin-top: 18px;
+    }
+
+    .rotator-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--border);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .rotator-dot.active {
+      width: 24px;
+      border-radius: 50px;
+      background: #2563EB;
+    }
+
   </style>
 </head>
 <body>
-<div id="scrollProgressBar" class="scroll-progress-bar"></div>
-
 <div class="container">
   <!-- Üst Sekmeler (Emojisiz, Şık) -->
     <!-- Üst Navigasyon Sekmeleri -->
@@ -1359,6 +1482,7 @@
 
   
   
+  
   <!-- ================= SAYFA ALTI: EN ÇOK SORULAN SORULAR & UYGULAMA VİTRİNİ ================= -->
   <div class="bottom-showcase-container">
     
@@ -1366,71 +1490,39 @@
     <div class="bottom-section-header">
       <div class="badge" style="margin-bottom: 8px;">Ehliyet e-Sınav Rehberi & SSS</div>
       <h2 class="bottom-section-title" style="justify-content: center;">En Çok Sorulan Ehliyet Sınav Soruları</h2>
-      <p class="bottom-section-subtitle">Adayların sınavda en çok yanıldığı kritik konular ve e-sınav hakkında merak edilenler</p>
+      <p class="bottom-section-subtitle">Sınavda en çok karşılaşılan kritik sorular ve yanıtları sırayla değişmektedir</p>
     </div>
 
-    <!-- Soru & Cevap Akordiyonu -->
-    <div class="faq-list">
-      
-      <!-- Soru 1 -->
-      <div class="faq-card" onclick="toggleFaq(this)">
-        <button class="faq-question">
-          <span><span class="faq-tag">Trafik</span> Kavşaklarda geçiş hakkı ve geçiş üstünlüğü sırası nasıldır?</span>
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          1. Ambulans/Cankurtaran, İtfaiye, Polis gibi geçiş üstünlüklü araçlar her zaman ilk geçer.<br>
-          2. Kontrolsüz kavşakta düz giden araçlar, dönüş yapan araçlara göre önceliklidir.<br>
-          3. Her sürücü, kendi <strong>sağındaki araca</strong> yol vermek zorundadır.<br>
-          4. Döner kavşak içindeki araç, kavşağa girmek isteyen araca göre önceliklidir.
+    <!-- Dinamik Sıra Sıra Değişen Soru Kartı -->
+    <div class="dynamic-faq-rotator" id="faqRotator" onmouseenter="pauseFaqRotation()" onmouseleave="resumeFaqRotation()">
+      <div class="rotator-header">
+        <div class="rotator-status">
+          <span class="rotator-pulse-dot"></span>
+          <span id="rotatorCounter">Sık Sorulan Soru</span>
+        </div>
+        <div class="rotator-controls">
+          <button class="rotator-btn" onclick="prevFaqQuestion()" aria-label="Önceki Soru">&larr;</button>
+          <button class="rotator-btn" onclick="nextFaqQuestion()" aria-label="Sonraki Soru">&rarr;</button>
         </div>
       </div>
 
-      <!-- Soru 2 -->
-      <div class="faq-card" onclick="toggleFaq(this)">
-        <button class="faq-question">
-          <span><span class="faq-tag">e-Sınav</span> Sınavda yanlışlar doğruyu götürür mü? Geçme notu kaçtır?</span>
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <strong>Hayır, yanlışlar doğruları kesinlikle götürmez!</strong> Bu nedenle emin olmasanız bile hiçbir soruyu boş bırakmayın. Sınavda toplam <strong>50 soru</strong> sorulur ve sınav süresi 45 dakikadır. Başarılı sayılmak için en az <strong>35 doğru (70 puan)</strong> almanız gerekir.
+      <div class="rotator-content" id="rotatorContent">
+        <h3 class="rotator-question" id="faqQuestionText">Kavşaklarda geçiş hakkı ve geçiş üstünlüğü sırası nasıldır?</h3>
+        <div class="rotator-answer" id="faqAnswerText">
+          Cankurtaran, itfaiye ve polis gibi geçiş üstünlüğü bulunan araçlar her zaman ilk geçer. Kontrolsüz kavşakta düz giden araçlar ve sağdaki araçlar her zaman önceliklidir. Döner kavşak içindeki araç da kavşağa girmek isteyen araca göre önceliklidir.
         </div>
       </div>
 
-      <!-- Soru 3 -->
-      <div class="faq-card" onclick="toggleFaq(this)">
-        <button class="faq-question">
-          <span><span class="faq-tag">Trafik</span> Takip mesafesi kuralı nedir ve nasıl hesaplanır?</span>
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          Güvenli takip mesafesi, aracın kilometre cinsinden <strong>hızının en az yarısı</strong> kadar metredir. Örneğin 90 km/s hızla seyreden bir araç öndeki araçla arasına en az 45 metre mesafe koymalıdır. Ayrıca arka arkaya sayılan <strong>"88 - 89" kuralı (2 saniye mesafesi)</strong> ile kontrol edilir.
-        </div>
+      <div class="rotator-dots" id="rotatorDots">
+        <span class="rotator-dot active" onclick="jumpToFaq(0)"></span>
+        <span class="rotator-dot" onclick="jumpToFaq(1)"></span>
+        <span class="rotator-dot" onclick="jumpToFaq(2)"></span>
+        <span class="rotator-dot" onclick="jumpToFaq(3)"></span>
+        <span class="rotator-dot" onclick="jumpToFaq(4)"></span>
+        <span class="rotator-dot" onclick="jumpToFaq(5)"></span>
       </div>
-
-      <!-- Soru 4 -->
-      <div class="faq-card" onclick="toggleFaq(this)">
-        <button class="faq-question">
-          <span><span class="faq-tag">İlk Yardım</span> Temel yaşam desteğinde kalp masajı ve suni solunum oranı kaçtır?</span>
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          Tüm yaş gruplarında (yetişkin, çocuk ve bebek) temel yaşam desteğinde <strong>30 Kalp Masajı : 2 Suni Solunum</strong> (30:2) kuralı uygulanır. Göğüs basısı dakikada 100 bası hızında ve göğüs yüksekliğinin 1/3'ü (yetişkinde yaklaşık 5 cm) çökecek şekilde ritmik olarak yapılmalıdır.
-        </div>
-      </div>
-
-      <!-- Soru 5 -->
-      <div class="faq-card" onclick="toggleFaq(this)">
-        <button class="faq-question">
-          <span><span class="faq-tag">Animasyon</span> Yeni nesil 3D animasyonlu video soruları kaç tanedir?</span>
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          Resmi e-sınavda yaklaşık <strong>5 adet videolu/animasyonlu soru</strong> sorulmaktadır. Bu sorularda araçların sinyal vermesi, takip mesafesi, yayaya yol verilmesi gibi durumlar hareketli video senaryosu olarak sunulur. Ehliyet Elinde uygulamasında bu video sorularının tamamı interaktif olarak yer almaktadır.
-        </div>
-      </div>
-
     </div>
+
 
     <!-- Uygulama Vitrini & İndirme Kutusu (Büyütülmüş Logo, İkonlu En İyi Özellikler ve Temaya Uyumlu Buton) -->
     <div class="app-showcase-box">
@@ -1627,28 +1719,115 @@
     }
   })();
 
-  // 1. ÜST SCROLL İLERLEME ÇUBUĞU & SAĞ KENAR ROZETİ AKICI SÜZÜLME
+  // DİNAMİK SIRA SIRA DEĞİŞEN SORULAR SİSTEMİ
+  const faqQuestions = [
+    {
+      q: "Kavşaklarda geçiş hakkı ve geçiş üstünlüğü sırası nasıldır?",
+      a: "Cankurtaran, itfaiye ve polis gibi geçiş üstünlüğü bulunan araçlar her zaman ilk geçer. Kontrolsüz kavşakta düz giden araçlar ve sağdaki araçlar her zaman önceliklidir. Döner kavşak içindeki araç da kavşağa girmek isteyen araca göre önceliklidir."
+    },
+    {
+      q: "Sınavda yanlışlar doğruyu götürür mü? Geçme notu kaçtır?",
+      a: "Yanlış cevaplar doğruları kesinlikle götürmez. Bu nedenle emin olmasanız bile hiçbir soruyu boş bırakmayın. Sınavda toplam 50 soru sorulur; başarılı sayılmak için en az 35 doğru (70 puan) almanız gerekir."
+    },
+    {
+      q: "Takip mesafesi kuralı nedir ve nasıl hesaplanır?",
+      a: "Güvenli takip mesafesi, aracın kilometre cinsinden hızının en az yarısı kadar metredir. Örneğin 90 km/s hızla seyreden bir araç öndeki araçla arasına en az 45 metre mesafe koymalıdır. Ayrıca arka arkaya sayılan 88 - 89 kuralı (2 saniye mesafesi) ile kontrol edilir."
+    },
+    {
+      q: "Temel yaşam desteğinde kalp masajı ve suni solunum oranı kaçtır?",
+      a: "Yetişkinlerde, çocuklarda ve bebeklerde temel yaşam desteğinde 30 Kalp Masajına karşılık 2 Suni Solunum (30:2 kuralı) uygulanır. Göğüs basısı dakikada 100 bası ritminde yapılmalıdır."
+    },
+    {
+      q: "Yeni nesil 3D animasyonlu video soruları kaç tanedir?",
+      a: "Elektronik ehliyet sınavında yaklaşık 5 adet videolu ve animasyonlu soru sorulmaktadır. Bu sorularda araçların sinyal vermesi, takip mesafesi ve yayalara yol verilmesi hareketli video senaryosu olarak sunulur."
+    },
+    {
+      q: "Kaza anında araçtan yaralı çıkarma tekniği hangisidir?",
+      a: "Omurilik felcini ve kalıcı hasarı önlemek için yaralı mutlaka boyun-gövde-omurga ekseni bozulmadan Rentek Manevrası ile araçtan çıkarılmalıdır."
+    }
+  ];
+
+  let currentFaqIndex = 0;
+  let faqTimer = null;
+  let isFaqPaused = false;
+
+  function renderFaq(index) {
+    const content = document.getElementById('rotatorContent');
+    const qText = document.getElementById('faqQuestionText');
+    const aText = document.getElementById('faqAnswerText');
+    const counter = document.getElementById('rotatorCounter');
+    const dots = document.querySelectorAll('.rotator-dot');
+
+    if (!content || !qText || !aText) return;
+
+    content.classList.add('changing');
+    setTimeout(() => {
+      currentFaqIndex = (index + faqQuestions.length) % faqQuestions.length;
+      qText.textContent = faqQuestions[currentFaqIndex].q;
+      aText.textContent = faqQuestions[currentFaqIndex].a;
+      if (counter) {
+        counter.textContent = 'Sık Sorulan Soru';
+      }
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentFaqIndex);
+      });
+      content.classList.remove('changing');
+    }, 180);
+  }
+
+  function nextFaqQuestion() {
+    renderFaq(currentFaqIndex + 1);
+    restartFaqTimer();
+  }
+
+  function prevFaqQuestion() {
+    renderFaq(currentFaqIndex - 1);
+    restartFaqTimer();
+  }
+
+  function jumpToFaq(index) {
+    renderFaq(index);
+    restartFaqTimer();
+  }
+
+  function pauseFaqRotation() {
+    isFaqPaused = true;
+    if (faqTimer) clearInterval(faqTimer);
+  }
+
+  function resumeFaqRotation() {
+    isFaqPaused = false;
+    startFaqTimer();
+  }
+
+  function startFaqTimer() {
+    if (faqTimer) clearInterval(faqTimer);
+    faqTimer = setInterval(() => {
+      if (!isFaqPaused) {
+        renderFaq(currentFaqIndex + 1);
+      }
+    }, 4500);
+  }
+
+  function restartFaqTimer() {
+    if (faqTimer) clearInterval(faqTimer);
+    startFaqTimer();
+  }
+
+  // Otomatik başlat
+  startFaqTimer();
+
+  // 1. SAĞ KENAR ROZETİ AKICI SÜZÜLME (Scroll Bar Kaldırıldı)
   (function initScrollEffects() {
-    const bar = document.getElementById('scrollProgressBar');
     const badge = document.querySelector('.side-badge-card');
 
     let ticking = false;
     function updateScroll() {
       const scrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
-      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = maxScroll > 0 ? (scrollY / maxScroll) : 0;
-
-      // İlerleme çubuğunu güncelle
-      if (bar) {
-        bar.style.width = (progress * 100) + '%';
-      }
-
-      // Sağ rozeti akıcı şekilde aşağı süzdür
       if (badge) {
         const travel = Math.min(450, scrollY * 0.38);
         badge.style.transform = 'translate3d(0, ' + travel + 'px, 0)';
       }
-
       ticking = false;
     }
 
