@@ -609,6 +609,7 @@
     }
 
   
+    
     /* EN ÇOK SORULAN SORULAR & ALT VİTRİN STİLLERİ */
     .bottom-showcase-container {
       margin-top: 40px;
@@ -719,45 +720,55 @@
       margin-right: 6px;
     }
 
-    /* Vitrin Kartları Grid */
+    /* GELİŞMİŞ UYGULAMA VİTRİN KUTUSU */
     .app-showcase-box {
       background: var(--section-bg);
       border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 26px 20px;
+      border-radius: 24px;
+      padding: 36px 24px;
       text-align: center;
       margin-bottom: 24px;
+      box-shadow: var(--shadow);
     }
 
-    .app-showcase-box .app-logo {
-      width: 72px;
-      height: 72px;
-      border-radius: 18px;
-      margin-bottom: 12px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
-      border: 1.5px solid var(--border);
+    .app-showcase-box .app-logo-big {
+      width: 98px;
+      height: 98px;
+      border-radius: 24px;
+      margin-bottom: 16px;
+      box-shadow: 0 8px 26px rgba(0, 0, 0, 0.22);
+      border: 2px solid var(--border);
       object-fit: cover;
+      display: inline-block;
+      transition: transform 0.25s ease;
+    }
+
+    .app-showcase-box .app-logo-big:hover {
+      transform: scale(1.05);
     }
 
     .app-showcase-box h3 {
-      font-size: 21px;
-      font-weight: 800;
+      font-size: 24px;
+      font-weight: 850;
       color: var(--primary);
-      margin-bottom: 6px;
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
     }
 
     .app-showcase-box p {
-      font-size: 14.5px;
+      font-size: 15px;
       color: var(--text-muted);
       max-width: 620px;
-      margin: 0 auto 20px auto;
+      margin: 0 auto 26px auto;
+      line-height: 1.6;
     }
 
+    /* 6 Büyük Özellik Kartları (Simgeli & Düzenli) */
     .features-pill-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-bottom: 24px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-bottom: 30px;
       text-align: left;
     }
 
@@ -770,21 +781,89 @@
     .feature-pill-card {
       background: var(--quote-bg);
       border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 12px 14px;
-      font-size: 13.5px;
-      font-weight: 600;
-      color: var(--text);
+      border-radius: 14px;
+      padding: 14px 16px;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 14px;
+      transition: transform 0.15s ease, border-color 0.15s ease;
     }
 
-    .feature-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #2563EB;
+    .feature-pill-card:hover {
+      transform: translateY(-2px);
+      border-color: #2563EB;
+    }
+
+    .feature-icon-circle {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .feature-text-wrap {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .feature-main-title {
+      font-size: 14.5px;
+      font-weight: 750;
+      color: var(--text);
+    }
+
+    .feature-sub-desc {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* TEMAYA UYUMLU PROFESYONEL GOOGLE PLAY BUTONU */
+    .playstore-inline-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 14px 32px;
+      border-radius: 16px;
+      font-size: 15.5px;
+      font-weight: 700;
+      text-decoration: none !important;
+      transition: all 0.2s ease;
+      background: #111827;
+      color: #FFFFFF !important;
+      border: 1.5px solid #1F2937;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      cursor: pointer;
+    }
+
+    .playstore-inline-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .playstore-inline-btn {
+        background: #1C1C1E;
+        color: #FFFFFF !important;
+        border: 1.5px solid #2E2E32;
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45);
+      }
+      .playstore-inline-btn:hover {
+        background: #252528;
+        border-color: #3E3E44;
+      }
+    }
+
+    .btn-svg-wrap {
+      width: 26px;
+      height: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       flex-shrink: 0;
     }
 
@@ -970,6 +1049,7 @@
   </div>
 
   
+  
   <!-- ================= SAYFA ALTI: EN ÇOK SORULAN SORULAR & UYGULAMA VİTRİNİ ================= -->
   <div class="bottom-showcase-container">
     
@@ -1043,28 +1123,119 @@
 
     </div>
 
-    <!-- Uygulama Vitrini & İndirme Kutusu -->
+    <!-- Uygulama Vitrini & İndirme Kutusu (Büyütülmüş Logo, İkonlu En İyi Özellikler ve Temaya Uyumlu Buton) -->
     <div class="app-showcase-box">
-      <img src="app-logo.png" alt="Ehliyet Elinde" class="app-logo">
+      <img src="app-logo.png" alt="Ehliyet Elinde" class="app-logo-big">
       <h3>Ehliyet Sınavını İlk Seferde Geçin!</h3>
-      <p>5.500+ MEB güncel soru bankası, 3D animasyonlu video testleri ve akıllı jokerlerle sınavı riske atmayın.</p>
+      <p>5.500+ MEB güncel soru bankası, 3D animasyonlu video testleri ve yapay zeka destekli akıllı jokerlerle sınavı riske atmayın.</p>
       
+      <!-- 6 En Güçlü Özellik Kartı (Her birinin solunda özel renkli ikon) -->
       <div class="features-pill-grid">
-        <div class="feature-pill-card"><span class="feature-dot"></span> 5.500+ MEB Güncel Soru</div>
-        <div class="feature-pill-card"><span class="feature-dot"></span> 3D Animasyonlu Videolar</div>
-        <div class="feature-pill-card"><span class="feature-dot"></span> 50:50 Şık Eleme Jokeri</div>
-        <div class="feature-pill-card"><span class="feature-dot"></span> Liderlik Tablosu & Ligler</div>
-        <div class="feature-pill-card"><span class="feature-dot"></span> Yanlış Sorular Hafızası</div>
-        <div class="feature-pill-card"><span class="feature-dot"></span> %100 İnternetsiz Mod</div>
+        
+        <!-- Özellik 1: 3D Video Animasyon -->
+        <div class="feature-pill-card">
+          <div class="feature-icon-circle" style="background: rgba(37,99,235,0.12); color: #2563EB;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+          </div>
+          <div class="feature-text-wrap">
+            <span class="feature-main-title">3D Animasyonlu Videolar</span>
+            <span class="feature-sub-desc">MEB kavşak ve trafik video soruları</span>
+          </div>
+        </div>
+
+        <!-- Özellik 2: 5.500+ MEB Soru Bankası -->
+        <div class="feature-pill-card">
+          <div class="feature-icon-circle" style="background: rgba(16,185,129,0.12); color: #10B981;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+            </svg>
+          </div>
+          <div class="feature-text-wrap">
+            <span class="feature-main-title">5.500+ MEB Soru Havuzu</span>
+            <span class="feature-sub-desc">2026 güncel müfredat ve çıkmış testler</span>
+          </div>
+        </div>
+
+        <!-- Özellik 3: 50:50 Şık Eleme -->
+        <div class="feature-pill-card">
+          <div class="feature-icon-circle" style="background: rgba(245,158,11,0.12); color: #F59E0B;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="6" cy="6" r="3"></circle>
+              <circle cx="6" cy="18" r="3"></circle>
+              <line x1="20" y1="4" x2="8.12" y2="15.88"></line>
+              <line x1="14.47" y1="14.48" x2="20" y2="20"></line>
+              <line x1="8.12" y1="8.12" x2="12" y2="12"></line>
+            </svg>
+          </div>
+          <div class="feature-text-wrap">
+            <span class="feature-main-title">50:50 Animasyonlu Şık Eleme</span>
+            <span class="feature-sub-desc">2 yanlış şıkkı kaydırarak yok eder</span>
+          </div>
+        </div>
+
+        <!-- Özellik 4: AI Hoca / Soru Eğitmeni -->
+        <div class="feature-pill-card">
+          <div class="feature-icon-circle" style="background: rgba(139,92,246,0.12); color: #8B5CF6;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7z"></path>
+              <line x1="9" y1="21" x2="15" y2="21"></line>
+            </svg>
+          </div>
+          <div class="feature-text-wrap">
+            <span class="feature-main-title">Yapay Zeka Soru Eğitmeni</span>
+            <span class="feature-sub-desc">Sorunun mantığını ve püf noktasını öğretir</span>
+          </div>
+        </div>
+
+        <!-- Özellik 5: Yanlış Sorular Analizi -->
+        <div class="feature-pill-card">
+          <div class="feature-icon-circle" style="background: rgba(239,68,68,0.12); color: #EF4444;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+          </div>
+          <div class="feature-text-wrap">
+            <span class="feature-main-title">Hatalı Sorular Analizi</span>
+            <span class="feature-sub-desc">Yanlışlarınızı hafızaya alıp telafi ettirir</span>
+          </div>
+        </div>
+
+        <!-- Özellik 6: %100 Çevrimdışı Mod -->
+        <div class="feature-pill-card">
+          <div class="feature-icon-circle" style="background: rgba(6,182,212,0.12); color: #06B6D4;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="1" y1="1" x2="23" y2="23"></line>
+              <path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55"></path>
+              <path d="M5 12.55a10.94 10.94 0 0 1 5.17-2.39"></path>
+              <path d="M10.71 5.05A16 16 0 0 1 22.58 9"></path>
+              <path d="M1.42 9a15.91 15.91 0 0 1 4.7-2.88"></path>
+              <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
+              <line x1="12" y1="20" x2="12.01" y2="20"></line>
+            </svg>
+          </div>
+          <div class="feature-text-wrap">
+            <span class="feature-main-title">%100 İnternetsiz Çalışma</span>
+            <span class="feature-sub-desc">İnternet paketiniz olmadan her yerde çözün</span>
+          </div>
+        </div>
+
       </div>
 
-      <a href="https://play.google.com/store/apps/details?id=com.ehliyetelinde.app" target="_blank" rel="noopener noreferrer" class="primary-btn">
-        <svg viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg">
-          <path fill="#4285F4" d="M3.609 1.814L13.793 12 3.61 22.186c-.367-.384-.61-.98-.61-1.786V3.6c0-.806.243-1.402.61-1.786z"/>
-          <path fill="#FBBC04" d="M17.18 8.614l-3.387 3.386 3.387 3.386 3.82-2.17c1.096-.622 1.096-1.78 0-2.432l-3.82-2.17z"/>
-          <path fill="#EA4335" d="M3.609 22.186L13.793 12 17.18 15.386l-11.458 6.51c-.722.41-1.478.435-2.113.29z"/>
-          <path fill="#34A853" d="M17.18 8.614L13.793 12 3.609 1.814c.635-.145 1.391-.12 2.113.29l11.458 6.51z"/>
-        </svg>
+      <!-- Temaya Tam Uyumlu Şık Google Play Butonu -->
+      <a href="https://play.google.com/store/apps/details?id=com.ehliyetelinde.app" target="_blank" rel="noopener noreferrer" class="playstore-inline-btn">
+        <div class="btn-svg-wrap">
+          <svg viewBox="0 0 24 24" width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#4285F4" d="M3.609 1.814L13.793 12 3.61 22.186c-.367-.384-.61-.98-.61-1.786V3.6c0-.806.243-1.402.61-1.786z"/>
+            <path fill="#FBBC04" d="M17.18 8.614l-3.387 3.386 3.387 3.386 3.82-2.17c1.096-.622 1.096-1.78 0-2.432l-3.82-2.17z"/>
+            <path fill="#EA4335" d="M3.609 22.186L13.793 12 17.18 15.386l-11.458 6.51c-.722.41-1.478.435-2.113.29z"/>
+            <path fill="#34A853" d="M17.18 8.614L13.793 12 3.609 1.814c.635-.145 1.391-.12 2.113.29l11.458 6.51z"/>
+          </svg>
+        </div>
         Google Play'den Ücretsiz Yükle
       </a>
     </div>
