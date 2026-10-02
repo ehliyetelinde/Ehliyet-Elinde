@@ -1300,9 +1300,603 @@
       background: #2563EB;
     }
 
+  
+    /* =======================================================
+       HERO / BAŞLANGIÇ EKRANI STİLLERİ (EHLİYET ELİNDE)
+       ======================================================= */
+    .hero-start-section {
+      width: 100%;
+      max-width: 1140px;
+      margin: 12px auto 44px auto;
+      padding: 32px 20px 48px 20px;
+      position: relative;
+    }
+
+    .hero-layout-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    @media (max-width: 960px) {
+      .hero-layout-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+        text-align: center;
+      }
+      .hero-start-section {
+        padding: 16px 12px 32px 12px;
+      }
+    }
+
+    /* Sol Taraf: Marka & Tipografi */
+    .hero-content-col {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 18px;
+    }
+
+    @media (max-width: 960px) {
+      .hero-content-col {
+        align-items: center;
+      }
+    }
+
+    .hero-pill-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      background: rgba(37, 99, 235, 0.1);
+      color: #3B82F6;
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 2px 12px rgba(37, 99, 235, 0.1);
+    }
+
+    .hero-pill-pulse {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10B981;
+      box-shadow: 0 0 10px #10B981;
+      animation: pulseGreen 2s infinite ease-in-out;
+    }
+
+    .hero-brand-title {
+      font-size: clamp(40px, 5.8vw, 68px);
+      font-weight: 900;
+      line-height: 1.06;
+      letter-spacing: -2px;
+      color: var(--text);
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    }
+
+    .hero-title-highlight {
+      background: linear-gradient(135deg, #2563EB 0%, #3B82F6 40%, #60A5FA 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+      text-shadow: 0 10px 30px rgba(37, 99, 235, 0.2);
+    }
+
+    .hero-subtitle {
+      font-size: clamp(16px, 1.8vw, 18.5px);
+      line-height: 1.68;
+      color: var(--text-muted);
+      max-width: 540px;
+      margin: 0;
+    }
+
+    /* Öne Çıkan Özellik Rozetleri */
+    .hero-feature-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    @media (max-width: 960px) {
+      .hero-feature-tags {
+        justify-content: center;
+      }
+    }
+
+    .hero-feat-tag {
+      font-size: 12px;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 8px;
+      background: var(--info-box-bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Buton Grubu */
+    .hero-action-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 10px;
+      width: 100%;
+    }
+
+    @media (max-width: 960px) {
+      .hero-action-buttons {
+        justify-content: center;
+      }
+    }
+
+    .hero-play-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: #000000;
+      color: #FFFFFF !important;
+      padding: 12px 22px;
+      border-radius: 14px;
+      text-decoration: none;
+      border: 1.5px solid #27272A;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .hero-play-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(37, 99, 235, 0.3);
+      border-color: #3B82F6;
+    }
+
+    .hero-play-btn img {
+      width: 24px;
+      height: 24px;
+    }
+
+    .hero-play-text {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      line-height: 1.2;
+    }
+
+    .hero-play-text .sub {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: #9CA3AF;
+      font-weight: 600;
+    }
+
+    .hero-play-text .main {
+      font-size: 14.5px;
+      font-weight: 800;
+      color: #FFFFFF;
+    }
+
+    /* Politika & Şartlar Hızlı Butonları (1 sn Gecikmeli Kaydırma Efekti) */
+    .hero-nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 20px;
+      border-radius: 14px;
+      font-size: 14px;
+      font-weight: 700;
+      background: var(--card-bg);
+      color: var(--text);
+      border: 1.5px solid var(--border);
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-nav-btn:hover {
+      transform: translateY(-2px);
+      border-color: #2563EB;
+      color: #2563EB;
+    }
+
+    /* 1 Saniyelik Aktif/Yükleniyor Animasyon Hali */
+    .hero-nav-btn.nav-loading {
+      border-color: #2563EB;
+      background: rgba(37, 99, 235, 0.08);
+      color: #2563EB;
+      box-shadow: 0 0 20px rgba(37, 99, 235, 0.35);
+      animation: btnGlowPulse 0.5s infinite alternate ease-in-out;
+    }
+
+    @keyframes btnGlowPulse {
+      0% { box-shadow: 0 0 8px rgba(37, 99, 235, 0.2); }
+      100% { box-shadow: 0 0 24px rgba(37, 99, 235, 0.5); }
+    }
+
+    .hero-nav-btn .btn-loader-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, #2563EB, #60A5FA);
+      transition: width 1s linear;
+    }
+
+    .hero-nav-btn.nav-loading .btn-loader-bar {
+      width: 100%;
+    }
+
+    /* Aşağı Kaydır İpucu */
+    .hero-scroll-prompt {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 14px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: color 0.15s ease;
+      background: none;
+      border: none;
+      padding: 0;
+    }
+
+    .hero-scroll-prompt:hover {
+      color: #2563EB;
+    }
+
+    .hero-scroll-arrow {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      animation: bounceDown 1.8s infinite;
+    }
+
+    @keyframes bounceDown {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(5px); }
+      60% { transform: translateY(3px); }
+    }
+
+    /* Sağ Taraf: 3D Telefon Mockup Vitrini */
+    .hero-mockup-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .hero-phone-container {
+      position: relative;
+      width: 100%;
+      max-width: 320px;
+      perspective: 1200px;
+    }
+
+    /* Telefon Arkasındaki Renkli Ambiyans Işığı */
+    .hero-phone-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 280px;
+      height: 480px;
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.35) 0%, rgba(59, 130, 246, 0.15) 50%, transparent 70%);
+      filter: blur(48px);
+      border-radius: 50%;
+      z-index: 0;
+      pointer-events: none;
+      animation: phoneGlowFloat 4s infinite alternate ease-in-out;
+    }
+
+    @keyframes phoneGlowFloat {
+      0% { transform: translate(-50%, -50%) scale(0.95); opacity: 0.6; }
+      100% { transform: translate(-50%, -50%) scale(1.08); opacity: 0.9; }
+    }
+
+    /* Gerçekçi Telefon Gövdesi (Mockup) */
+    .hero-phone-device {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      border-radius: 42px;
+      background: #09090B;
+      padding: 11px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45), 0 0 0 2px rgba(255, 255, 255, 0.1), inset 0 0 0 2px #27272A;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+      animation: deviceFloating 5s infinite alternate ease-in-out;
+    }
+
+    .hero-phone-device:hover {
+      animation-play-state: paused;
+      transform: translateY(-4px) rotateY(-2deg);
+      box-shadow: 0 32px 70px rgba(37, 99, 235, 0.35), 0 0 0 2px rgba(59, 130, 246, 0.5);
+    }
+
+    @keyframes deviceFloating {
+      0% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-8px) rotate(-0.5deg); }
+      100% { transform: translateY(0px) rotate(0deg); }
+    }
+
+    /* Kamera Çentiği / Hoparlör */
+    .phone-notch {
+      position: absolute;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 72px;
+      height: 12px;
+      background: #000000;
+      border-radius: 12px;
+      z-index: 4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .phone-speaker {
+      width: 32px;
+      height: 3.5px;
+      background: #27272A;
+      border-radius: 3px;
+    }
+
+    .phone-camera {
+      width: 6px;
+      height: 6px;
+      background: #1E293B;
+      border-radius: 50%;
+      border: 1px solid #334155;
+    }
+
+    /* Ekran Alanı */
+    .phone-screen-window {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 9 / 18.8;
+      border-radius: 32px;
+      overflow: hidden;
+      background: #000000;
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
+    }
+
+    .phone-screen-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: opacity 0.35s ease, transform 0.35s ease;
+      border-radius: 32px;
+    }
+
+    .phone-screen-img.switching {
+      opacity: 0.15;
+      transform: scale(0.97);
+    }
+
+    /* Vitrin Başlığı & Navigasyon Kontrolleri */
+    .phone-showcase-caption {
+      margin-top: 18px;
+      text-align: center;
+      width: 100%;
+      max-width: 320px;
+      z-index: 2;
+    }
+
+    .caption-screen-title {
+      font-size: 14.5px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 4px;
+      line-height: 1.35;
+      transition: opacity 0.2s ease;
+    }
+
+    .caption-screen-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.45;
+      min-height: 34px;
+      transition: opacity 0.2s ease;
+    }
+
+    .showcase-control-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .showcase-arrow-btn {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 800;
+      transition: all 0.15s ease;
+    }
+
+    .showcase-arrow-btn:hover {
+      background: #2563EB;
+      color: #FFFFFF;
+      border-color: #2563EB;
+      transform: translateY(-1px);
+    }
+
+    .showcase-dot-list {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .showcase-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--border);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .showcase-dot.active {
+      width: 22px;
+      border-radius: 50px;
+      background: #2563EB;
+    }
+
   </style>
 </head>
 <body>
+
+  <!-- ================= HERO / BAŞLANGIÇ EKRANI (EHLİYET ELİNDE) ================= -->
+  <section class="hero-start-section" id="heroStartSection">
+    <div class="hero-layout-grid">
+      
+      <!-- Sol Sütun: Başlık, Slogan, Özellikler ve Hızlı Geçiş Butonları -->
+      <div class="hero-content-col">
+        
+        <div class="hero-pill-badge">
+          <span class="hero-pill-pulse"></span>
+          <span>2026 Güncel Müfredat & e-Sınav Hazırlığı</span>
+        </div>
+
+        <h1 class="hero-brand-title">
+          Ehliyet<br>
+          <span class="hero-title-highlight">Elinde</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          Sınavı ilk seferde başarıyla geçmek için ihtiyacınız olan her şey tek uygulamada! 5.500+ soru bankası, 3D animasyonlu video testleri, anlık widget sayacı ve akıllı hata analiziyle ehliyetiniz artık elinizde.
+        </p>
+
+        <!-- Öne Çıkan Özellik Rozetleri -->
+        <div class="hero-feature-tags">
+          <span class="hero-feat-tag">📝 5.500+ Soru Havuzu</span>
+          <span class="hero-feat-tag">🎬 3D Animasyonlu Sorular</span>
+          <span class="hero-feat-tag">⏳ Sınav Tarihi Widget'ı</span>
+          <span class="hero-feat-tag">🧠 Akıllı Hata Çözümü</span>
+        </div>
+
+        <!-- Buton Grubu: Google Play + 1 Saniye Gecikmeli Politika Butonları -->
+        <div class="hero-action-buttons">
+          
+          <!-- Google Play Butonu -->
+          <a href="https://play.google.com/store/apps/details?id=com.ehliyetelinde.app" target="_blank" rel="noopener noreferrer" class="hero-play-btn" aria-label="Google Play'den İndir">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path d="M3.609 1.814L13.792 12 3.61 22.185C3.25 21.787 3 21.196 3 20.443V3.557C3 2.804 3.25 2.213 3.609 1.814Z" fill="#2196F3"/>
+              <path d="M17.185 8.608L13.792 12l3.393 3.392 3.842-2.176c1.096-.62 1.096-1.636 0-2.257L17.185 8.608Z" fill="#FFC107"/>
+              <path d="M3.609 22.186L13.792 12l3.393 3.393-9.569 5.424c-.58.329-1.27.357-1.854.062l4.847-4.847-6.999 6.154z" fill="#4CAF50"/>
+              <path d="M3.609 1.814L10.608 7.97l-6.999 6.154 4.847-4.847L3.609 1.814z" fill="#F44336"/>
+            </svg>
+            <div class="hero-play-text">
+              <span class="sub">HEMEN İNDİR</span>
+              <span class="main">Google Play</span>
+            </div>
+          </a>
+
+          <!-- Gizlilik Politikası Butonu (1 sn Gecikmeli Kaydırma) -->
+          <button class="hero-nav-btn" id="heroBtnPrivacy" onclick="heroNavigateTo('privacy', this)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+            <span>Gizlilik Politikası</span>
+            <div class="btn-loader-bar"></div>
+          </button>
+
+          <!-- Kullanım Koşulları Butonu (1 sn Gecikmeli Kaydırma) -->
+          <button class="hero-nav-btn" id="heroBtnTerms" onclick="heroNavigateTo('terms', this)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+              <polyline points="10 9 9 9 8 9"/>
+            </svg>
+            <span>Kullanım Koşulları</span>
+            <div class="btn-loader-bar"></div>
+          </button>
+
+        </div>
+
+        <!-- Aşağı Kaydır İpucu Butonu -->
+        <button class="hero-scroll-prompt" onclick="heroScrollDirect()" aria-label="Aşağı Kaydır">
+          <span class="hero-scroll-arrow">↓</span>
+          <span>Aşağı kaydırarak metinleri ve SSS rehberini inceleyin</span>
+        </button>
+
+      </div>
+
+      <!-- Sağ Sütun: 3D Telefon Vitrini (7 Ekran Görüntüsü) -->
+      <div class="hero-mockup-col" onmouseenter="pauseHeroMockup()" onmouseleave="resumeHeroMockup()">
+        <div class="hero-phone-container">
+          <div class="hero-phone-glow"></div>
+          
+          <div class="hero-phone-device">
+            <!-- Kamera & Ahize -->
+            <div class="phone-notch">
+              <div class="phone-speaker"></div>
+              <div class="phone-camera"></div>
+            </div>
+
+            <!-- Ekran Fotoğrafı -->
+            <div class="phone-screen-window">
+              <img src="assets/screen-1.png" alt="Ehliyet Elinde Uygulama Ekranı" class="phone-screen-img" id="heroPhoneImg">
+            </div>
+          </div>
+        </div>
+
+        <!-- Ekran Başlığı & Açıklaması -->
+        <div class="phone-showcase-caption">
+          <div class="caption-screen-title" id="heroScreenTitle">Çıkmış Sınav Soruları</div>
+          <div class="caption-screen-desc" id="heroScreenDesc">Gerçek e-sınav simülasyonu ve detaylı başarı analizi</div>
+          
+          <!-- Navigasyon Okları & Noktalar -->
+          <div class="showcase-control-bar">
+            <button class="showcase-arrow-btn" onclick="prevHeroSlide()" aria-label="Önceki Ekran">&larr;</button>
+            <div class="showcase-dot-list" id="heroDotsList">
+              <span class="showcase-dot active" onclick="jumpHeroSlide(0)"></span>
+              <span class="showcase-dot" onclick="jumpHeroSlide(1)"></span>
+              <span class="showcase-dot" onclick="jumpHeroSlide(2)"></span>
+              <span class="showcase-dot" onclick="jumpHeroSlide(3)"></span>
+              <span class="showcase-dot" onclick="jumpHeroSlide(4)"></span>
+              <span class="showcase-dot" onclick="jumpHeroSlide(5)"></span>
+              <span class="showcase-dot" onclick="jumpHeroSlide(6)"></span>
+            </div>
+            <button class="showcase-arrow-btn" onclick="nextHeroSlide()" aria-label="Sonraki Ekran">&rarr;</button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
 <div class="container">
   <!-- Üst Sekmeler (Emojisiz, Şık) -->
     <!-- Üst Navigasyon Sekmeleri -->
@@ -1675,6 +2269,181 @@
 </a>
 
 <script>
+
+  // =======================================================
+  // 1. HERO 1 SANİYE GECİKMELİ AKICI GEÇİŞ (SMOOTH SCROLL)
+  // =======================================================
+  let isNavigating = false;
+
+  function heroNavigateTo(tabName, btnElement) {
+    if (isNavigating) return;
+    isNavigating = true;
+
+    // 1. Tıklanan butonu parlat ve yükleme çizgisini başlat
+    document.querySelectorAll('.hero-nav-btn').forEach(b => b.classList.remove('nav-loading'));
+    if (btnElement) {
+      btnElement.classList.add('nav-loading');
+    }
+
+    // 2. Sekmeyi arka planda önceden hazırla
+    if (typeof switchTab === 'function') {
+      switchTab(tabName);
+    }
+
+    // 3. Tam 1 saniye sonra animasyonla aşağı kaydır (Kullanıcı İsteği)
+    setTimeout(() => {
+      const targetContainer = document.querySelector('.container');
+      if (targetContainer) {
+        const topPos = targetContainer.getBoundingClientRect().top + window.pageYOffset - 24;
+        window.scrollTo({
+          top: topPos,
+          behavior: 'smooth'
+        });
+
+        // Hedef karta hafif bir parlama vurgusu ver
+        targetContainer.style.transition = 'box-shadow 0.4s ease, border-color 0.4s ease';
+        targetContainer.style.borderColor = '#2563EB';
+        targetContainer.style.boxShadow = '0 0 35px rgba(37, 99, 235, 0.25)';
+        setTimeout(() => {
+          targetContainer.style.borderColor = '';
+          targetContainer.style.boxShadow = '';
+        }, 1200);
+      }
+
+      if (btnElement) {
+        btnElement.classList.remove('nav-loading');
+      }
+      isNavigating = false;
+    }, 1000);
+  }
+
+  function heroScrollDirect() {
+    const targetContainer = document.querySelector('.container');
+    if (targetContainer) {
+      const topPos = targetContainer.getBoundingClientRect().top + window.pageYOffset - 24;
+      window.scrollTo({
+        top: topPos,
+        behavior: 'smooth'
+      });
+    }
+  }
+
+  // =======================================================
+  // 2. HERO 3D TELEFON VİTRİNİ & 7 EKRAN DÖNÜŞÜMÜ
+  // =======================================================
+  const heroScreens = [
+    {
+      img: 'assets/screen-1.png',
+      title: 'Çıkmış Sınav Soruları & Denemeler',
+      desc: 'Gerçek e-sınav formatında soru havuzu ve yapay zeka geçme tahmini'
+    },
+    {
+      img: 'assets/screen-2.png',
+      title: 'Trafik Levhaları & Gösterge İkazları',
+      desc: 'Tüm levha kategorileri ve araç içi arıza lambaları görsel rehberi'
+    },
+    {
+      img: 'assets/screen-3.png',
+      title: 'Sınav Tarihi Sayacı & Widget',
+      desc: 'Hem uygulama içinde hem de telefon ana ekranınızda geri sayım'
+    },
+    {
+      img: 'assets/screen-4.png',
+      title: '3D Animasyonlu & Videolu Sorular',
+      desc: 'Sınavdaki yeni nesil hareketli senaryolar ve animasyonlu video testleri'
+    },
+    {
+      img: 'assets/screen-5.png',
+      title: 'İstatistikler & Net Analiz Grafikleri',
+      desc: 'Kategori bazlı doğru/yanlış analizleri ve genel başarı yüzdesi'
+    },
+    {
+      img: 'assets/screen-6.png',
+      title: 'Soruyu Neden Yanlış Yaptığını Gör',
+      desc: 'Her soruya özel püf noktası, kural açıklaması ve eğitmen notu'
+    },
+    {
+      img: 'assets/screen-7.png',
+      title: 'Günlük 20 Soru & Özel Testler',
+      desc: '10 animasyonlu + 10 normal soru ile günlük düzenli çalışma serisi'
+    }
+  ];
+
+  let currentHeroIndex = 0;
+  let heroTimer = null;
+  let isHeroPaused = false;
+
+  function renderHeroSlide(index) {
+    const phoneImg = document.getElementById('heroPhoneImg');
+    const titleEl = document.getElementById('heroScreenTitle');
+    const descEl = document.getElementById('heroScreenDesc');
+    const dots = document.querySelectorAll('.showcase-dot');
+
+    if (!phoneImg || !titleEl || !descEl) return;
+
+    phoneImg.classList.add('switching');
+    titleEl.style.opacity = '0';
+    descEl.style.opacity = '0';
+
+    setTimeout(() => {
+      currentHeroIndex = (index + heroScreens.length) % heroScreens.length;
+      phoneImg.src = heroScreens[currentHeroIndex].img;
+      titleEl.textContent = heroScreens[currentHeroIndex].title;
+      descEl.textContent = heroScreens[currentHeroIndex].desc;
+
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentHeroIndex);
+      });
+
+      phoneImg.classList.remove('switching');
+      titleEl.style.opacity = '1';
+      descEl.style.opacity = '1';
+    }, 200);
+  }
+
+  function nextHeroSlide() {
+    renderHeroSlide(currentHeroIndex + 1);
+    restartHeroTimer();
+  }
+
+  function prevHeroSlide() {
+    renderHeroSlide(currentHeroIndex - 1);
+    restartHeroTimer();
+  }
+
+  function jumpHeroSlide(index) {
+    renderHeroSlide(index);
+    restartHeroTimer();
+  }
+
+  function pauseHeroMockup() {
+    isHeroPaused = true;
+    if (heroTimer) clearInterval(heroTimer);
+  }
+
+  function resumeHeroMockup() {
+    isHeroPaused = false;
+    startHeroTimer();
+  }
+
+  function startHeroTimer() {
+    if (heroTimer) clearInterval(heroTimer);
+    heroTimer = setInterval(() => {
+      if (!isHeroPaused) {
+        renderHeroSlide(currentHeroIndex + 1);
+      }
+    }, 3800);
+  }
+
+  function restartHeroTimer() {
+    if (heroTimer) clearInterval(heroTimer);
+    startHeroTimer();
+  }
+
+  // Otomatik başlat
+  startHeroTimer();
+
+
   function toggleFaq(card) {
     const wasOpen = card.classList.contains('open');
     // Close other FAQs if desired, or allow multiple
@@ -1705,7 +2474,7 @@
       window.location.hash = 'gizlilik-politikasi';
       document.title = "Ehliyet Elinde - Gizlilik Politikası ve KVKK Aydınlatma Metni";
     }
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // scrollTo handled by hero navigation
   }
 
   // URL Hash veya Sayfa Adı Kontrolü
