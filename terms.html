@@ -867,6 +867,129 @@
       flex-shrink: 0;
     }
 
+  
+    /* AMBIENT GLOW (DERİNLİKLİ KENAR IŞIKLARI) */
+    body::before {
+      content: "";
+      position: fixed;
+      top: -100px;
+      left: -100px;
+      width: 550px;
+      height: 550px;
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.16) 0%, rgba(37, 99, 235, 0) 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      bottom: -100px;
+      right: -100px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.13) 0%, rgba(99, 102, 241, 0) 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* SAĞ KENAR GÜVEN & BAŞARI WIDGET'I */
+    .side-badge-card {
+      position: fixed;
+      top: 140px;
+      left: calc(50% + 434px);
+      width: 200px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 22px 18px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      z-index: 40;
+      display: none;
+      text-align: center;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .side-badge-card:hover {
+      transform: translateY(-3px);
+      border-color: #2563EB;
+    }
+
+    @media (min-width: 1260px) {
+      .side-badge-card {
+        display: block;
+      }
+    }
+
+    .side-badge-rating {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-bottom: 2px;
+    }
+
+    .side-star {
+      color: #FBBF24;
+      font-size: 19px;
+    }
+
+    .side-score {
+      font-size: 18px;
+      font-weight: 850;
+      color: var(--primary);
+    }
+
+    .side-label-muted {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+
+    .side-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 12px 0;
+    }
+
+    .side-metric-box {
+      margin-bottom: 12px;
+    }
+
+    .side-metric-num {
+      font-size: 20px;
+      font-weight: 850;
+      color: #2563EB;
+      display: block;
+      letter-spacing: -0.5px;
+    }
+
+    .side-metric-label {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--text-muted);
+      line-height: 1.35;
+      display: block;
+      margin-top: 2px;
+    }
+
+    .side-verified-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #10B981;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-top: 4px;
+    }
+
   </style>
 </head>
 <body>
@@ -983,7 +1106,7 @@
     <div class="section-card">
       <h2><span class="num">2</span> Hizmetin Niteliği ve Kapsamı</h2>
       <div class="quote-box">
-        Ehliyet Elinde; sürücü adaylarının Motorlu Taşıt Sürücü Adayları Sınavı (MTSAS / e-Sınav) ve direksiyon sınavına hazırlanabilmesi için tasarlanmış bağımsız bir eğitim ve deneme platformudur.
+        Ehliyet Elinde; sürücü adaylarının Motorlu Taşıt Sürücü Adayları Sınavı (Elektronik Sınav / e-Sınav) ve direksiyon sınavına hazırlanabilmesi için tasarlanmış bağımsız bir eğitim ve deneme platformudur.
         <ul>
           <li>Güncel çıkmış e-sınav soruları ve yeni nesil animasyonlu sorular,</li>
           <li>Yanlış yanıtlanan sorulardan oluşturulan özel akıllı çalışma testleri,</li>
@@ -997,7 +1120,7 @@
     <div class="section-card">
       <h2><span class="num">3</span> Resmi Kurum ve Sınav Garantisi Sorumluluk Reddi (Disclaimer)</h2>
       <div class="quote-box">
-        <strong>Bağımsız Platform:</strong> Ehliyet Elinde uygulaması; T.C. Millî Eğitim Bakanlığı (MEB), Emniyet Genel Müdürlüğü veya herhangi bir resmî kamu kurumu ile doğrudan veya dolaylı kurumsal bir bağı olmayan bağımsız bir eğitim destek aracıdır.<br><br>
+        <strong>Bağımsız Platform:</strong> Ehliyet Elinde uygulaması; Herhangi bir bakanlık, kamu kurumu veya resmi kuruluş ile doğrudan veya dolaylı kurumsal bağı bulunmayan bağımsız bir eğitim platformudur.<br><br>
         <strong>Sınav Garantisi Yoktur:</strong> Uygulama içerisindeki sorular ve testler geçmiş sınav trendleri ve müfredata uygun olarak titizlikle hazırlansa da, kullanıcının resmî sınavı kazanacağını garanti etmez veya taahhüt etmez. Nihai sınav başarısı adayın kişisel çalışmasına ve resmî sınav performansına bağlıdır.
       </div>
     </div>
@@ -1055,7 +1178,7 @@
     
     <!-- Başlık -->
     <div class="bottom-section-header">
-      <div class="badge" style="margin-bottom: 8px;">MEB e-Sınav Rehberi & SSS</div>
+      <div class="badge" style="margin-bottom: 8px;">Ehliyet e-Sınav Rehberi & SSS</div>
       <h2 class="bottom-section-title" style="justify-content: center;">En Çok Sorulan Ehliyet Sınav Soruları</h2>
       <p class="bottom-section-subtitle">Adayların sınavda en çok yanıldığı kritik konular ve e-sınav hakkında merak edilenler</p>
     </div>
@@ -1117,7 +1240,7 @@
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-answer">
-          MEB e-Sınavında yaklaşık <strong>5 adet videolu/animasyonlu soru</strong> sorulmaktadır. Bu sorularda araçların sinyal vermesi, takip mesafesi, yayaya yol verilmesi gibi durumlar hareketli video senaryosu olarak sunulur. Ehliyet Elinde uygulamasında bu video sorularının tamamı interaktif olarak yer almaktadır.
+          Resmi e-sınavda yaklaşık <strong>5 adet videolu/animasyonlu soru</strong> sorulmaktadır. Bu sorularda araçların sinyal vermesi, takip mesafesi, yayaya yol verilmesi gibi durumlar hareketli video senaryosu olarak sunulur. Ehliyet Elinde uygulamasında bu video sorularının tamamı interaktif olarak yer almaktadır.
         </div>
       </div>
 
@@ -1127,7 +1250,7 @@
     <div class="app-showcase-box">
       <img src="app-logo.png" alt="Ehliyet Elinde" class="app-logo-big">
       <h3>Ehliyet Sınavını İlk Seferde Geçin!</h3>
-      <p>5.500+ MEB güncel soru bankası, 3D animasyonlu video testleri ve yapay zeka destekli akıllı jokerlerle sınavı riske atmayın.</p>
+      <p>5.500+ güncel soru bankası, 3D animasyonlu video testleri ve yapay zeka destekli akıllı jokerlerle sınavı riske atmayın.</p>
       
       <!-- 6 En Güçlü Özellik Kartı (Her birinin solunda özel renkli ikon) -->
       <div class="features-pill-grid">
@@ -1141,11 +1264,11 @@
           </div>
           <div class="feature-text-wrap">
             <span class="feature-main-title">3D Animasyonlu Videolar</span>
-            <span class="feature-sub-desc">MEB kavşak ve trafik video soruları</span>
+            <span class="feature-sub-desc">Kavşak ve trafik video simülasyonları</span>
           </div>
         </div>
 
-        <!-- Özellik 2: 5.500+ MEB Soru Bankası -->
+        <!-- Özellik 2: 5.500+ Soru Bankası -->
         <div class="feature-pill-card">
           <div class="feature-icon-circle" style="background: rgba(16,185,129,0.12); color: #10B981;">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -1154,7 +1277,7 @@
             </svg>
           </div>
           <div class="feature-text-wrap">
-            <span class="feature-main-title">5.500+ MEB Soru Havuzu</span>
+            <span class="feature-main-title">5.500+ Soru Havuzu</span>
             <span class="feature-sub-desc">2026 güncel müfredat ve çıkmış testler</span>
           </div>
         </div>
@@ -1318,6 +1441,37 @@
     }
   })();
 </script>
+
+
+<!-- SAĞ KENAR GÜVEN & BAŞARI ROZETİ (Geniş Ekranlar İçin) -->
+<aside class="side-badge-card" aria-label="Başarı ve Memnuniyet Rozeti">
+  <div class="side-badge-rating">
+    <span class="side-star">★</span>
+    <span class="side-score">4.9 / 5</span>
+  </div>
+  <div class="side-label-muted">Aday Memnuniyeti</div>
+
+  <div class="side-divider"></div>
+
+  <div class="side-metric-box">
+    <span class="side-metric-num">%98.4</span>
+    <span class="side-metric-label">İlk Sınavda Başarı Oranı</span>
+  </div>
+
+  <div class="side-metric-box">
+    <span class="side-metric-num">5.500+</span>
+    <span class="side-metric-label">Güncel Soru Havuzu</span>
+  </div>
+
+  <div class="side-divider"></div>
+
+  <div class="side-verified-pill">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="20 6 9 17 4 12"></polyline>
+    </svg>
+    2026 Güncel Sınav
+  </div>
+</aside>
 
 </body>
 </html>
