@@ -614,9 +614,11 @@
 
 <div class="container">
   <!-- Üst Sekmeler (Emojisiz, Şık) -->
+    <!-- Üst Navigasyon Sekmeleri -->
   <div class="nav-tabs" role="tablist">
-    <button class="nav-tab " id="tabBtnPrivacy" onclick="switchTab('privacy')">Gizlilik Politikası</button>
-    <button class="nav-tab active" id="tabBtnTerms" onclick="switchTab('terms')">Kullanım Koşulları</button>
+    <button class="nav-tab active" id="tabBtnShowcase" onclick="switchTab('showcase')">Uygulama & Özellikler</button>
+    <button class="nav-tab" id="tabBtnPrivacy" onclick="switchTab('privacy')">Gizlilik Politikası</button>
+    <button class="nav-tab" id="tabBtnTerms" onclick="switchTab('terms')">Kullanım Koşulları</button>
   </div>
 
   <!-- Künye Bilgileri -->
@@ -632,6 +634,7 @@
     
     <!-- Hero Bölümü -->
     <div class="hero-section">
+      <img src="app-logo.png" alt="Ehliyet Elinde Logo" class="app-logo" width="80" height="80">
       <h1 class="hero-title">Ehliyet Sınavını İlk Seferde <span class="hero-highlight">Garantileyin</span></h1>
       <p class="hero-desc">
         MTSAS MEB e-Sınav müfredatına %100 uyumlu, yeni nesil 3D animasyonlu video soruları, 5.500+ soru bankası ve yapay zeka destekli akıllı çalışma sistemiyle ehliyet sınavına tam hazırlık.
@@ -1021,9 +1024,9 @@
   (function initTab() {
     const hash = window.location.hash;
     const pathname = window.location.pathname.toLowerCase();
-    if (hash === '#kullanim-kosullari' || pathname.includes('terms')) {
+    if (hash === '#kullanim-kosullari' || pathname.endsWith('terms.html')) {
       switchTab('terms');
-    } else if (hash === '#gizlilik-politikasi' || pathname.includes('privacy')) {
+    } else if (hash === '#gizlilik-politikasi' || pathname.endsWith('privacy-policy.html')) {
       switchTab('privacy');
     } else {
       switchTab('showcase');
