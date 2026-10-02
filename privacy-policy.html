@@ -608,6 +608,186 @@
       margin-bottom: 18px;
     }
 
+  
+    /* EN ÇOK SORULAN SORULAR & ALT VİTRİN STİLLERİ */
+    .bottom-showcase-container {
+      margin-top: 40px;
+      padding-top: 32px;
+      border-top: 2px dashed var(--border);
+    }
+
+    .bottom-section-header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .bottom-section-title {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: -0.5px;
+      margin-bottom: 6px;
+    }
+
+    .bottom-section-subtitle {
+      font-size: 14.5px;
+      color: var(--text-muted);
+    }
+
+    /* Akordiyon Soru Kartları */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 36px;
+    }
+
+    .faq-card {
+      background: var(--section-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: border-color 0.2s ease;
+    }
+
+    .faq-card:hover {
+      border-color: var(--quote-border);
+    }
+
+    .faq-question {
+      width: 100%;
+      text-align: left;
+      padding: 16px 18px;
+      background: transparent;
+      border: none;
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      font-family: inherit;
+    }
+
+    .faq-icon {
+      width: 22px;
+      height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: var(--quote-bg);
+      border: 1px solid var(--border);
+      font-size: 13px;
+      flex-shrink: 0;
+      transition: transform 0.2s ease;
+    }
+
+    .faq-card.open .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s ease;
+      background: var(--quote-bg);
+      border-top: 1px solid transparent;
+      padding: 0 18px;
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--text-muted);
+    }
+
+    .faq-card.open .faq-answer {
+      max-height: 240px;
+      padding: 14px 18px;
+      border-top-color: var(--border);
+      color: var(--text);
+    }
+
+    .faq-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: #2563EB;
+      color: #FFFFFF;
+      margin-right: 6px;
+    }
+
+    /* Vitrin Kartları Grid */
+    .app-showcase-box {
+      background: var(--section-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 26px 20px;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .app-showcase-box .app-logo {
+      width: 72px;
+      height: 72px;
+      border-radius: 18px;
+      margin-bottom: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+      border: 1.5px solid var(--border);
+      object-fit: cover;
+    }
+
+    .app-showcase-box h3 {
+      font-size: 21px;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+
+    .app-showcase-box p {
+      font-size: 14.5px;
+      color: var(--text-muted);
+      max-width: 620px;
+      margin: 0 auto 20px auto;
+    }
+
+    .features-pill-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 24px;
+      text-align: left;
+    }
+
+    @media (max-width: 680px) {
+      .features-pill-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .feature-pill-card {
+      background: var(--quote-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .feature-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #2563EB;
+      flex-shrink: 0;
+    }
+
   </style>
 </head>
 <body>
@@ -615,9 +795,9 @@
 <div class="container">
   <!-- Üst Sekmeler (Emojisiz, Şık) -->
     <!-- Üst Navigasyon Sekmeleri -->
+    <!-- Üst Navigasyon Sekmeleri -->
   <div class="nav-tabs" role="tablist">
-    <button class="nav-tab active" id="tabBtnShowcase" onclick="switchTab('showcase')">Uygulama & Özellikler</button>
-    <button class="nav-tab" id="tabBtnPrivacy" onclick="switchTab('privacy')">Gizlilik Politikası</button>
+    <button class="nav-tab active" id="tabBtnPrivacy" onclick="switchTab('privacy')">Gizlilik Politikası</button>
     <button class="nav-tab" id="tabBtnTerms" onclick="switchTab('terms')">Kullanım Koşulları</button>
   </div>
 
@@ -629,175 +809,6 @@
   </div>
 
   
-  <!-- ================= UYGULAMA & ÖZELLİKLER (VİTRİN) PANELİ ================= -->
-  <div id="panelShowcase" class="tab-panel active">
-    
-    <!-- Hero Bölümü -->
-    <div class="hero-section">
-      <img src="app-logo.png" alt="Ehliyet Elinde Logo" class="app-logo" width="80" height="80">
-      <h1 class="hero-title">Ehliyet Sınavını İlk Seferde <span class="hero-highlight">Garantileyin</span></h1>
-      <p class="hero-desc">
-        MTSAS MEB e-Sınav müfredatına %100 uyumlu, yeni nesil 3D animasyonlu video soruları, 5.500+ soru bankası ve yapay zeka destekli akıllı çalışma sistemiyle ehliyet sınavına tam hazırlık.
-      </p>
-
-      <div class="hero-cta-wrap">
-        <a href="https://play.google.com/store/apps/details?id=com.ehliyetelinde.app" target="_blank" rel="noopener noreferrer" class="primary-btn">
-          <svg viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg">
-            <path fill="#4285F4" d="M3.609 1.814L13.793 12 3.61 22.186c-.367-.384-.61-.98-.61-1.786V3.6c0-.806.243-1.402.61-1.786z"/>
-            <path fill="#FBBC04" d="M17.18 8.614l-3.387 3.386 3.387 3.386 3.82-2.17c1.096-.622 1.096-1.78 0-2.432l-3.82-2.17z"/>
-            <path fill="#EA4335" d="M3.609 22.186L13.793 12 17.18 15.386l-11.458 6.51c-.722.41-1.478.435-2.113.29z"/>
-            <path fill="#34A853" d="M17.18 8.614L13.793 12 3.609 1.814c.635-.145 1.391-.12 2.113.29l11.458 6.51z"/>
-          </svg>
-          Google Play'den Ücretsiz İndir
-        </a>
-      </div>
-
-      <!-- İstatistikler -->
-      <div class="stats-bar">
-        <div class="stat-card">
-          <span class="stat-num">5.500+</span>
-          <span class="stat-label">MEB Soru Havuzu</span>
-        </div>
-        <div class="stat-card">
-          <span class="stat-num">%98.4</span>
-          <span class="stat-label">Sınav Geçme Oranı</span>
-        </div>
-        <div class="stat-card">
-          <span class="stat-num">3D Video</span>
-          <span class="stat-label">Animasyonlu Sınav</span>
-        </div>
-        <div class="stat-card">
-          <span class="stat-num">Çevrimdışı</span>
-          <span class="stat-label">İnternetsiz Mod</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- 6 Ana Özellik Kartı -->
-    <div class="features-grid">
-      
-      <!-- Kart 1: 3D Animasyon -->
-      <div class="feature-card">
-        <div class="feature-icon-box">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polygon points="5 3 19 12 5 21 5 3"></polygon>
-          </svg>
-        </div>
-        <div class="feature-title">Yeni Nesil 3D Animasyonlu & Videolu Sorular</div>
-        <div class="feature-desc">
-          MEB e-Sınavında çıkan kavşak geçiş öncelikleri, yayalara yol verme ve dönüş kurallarını gerçek trafik video simülasyonlarıyla canlı izleyerek çözün.
-        </div>
-      </div>
-
-      <!-- Kart 2: 5.500+ MEB Soru Bankası -->
-      <div class="feature-card">
-        <div class="feature-icon-box">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-          </svg>
-        </div>
-        <div class="feature-title">5.500+ MEB Güncel Soru Bankası</div>
-        <div class="feature-desc">
-          İlk Yardım, Trafik ve Çevre Bilgisi, Motor ve Araç Tekniği ile Trafik Adabı kategorilerinde çıkmış ve çıkabilecek tüm güncel sorular elinizin altında.
-        </div>
-      </div>
-
-      <!-- Kart 3: 50:50 Animasyonlu Şık Eleme & AI Eğitmen -->
-      <div class="feature-card">
-        <div class="feature-icon-box">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"></circle>
-            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
-            <line x1="12" y1="17" x2="12.01" y2="17"></line>
-          </svg>
-        </div>
-        <div class="feature-title">Akıllı 50:50 Şık Eleme & Soru Eğitmeni</div>
-        <div class="feature-desc">
-          Tereddütte kaldığınız sorularda 50:50 jokerini kullanarak 2 yanlış şıkkı animasyonla eleyin; yapay zeka eğitmeni ile sorunun püf noktasını hemen öğrenin.
-        </div>
-      </div>
-
-      <!-- Kart 4: Liderlik Tablosu & Günlük Seri -->
-      <div class="feature-card">
-        <div class="feature-icon-box">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
-            <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
-            <path d="M4 22h16"></path>
-            <path d="M10 14.66V17c0 .55-.45 1-1 1H7c-.55 0-1-.45-1-1v-2.34"></path>
-            <path d="M14 14.66V17c0 .55.45 1 1 1h2c.55 0 1-.45 1-1v-2.34"></path>
-            <path d="M18 2H6v7a6 6 0 0 0 12 0V2z"></path>
-          </svg>
-        </div>
-        <div class="feature-title">Türkiye Geneli Liderlik Tablosu</div>
-        <div class="feature-desc">
-          Diğer sürücü adaylarıyla yarışın, günlük soru çözme serilerinizi (streak) devam ettirin, seviye atlayın ve başarı rozetlerini profilinize ekleyin.
-        </div>
-      </div>
-
-      <!-- Kart 5: Yanlış Sorular Hafızası -->
-      <div class="feature-card">
-        <div class="feature-icon-box">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-            <polyline points="14 2 14 8 20 8"></polyline>
-            <line x1="9" y1="15" x2="15" y2="15"></line>
-          </svg>
-        </div>
-        <div class="feature-title">Özel Yanlış Sorular Analizi</div>
-        <div class="feature-desc">
-          Testlerde yanlış yanıtladığınız her soru otomatik kaydedilir. Tek tıkla sadece yanlış yaptığınız soruları çözerek eksiklerinizi hızla kapatın.
-        </div>
-      </div>
-
-      <!-- Kart 6: İnternetsiz Çalışma -->
-      <div class="feature-card">
-        <div class="feature-icon-box">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="1" y1="1" x2="23" y2="23"></line>
-            <path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55"></path>
-            <path d="M5 12.55a10.94 10.94 0 0 1 5.17-2.39"></path>
-            <path d="M10.71 5.05A16 16 0 0 1 22.58 9"></path>
-            <path d="M1.42 9a15.91 15.91 0 0 1 4.7-2.88"></path>
-            <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
-            <line x1="12" y1="20" x2="12.01" y2="20"></line>
-          </svg>
-        </div>
-        <div class="feature-title">%100 Çevrimdışı (İnternetsiz) Kullanım</div>
-        <div class="feature-desc">
-          İnternet bağlantınız olmasa bile otobüste, metroda veya seyahatteyken tüm soru havuzunu kesintisiz çözün ve sınav pratiğinizi aksatmayın.
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Ekstra Rehberler Bölümü -->
-    <div class="section-card">
-      <h2><span class="num">&bull;</span> Uygulama İçi Ekstra Rehberler ve Kataloglar</h2>
-      <div class="quote-box">
-        Ehliyet Elinde sadece soru çözdürmez; sınav öncesi ve sürüş hayatınız boyunca rehberlik eder:
-        <div class="extra-catalog-grid">
-          <div class="catalog-item">🚦 Trafik Levhaları</div>
-          <div class="catalog-item">⚠️ Gösterge İkazları</div>
-          <div class="catalog-item">👮 2026 Trafik Cezaları</div>
-          <div class="catalog-item">🚗 İl Plaka Kodları</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Alt İndirme Banner'ı -->
-    <div class="banner-cta">
-      <h3>Ehliyetinizi İlk Sınavda Elinize Alın!</h3>
-      <p>Hemen ücretsiz indirin, binlerce başarılı adayın arasına siz de katılın.</p>
-      <a href="https://play.google.com/store/apps/details?id=com.ehliyetelinde.app" target="_blank" rel="noopener noreferrer" class="primary-btn">
-        Hemen Ücretsiz Yükle
-      </a>
-    </div>
-
-  </div>
-
-
   <!-- ================= GİZLİLİK POLİTİKASI PANELİ ================= -->
   <div id="panelPrivacy" class="tab-panel active">
     <div class="header">
@@ -958,6 +969,109 @@
     </div>
   </div>
 
+  
+  <!-- ================= SAYFA ALTI: EN ÇOK SORULAN SORULAR & UYGULAMA VİTRİNİ ================= -->
+  <div class="bottom-showcase-container">
+    
+    <!-- Başlık -->
+    <div class="bottom-section-header">
+      <div class="badge" style="margin-bottom: 8px;">MEB e-Sınav Rehberi & SSS</div>
+      <h2 class="bottom-section-title" style="justify-content: center;">En Çok Sorulan Ehliyet Sınav Soruları</h2>
+      <p class="bottom-section-subtitle">Adayların sınavda en çok yanıldığı kritik konular ve e-sınav hakkında merak edilenler</p>
+    </div>
+
+    <!-- Soru & Cevap Akordiyonu -->
+    <div class="faq-list">
+      
+      <!-- Soru 1 -->
+      <div class="faq-card" onclick="toggleFaq(this)">
+        <button class="faq-question">
+          <span><span class="faq-tag">Trafik</span> Kavşaklarda geçiş hakkı ve geçiş üstünlüğü sırası nasıldır?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          1. Ambulans/Cankurtaran, İtfaiye, Polis gibi geçiş üstünlüklü araçlar her zaman ilk geçer.<br>
+          2. Kontrolsüz kavşakta düz giden araçlar, dönüş yapan araçlara göre önceliklidir.<br>
+          3. Her sürücü, kendi <strong>sağındaki araca</strong> yol vermek zorundadır.<br>
+          4. Döner kavşak içindeki araç, kavşağa girmek isteyen araca göre önceliklidir.
+        </div>
+      </div>
+
+      <!-- Soru 2 -->
+      <div class="faq-card" onclick="toggleFaq(this)">
+        <button class="faq-question">
+          <span><span class="faq-tag">e-Sınav</span> Sınavda yanlışlar doğruyu götürür mü? Geçme notu kaçtır?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <strong>Hayır, yanlışlar doğruları kesinlikle götürmez!</strong> Bu nedenle emin olmasanız bile hiçbir soruyu boş bırakmayın. Sınavda toplam <strong>50 soru</strong> sorulur ve sınav süresi 45 dakikadır. Başarılı sayılmak için en az <strong>35 doğru (70 puan)</strong> almanız gerekir.
+        </div>
+      </div>
+
+      <!-- Soru 3 -->
+      <div class="faq-card" onclick="toggleFaq(this)">
+        <button class="faq-question">
+          <span><span class="faq-tag">Trafik</span> Takip mesafesi kuralı nedir ve nasıl hesaplanır?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Güvenli takip mesafesi, aracın kilometre cinsinden <strong>hızının en az yarısı</strong> kadar metredir. Örneğin 90 km/s hızla seyreden bir araç öndeki araçla arasına en az 45 metre mesafe koymalıdır. Ayrıca arka arkaya sayılan <strong>"88 - 89" kuralı (2 saniye mesafesi)</strong> ile kontrol edilir.
+        </div>
+      </div>
+
+      <!-- Soru 4 -->
+      <div class="faq-card" onclick="toggleFaq(this)">
+        <button class="faq-question">
+          <span><span class="faq-tag">İlk Yardım</span> Temel yaşam desteğinde kalp masajı ve suni solunum oranı kaçtır?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Tüm yaş gruplarında (yetişkin, çocuk ve bebek) temel yaşam desteğinde <strong>30 Kalp Masajı : 2 Suni Solunum</strong> (30:2) kuralı uygulanır. Göğüs basısı dakikada 100 bası hızında ve göğüs yüksekliğinin 1/3'ü (yetişkinde yaklaşık 5 cm) çökecek şekilde ritmik olarak yapılmalıdır.
+        </div>
+      </div>
+
+      <!-- Soru 5 -->
+      <div class="faq-card" onclick="toggleFaq(this)">
+        <button class="faq-question">
+          <span><span class="faq-tag">Animasyon</span> Yeni nesil 3D animasyonlu video soruları kaç tanedir?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          MEB e-Sınavında yaklaşık <strong>5 adet videolu/animasyonlu soru</strong> sorulmaktadır. Bu sorularda araçların sinyal vermesi, takip mesafesi, yayaya yol verilmesi gibi durumlar hareketli video senaryosu olarak sunulur. Ehliyet Elinde uygulamasında bu video sorularının tamamı interaktif olarak yer almaktadır.
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Uygulama Vitrini & İndirme Kutusu -->
+    <div class="app-showcase-box">
+      <img src="app-logo.png" alt="Ehliyet Elinde" class="app-logo">
+      <h3>Ehliyet Sınavını İlk Seferde Geçin!</h3>
+      <p>5.500+ MEB güncel soru bankası, 3D animasyonlu video testleri ve akıllı jokerlerle sınavı riske atmayın.</p>
+      
+      <div class="features-pill-grid">
+        <div class="feature-pill-card"><span class="feature-dot"></span> 5.500+ MEB Güncel Soru</div>
+        <div class="feature-pill-card"><span class="feature-dot"></span> 3D Animasyonlu Videolar</div>
+        <div class="feature-pill-card"><span class="feature-dot"></span> 50:50 Şık Eleme Jokeri</div>
+        <div class="feature-pill-card"><span class="feature-dot"></span> Liderlik Tablosu & Ligler</div>
+        <div class="feature-pill-card"><span class="feature-dot"></span> Yanlış Sorular Hafızası</div>
+        <div class="feature-pill-card"><span class="feature-dot"></span> %100 İnternetsiz Mod</div>
+      </div>
+
+      <a href="https://play.google.com/store/apps/details?id=com.ehliyetelinde.app" target="_blank" rel="noopener noreferrer" class="primary-btn">
+        <svg viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#4285F4" d="M3.609 1.814L13.793 12 3.61 22.186c-.367-.384-.61-.98-.61-1.786V3.6c0-.806.243-1.402.61-1.786z"/>
+          <path fill="#FBBC04" d="M17.18 8.614l-3.387 3.386 3.387 3.386 3.82-2.17c1.096-.622 1.096-1.78 0-2.432l-3.82-2.17z"/>
+          <path fill="#EA4335" d="M3.609 22.186L13.793 12 17.18 15.386l-11.458 6.51c-.722.41-1.478.435-2.113.29z"/>
+          <path fill="#34A853" d="M17.18 8.614L13.793 12 3.609 1.814c.635-.145 1.391-.12 2.113.29l11.458 6.51z"/>
+        </svg>
+        Google Play'den Ücretsiz Yükle
+      </a>
+    </div>
+
+  </div>
+
+
   <!-- Ortak Footer -->
   <div class="footer">
     &copy; 2026 Ehliyet Elinde &bull; İletişim & Destek: <a href="mailto:ehliyetelinde@gmail.com">ehliyetelinde@gmail.com</a>
@@ -989,33 +1103,35 @@
 </a>
 
 <script>
+  function toggleFaq(card) {
+    const wasOpen = card.classList.contains('open');
+    // Close other FAQs if desired, or allow multiple
+    document.querySelectorAll('.faq-card').forEach(c => c.classList.remove('open'));
+    if (!wasOpen) {
+      card.classList.add('open');
+    }
+  }
+
   function switchTab(tab) {
-    const btnShowcase = document.getElementById('tabBtnShowcase');
     const btnPrivacy = document.getElementById('tabBtnPrivacy');
     const btnTerms = document.getElementById('tabBtnTerms');
-    const panelShowcase = document.getElementById('panelShowcase');
     const panelPrivacy = document.getElementById('panelPrivacy');
     const panelTerms = document.getElementById('panelTerms');
 
-    // Reset all tabs
-    [btnShowcase, btnPrivacy, btnTerms].forEach(b => b && b.classList.remove('active'));
-    [panelShowcase, panelPrivacy, panelTerms].forEach(p => p && p.classList.remove('active'));
-
     if (tab === 'terms') {
       btnTerms && btnTerms.classList.add('active');
+      btnPrivacy && btnPrivacy.classList.remove('active');
       panelTerms && panelTerms.classList.add('active');
+      panelPrivacy && panelPrivacy.classList.remove('active');
       window.location.hash = 'kullanim-kosullari';
-      document.title = "Ehliyet Elinde - Kullanım Koşulları ve Hizmet Sözleşmesi";
-    } else if (tab === 'privacy') {
+      document.title = "Ehliyet Elinde - Kullanım Koşulları ve Sözleşmesi";
+    } else {
       btnPrivacy && btnPrivacy.classList.add('active');
+      btnTerms && btnTerms.classList.remove('active');
       panelPrivacy && panelPrivacy.classList.add('active');
+      panelTerms && panelTerms.classList.remove('active');
       window.location.hash = 'gizlilik-politikasi';
       document.title = "Ehliyet Elinde - Gizlilik Politikası ve KVKK Aydınlatma Metni";
-    } else {
-      btnShowcase && btnShowcase.classList.add('active');
-      panelShowcase && panelShowcase.classList.add('active');
-      window.location.hash = 'ozellikler';
-      document.title = "Ehliyet Elinde - Resmi Web Sitesi & Sınav Hazırlık Uygulaması";
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
@@ -1026,10 +1142,8 @@
     const pathname = window.location.pathname.toLowerCase();
     if (hash === '#kullanim-kosullari' || pathname.endsWith('terms.html')) {
       switchTab('terms');
-    } else if (hash === '#gizlilik-politikasi' || pathname.endsWith('privacy-policy.html')) {
-      switchTab('privacy');
     } else {
-      switchTab('showcase');
+      switchTab('privacy');
     }
   })();
 </script>
