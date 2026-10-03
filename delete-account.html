@@ -3,45 +3,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="color-scheme" content="light dark">
-  <title>Ehliyet Elinde - Hesap ve Veri Silme Talebi</title>
+  <meta name="color-scheme" content="dark">
+  <title>Ehliyet Elinde - Güvenli Hesap ve Veri Silme</title>
   
-  <!-- Favicon -->
+  <!-- Favicon & Resmi Uygulama Logosu -->
   <link rel="shortcut icon" href="favicon.ico?v=3">
+  <link rel="icon" type="image/x-icon" href="favicon.ico?v=3">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=3">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png?v=3">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=3">
+  <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png?v=3">
   <link rel="apple-touch-icon" href="app-logo.png">
 
+  <meta property="og:image" content="https://ehliyetelinde.github.io/Ehliyet-Elinde/app-logo.png">
+  <meta property="og:title" content="Ehliyet Elinde - Hesap ve Veri Silme">
+  <meta property="og:description" content="Ehliyet Elinde mobil uygulaması kullanıcı hesabı ve kişisel verilerin güvenli kalıcı silinmesi yönergeleri.">
+
   <style>
+    /* SAF SİYAH AMOLED VE DERİN KOYU TEMA */
     :root {
-      --bg: #F9FAFB;
-      --card-bg: #FFFFFF;
-      --border: #E5E7EB;
-      --text: #111827;
-      --text-muted: #6B7280;
+      --bg: #000000;
+      --card-bg: rgba(18, 18, 18, 0.88);
+      --card-inner: #151515;
+      --section-bg: #181818;
+      --border: #262626;
+      --border-focus: #2563EB;
+      --text: #FFFFFF;
+      --text-muted: #A1A1AA;
       --primary: #2563EB;
       --primary-hover: #1D4ED8;
+      --primary-light: #3B82F6;
       --danger: #EF4444;
-      --danger-bg: rgba(239, 68, 68, 0.08);
+      --danger-bg: rgba(239, 68, 68, 0.10);
+      --danger-border: rgba(239, 68, 68, 0.35);
       --success: #10B981;
-      --success-bg: rgba(16, 185, 129, 0.08);
-      --shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-    }
-
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #000000;
-        --card-bg: #121212;
-        --border: #262626;
-        --text: #FFFFFF;
-        --text-muted: #A1A1AA;
-        --primary: #3B82F6;
-        --primary-hover: #2563EB;
-        --danger: #F87171;
-        --danger-bg: rgba(248, 113, 113, 0.12);
-        --success: #34D399;
-        --success-bg: rgba(52, 211, 153, 0.12);
-        --shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
-      }
+      --success-bg: rgba(16, 185, 129, 0.10);
+      --success-border: rgba(16, 185, 129, 0.35);
+      --warning: #F59E0B;
+      --warning-bg: rgba(245, 158, 11, 0.10);
+      --warning-border: rgba(245, 158, 11, 0.35);
+      --shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
     }
 
     * {
@@ -51,327 +52,1073 @@
       transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
     }
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    /* YAZI YAZMA İMLECİ (CARET) VE İSTENMEYEN METİN SEÇİMİNİ ENGELLEME */
+    html, body {
+      caret-color: transparent !important;
       background-color: var(--bg);
       color: var(--text);
-      line-height: 1.7;
-      padding: 32px 16px 80px 16px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.65;
+      min-height: 100vh;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
-    .container {
-      max-width: 680px;
-      margin: 0 auto;
-      background: var(--card-bg);
-      border-radius: 24px;
-      box-shadow: var(--shadow);
-      border: 1px solid var(--border);
-      padding: 40px 32px;
+    body, h1, h2, h3, h4, p, span, div, button, a, .step-badge, .data-pill {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      -webkit-touch-callout: none;
+      -webkit-tap-highlight-color: transparent;
+      caret-color: transparent !important;
+      cursor: default;
+    }
+
+    a, button, [role="button"], .back-btn, .action-btn, .copy-chip {
+      cursor: pointer !important;
+    }
+
+    *:focus, *:focus-visible {
+      outline: none !important;
+    }
+
+    /* =======================================================
+       APPLE / IPHONE STİLİ DİNAMİK İNTERAKTİF MAVİ ARKA PLAN
+       ======================================================= */
+    .ios-dynamic-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+      background: #000000;
+    }
+
+    .ios-cursor-glow {
+      position: absolute;
+      width: 440px;
+      height: 440px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.22) 0%, rgba(59, 130, 246, 0.10) 38%, rgba(14, 165, 233, 0.04) 60%, transparent 75%);
+      filter: blur(55px);
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      will-change: transform, left, top;
+    }
+
+    .ios-cursor-glow.active {
+      opacity: 1;
+    }
+
+    .ios-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(95px);
+      pointer-events: none;
+      opacity: 0.38;
+      will-change: transform;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .ios-orb-1 {
+      top: -8%;
+      left: -5%;
+      width: 620px;
+      height: 620px;
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.24) 0%, rgba(30, 64, 175, 0.10) 50%, transparent 75%);
+      animation: floatOrb1 16s ease-in-out infinite alternate;
+    }
+
+    .ios-orb-2 {
+      top: 15%;
+      right: -6%;
+      width: 580px;
+      height: 580px;
+      background: radial-gradient(circle, rgba(14, 165, 233, 0.18) 0%, rgba(37, 99, 235, 0.08) 50%, transparent 75%);
+      animation: floatOrb2 19s ease-in-out infinite alternate;
+    }
+
+    .ios-orb-3 {
+      top: 48%;
+      left: 12%;
+      width: 540px;
+      height: 540px;
+      background: radial-gradient(circle, rgba(79, 70, 229, 0.15) 0%, rgba(37, 99, 235, 0.08) 50%, transparent 75%);
+      animation: floatOrb3 22s ease-in-out infinite alternate;
+    }
+
+    .ios-orb-4 {
+      bottom: 8%;
+      left: -6%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.20) 0%, rgba(59, 130, 246, 0.09) 50%, transparent 75%);
+      animation: floatOrb4 18s ease-in-out infinite alternate;
+    }
+
+    .ios-orb-5 {
+      bottom: -6%;
+      right: -4%;
+      width: 620px;
+      height: 620px;
+      background: radial-gradient(circle, rgba(14, 165, 233, 0.16) 0%, rgba(79, 70, 229, 0.09) 50%, transparent 75%);
+      animation: floatOrb5 20s ease-in-out infinite alternate;
+    }
+
+    @keyframes floatOrb1 {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(45px, 55px) scale(1.08); }
+      100% { transform: translate(-30px, 30px) scale(0.96); }
+    }
+
+    @keyframes floatOrb2 {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(-45px, 40px) scale(1.06); }
+      100% { transform: translate(-20px, -35px) scale(0.94); }
+    }
+
+    @keyframes floatOrb3 {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(50px, -30px) scale(1.08); }
+      100% { transform: translate(-40px, 35px) scale(0.95); }
+    }
+
+    @keyframes floatOrb4 {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(35px, -45px) scale(1.07); }
+      100% { transform: translate(-25px, -20px) scale(0.95); }
+    }
+
+    @keyframes floatOrb5 {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(-45px, -30px) scale(1.08); }
+      100% { transform: translate(30px, 40px) scale(0.96); }
+    }
+
+    .ios-click-shockwave {
+      position: absolute;
+      border-radius: 50%;
+      border: 1.5px solid rgba(59, 130, 246, 0.45);
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.16) 0%, transparent 70%);
+      pointer-events: none;
+      transform: translate(-50%, -50%) scale(0.1);
+      animation: shockwaveExpand 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      z-index: 1;
+    }
+
+    @keyframes shockwaveExpand {
+      0% { transform: translate(-50%, -50%) scale(0.1); opacity: 1; border-width: 2px; }
+      100% { transform: translate(-50%, -50%) scale(2.6); opacity: 0; border-width: 0px; }
+    }
+
+    @media (max-width: 768px) {
+      .ios-orb {
+        filter: blur(65px);
+        opacity: 0.30;
+      }
+      .ios-orb-1 { width: 360px; height: 360px; top: -6%; left: -10%; }
+      .ios-orb-2 { width: 320px; height: 320px; top: 22%; right: -12%; }
+      .ios-orb-3 { width: 300px; height: 300px; top: 48%; left: 4%; }
+      .ios-orb-4 { width: 340px; height: 340px; bottom: 10%; left: -12%; }
+      .ios-orb-5 { width: 340px; height: 340px; bottom: -6%; right: -10%; }
+      .ios-cursor-glow { width: 300px; height: 300px; filter: blur(42px); }
+    }
+
+    /* =======================================================
+       SAYFA DÜZENİ VE GLASSMORPHISM KARTLARI
+       ======================================================= */
+    .page-wrapper {
       position: relative;
+      z-index: 10;
+      padding: 32px 16px 80px 16px;
+      max-width: 820px;
+      margin: 0 auto;
     }
 
-    .back-nav {
+    /* Üst Geri Butonu Barı */
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       margin-bottom: 24px;
     }
 
-    .back-link {
+    .back-btn {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      color: var(--primary);
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 700;
-      padding: 8px 16px;
-      border-radius: 50px;
-      background: var(--bg);
+      background: rgba(255, 255, 255, 0.05);
       border: 1px solid var(--border);
-      transition: transform 0.15s ease;
+      color: var(--text);
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-size: 13.5px;
+      font-weight: 700;
+      backdrop-filter: blur(12px);
+      transition: all 0.2s ease;
     }
 
-    .back-link:hover {
+    .back-btn:hover {
+      background: rgba(37, 99, 235, 0.15);
+      border-color: #2563EB;
+      color: #3B82F6;
       transform: translateX(-3px);
+      box-shadow: 0 4px 16px rgba(37, 99, 235, 0.25);
     }
 
-    .header {
+    .app-brand-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.03);
+      padding: 6px 14px;
+      border-radius: 50px;
+      border: 1px solid var(--border);
+    }
+
+    .app-brand-pill img {
+      width: 20px;
+      height: 20px;
+      border-radius: 6px;
+    }
+
+    /* Ana Konteyner Kartı */
+    .main-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      padding: 40px 36px;
+      position: relative;
+    }
+
+    @media (max-width: 640px) {
+      .main-card {
+        padding: 28px 20px;
+        border-radius: 20px;
+      }
+    }
+
+    /* Header Bölümü */
+    .header-section {
       text-align: center;
-      margin-bottom: 32px;
+      margin-bottom: 36px;
     }
 
-    .app-logo {
-      width: 72px;
-      height: 72px;
-      border-radius: 18px;
+    .header-logo-wrap {
+      position: relative;
+      display: inline-block;
       margin-bottom: 16px;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
     }
 
-    h1 {
-      font-size: 26px;
+    .app-main-logo {
+      width: 80px;
+      height: 80px;
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6), 0 0 25px rgba(37, 99, 235, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      display: block;
+    }
+
+    .page-title {
+      font-size: 28px;
       font-weight: 900;
       letter-spacing: -0.5px;
+      color: #FFFFFF;
       margin-bottom: 8px;
-      color: var(--text);
     }
 
-    .subtitle {
-      font-size: 14.5px;
+    .page-subtitle {
+      font-size: 15px;
       color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 16px auto;
     }
 
-    .badge-google {
+    .compliance-badge {
       display: inline-flex;
       align-items: center;
       gap: 6px;
       background: var(--success-bg);
       color: var(--success);
-      border: 1px solid var(--success);
-      padding: 6px 14px;
+      border: 1px solid var(--success-border);
+      padding: 6px 16px;
       border-radius: 50px;
-      font-size: 12px;
+      font-size: 12.5px;
       font-weight: 700;
-      margin-top: 12px;
     }
 
-    .info-card {
-      background: var(--danger-bg);
-      border: 1px solid var(--danger);
+    /* Güvenlik Koruma Kutusu (Form Yerine Açıklama) */
+    .security-notice-card {
+      background: rgba(37, 99, 235, 0.08);
+      border: 1.5px solid rgba(37, 99, 235, 0.35);
+      border-radius: 18px;
+      padding: 22px 24px;
+      margin-bottom: 32px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .security-icon-circle {
+      width: 44px;
+      height: 44px;
+      min-width: 44px;
+      border-radius: 12px;
+      background: rgba(37, 99, 235, 0.2);
+      border: 1px solid rgba(37, 99, 235, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #3B82F6;
+      font-size: 22px;
+    }
+
+    .security-text h3 {
+      font-size: 15.5px;
+      font-weight: 800;
+      color: #60A5FA;
+      margin-bottom: 6px;
+    }
+
+    .security-text p {
+      font-size: 13.5px;
+      color: #E2E8F0;
+      line-height: 1.6;
+    }
+
+    /* Silme Yöntemleri Kartları */
+    .methods-container {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin-bottom: 36px;
+    }
+
+    .method-card {
+      background: var(--card-inner);
+      border: 1.5px solid var(--border);
+      border-radius: 20px;
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.25s ease;
+    }
+
+    .method-card:hover {
+      border-color: rgba(37, 99, 235, 0.5);
+      box-shadow: 0 8px 30px rgba(37, 99, 235, 0.12);
+    }
+
+    .method-card.primary-method {
+      border-color: rgba(37, 99, 235, 0.4);
+      background: linear-gradient(180deg, rgba(37, 99, 235, 0.05) 0%, rgba(21, 21, 21, 0.95) 100%);
+    }
+
+    .method-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .method-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .method-badge-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #2563EB;
+      color: #FFFFFF;
+      font-size: 15px;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 14px rgba(37, 99, 235, 0.5);
+    }
+
+    .method-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: #FFFFFF;
+    }
+
+    .tag-recommended {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34D399;
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      font-size: 11.5px;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 50px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .tag-alt {
+      background: rgba(255, 255, 255, 0.08);
+      color: #A1A1AA;
+      border: 1px solid var(--border);
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 50px;
+    }
+
+    .method-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    /* Adım Adım Liste */
+    .steps-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+
+    .step-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
+      padding: 14px 16px;
+      border-radius: 14px;
+    }
+
+    .step-icon-num {
+      width: 26px;
+      height: 26px;
+      min-width: 26px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.08);
+      color: #FFFFFF;
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+    }
+
+    .step-content {
+      font-size: 14px;
+      color: #E4E4E7;
+      line-height: 1.5;
+    }
+
+    .step-content strong {
+      color: #60A5FA;
+    }
+
+    /* E-Posta Yöntemi Aksiyon Alanı */
+    .email-action-box {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--border);
       border-radius: 16px;
       padding: 20px;
-      margin-bottom: 28px;
+      margin-top: 16px;
     }
 
-    .info-card h3 {
-      font-size: 15px;
-      font-weight: 800;
-      color: var(--danger);
-      margin-bottom: 8px;
+    .email-badge-info {
+      font-size: 13px;
+      color: #FBBF24;
       display: flex;
       align-items: center;
       gap: 8px;
+      margin-bottom: 14px;
     }
 
-    .info-card p {
-      font-size: 13.5px;
-      line-height: 1.6;
-      color: var(--text);
+    .email-btn-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
     }
 
-    .step-box {
+    .email-launch-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #2563EB;
+      color: #FFFFFF;
+      text-decoration: none;
+      padding: 12px 24px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 800;
+      box-shadow: 0 4px 16px rgba(37, 99, 235, 0.4);
+      transition: all 0.2s ease;
+      flex: 1;
+      justify-content: center;
+      min-width: 240px;
+    }
+
+    .email-launch-btn:hover {
+      background: #1D4ED8;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(37, 99, 235, 0.55);
+    }
+
+    .copy-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.05);
       border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 24px;
-      margin-bottom: 24px;
-      background: var(--card-bg);
+      color: #E4E4E7;
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-size: 13.5px;
+      font-weight: 600;
+      transition: all 0.2s ease;
     }
 
-    .step-box h2 {
+    .copy-chip:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: #3B82F6;
+      color: #60A5FA;
+    }
+
+    /* Veri Şeffaflığı Tablo/Izgarası (Google Play Zorunluluğu) */
+    .data-transparency-box {
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px;
+      background: rgba(18, 18, 18, 0.7);
+      margin-bottom: 32px;
+    }
+
+    .transparency-title {
       font-size: 17px;
       font-weight: 800;
-      margin-bottom: 12px;
+      color: #FFFFFF;
+      margin-bottom: 16px;
       display: flex;
       align-items: center;
       gap: 10px;
     }
 
-    .step-num {
-      width: 26px;
-      height: 26px;
-      border-radius: 50%;
-      background: var(--primary);
-      color: #FFFFFF;
-      font-size: 13px;
-      font-weight: 800;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
+    .transparency-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
     }
 
-    .data-list {
-      margin-left: 20px;
-      margin-top: 10px;
-      font-size: 14px;
-      color: var(--text-muted);
+    @media (max-width: 640px) {
+      .transparency-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
-    .data-list li {
-      margin-bottom: 6px;
-    }
-
-    /* Silme Talep Formu */
-    .request-form {
-      margin-top: 20px;
-    }
-
-    .form-group {
-      margin-bottom: 16px;
-    }
-
-    .form-group label {
-      display: block;
-      font-size: 13px;
-      font-weight: 700;
-      margin-bottom: 6px;
-      color: var(--text);
-    }
-
-    .form-input {
-      width: 100%;
-      padding: 12px 16px;
-      border-radius: 12px;
-      border: 1.5px solid var(--border);
-      background: var(--bg);
-      color: var(--text);
-      font-size: 14px;
-      outline: none;
-      transition: border-color 0.2s ease;
-    }
-
-    .form-input:focus {
-      border-color: var(--primary);
-    }
-
-    .submit-btn {
-      width: 100%;
-      padding: 14px;
-      border-radius: 12px;
-      background: var(--danger);
-      color: #FFFFFF;
-      font-size: 15px;
-      font-weight: 800;
-      border: none;
-      cursor: pointer;
-      box-shadow: 0 4px 16px rgba(239, 68, 68, 0.3);
-      transition: transform 0.15s ease, opacity 0.15s ease;
-    }
-
-    .submit-btn:hover {
-      opacity: 0.92;
-      transform: translateY(-1px);
-    }
-
-    .success-message {
-      display: none;
-      padding: 18px;
+    .transparency-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
       border-radius: 14px;
-      background: var(--success-bg);
-      border: 1.5px solid var(--success);
-      color: var(--success);
-      font-size: 14.5px;
+      padding: 18px;
+    }
+
+    .transparency-card h4 {
+      font-size: 14px;
       font-weight: 700;
-      text-align: center;
+      color: #60A5FA;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .transparency-card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .transparency-card li {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .transparency-card li::before {
+      content: "•";
+      color: #2563EB;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    /* Bilgi İpuçları */
+    .info-strip {
+      background: rgba(245, 158, 11, 0.06);
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      border-radius: 14px;
+      padding: 16px 20px;
+      font-size: 13px;
+      color: #D1D5DB;
+      line-height: 1.6;
       margin-top: 16px;
     }
 
-    .contact-footer {
-      text-align: center;
-      margin-top: 32px;
-      font-size: 13px;
-      color: var(--text-muted);
-      border-top: 1px solid var(--border);
-      padding-top: 24px;
+    .info-strip strong {
+      color: #FBBF24;
     }
 
-    .contact-footer a {
-      color: var(--primary);
+    /* Alt Footer */
+    .page-footer {
+      text-align: center;
+      border-top: 1px solid var(--border);
+      padding-top: 28px;
+      margin-top: 36px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+
+    .footer-link {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
       text-decoration: none;
+      transition: color 0.15s ease;
+    }
+
+    .footer-link:hover {
+      color: #3B82F6;
+    }
+
+    .footer-copyright {
+      font-size: 12px;
+      color: #71717A;
+    }
+
+    /* Toast Bildirimi */
+    .toast-popup {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #10B981;
+      color: #FFFFFF;
+      padding: 12px 24px;
+      border-radius: 50px;
+      font-size: 13.5px;
       font-weight: 700;
+      box-shadow: 0 8px 30px rgba(16, 185, 129, 0.4);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .toast-popup.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    /* Mavi Ripple */
+    .blue-click-ripple {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.45) 0%, rgba(59, 130, 246, 0.2) 40%, transparent 70%);
+      pointer-events: none;
+      transform: scale(0);
+      animation: blueRippleAnim 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      z-index: 99;
+    }
+
+    @keyframes blueRippleAnim {
+      0% { transform: scale(0); opacity: 1; }
+      100% { transform: scale(1); opacity: 0; }
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    
-    <div class="back-nav">
-      <a href="index.html" class="back-link">&larr; Ana Sayfaya Dön</a>
-    </div>
-
-    <div class="header">
-      <img src="app-logo.png" alt="Ehliyet Elinde" class="app-logo">
-      <h1>Hesap ve Veri Silme Talebi</h1>
-      <p class="subtitle">Google Play Veri Güvenliği ve KVKK Kapsamında Kullanıcı Hakları</p>
-      <div class="badge-google">
-        <span>✓</span> Google Play Veri Güvenliği Standartlarına Uygundur
-      </div>
-    </div>
-
-    <!-- Önemli Uyarı -->
-    <div class="info-card">
-      <h3>⚠️ Veri Silme İşlemi Hakkında Önemli Bilgilendirme</h3>
-      <p>
-        Hesabınızı ve verilerinizi sildiğinizde, Ehliyet Elinde uygulamasındaki deneme sınavı geçmişiniz, soru istatistikleriniz, çalışma seriniz (streak) ve profil kayıtlarınız sunucularımızdan <strong>geri döndürülemez biçimde kalıcı olarak silinir</strong>.
-      </p>
-    </div>
-
-    <!-- Silinen Veri Türleri -->
-    <div class="step-box">
-      <h2><span class="step-num">1</span> Silinen Veri Türleri</h2>
-      <ul class="data-list">
-        <li><strong>Hesap Bilgileri:</strong> Ad, soyad, e-posta adresi, kullanıcı adı ve profil avatarı.</li>
-        <li><strong>Sınav & İlerleme Verileri:</strong> Çözülen deneme sınavları, doğru/yanlış sayıları ve başarı yüzdeleri.</li>
-        <li><strong>Özel Çalışma Listeleri:</strong> Hatalı yapılan sorular havuzu ve favori sorular.</li>
-        <li><strong>Liderlik Tablosu & Seriler:</strong> Çalışma günü serisi (streak) ve puan sıralamaları.</li>
-        <li><strong>Cihaz & Bağlantı Logları:</strong> Uygulama içi oturum geçmişi ve IP kayıtları.</li>
-      </ul>
-    </div>
-
-    <!-- Nasıl Silinir? -->
-    <div class="step-box">
-      <h2><span class="step-num">2</span> Silme Yöntemleri</h2>
-      <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 12px;">
-        Hesabınızı 2 farklı yöntemle silebilirsiniz:
-      </p>
-      <ul class="data-list">
-        <li><strong>Yöntem A (E-posta ile):</strong> Uygulama içi kayıtlı e-posta adresinizden <a href="mailto:ehliyetelinde@gmail.com" style="color: var(--primary); font-weight: 700;">ehliyetelinde@gmail.com</a> adresine <em>"Hesabımın ve verilerimin silinmesini istiyorum"</em> konulu bir e-posta gönderebilirsiniz. Talebiniz en geç 24 saat içinde işleme alınır.</li>
-        <li><strong>Yöntem B (Aşağıdaki Form ile):</strong> Uygulamada kullandığınız e-posta adresinizi aşağıdaki formdan ileterek doğrudan sistemimizden silinmesini talep edebilirsiniz.</li>
-      </ul>
-
-      <!-- Hızlı Talep Formu -->
-      <form class="request-form" id="deletionForm" onsubmit="handleDeletionSubmit(event)">
-        <div class="form-group">
-          <label for="userEmail">Uygulamaya Kayıtlı E-Posta Adresiniz:</label>
-          <input type="email" id="userEmail" class="form-input" placeholder="ornek@gmail.com" required>
-        </div>
-
-        <div class="form-group">
-          <label for="reason">Silme Nedeni (İsteğe Bağlı):</label>
-          <input type="text" id="reason" class="form-input" placeholder="Sınavı kazandım, artık ihtiyacım kalmadı vb.">
-        </div>
-
-        <button type="submit" class="submit-btn" id="submitBtn">Hesabımı ve Tüm Verilerimi Kalıcı Olarak Sil</button>
-      </form>
-
-      <div class="success-message" id="successMsg">
-        ✓ Hesap ve veri silme talebiniz başarıyla alındı. Kayıtlı e-posta adresinize bağlı tüm veriler 24 saat içinde kalıcı olarak silinecektir.
-      </div>
-    </div>
-
-    <!-- İletişim Alt Bilgi -->
-    <div class="contact-footer">
-      Ehliyet Elinde &bull; Resmi Geliştirici İletişim: <a href="mailto:ehliyetelinde@gmail.com">ehliyetelinde@gmail.com</a><br>
-      <span style="font-size: 12px;">Tüm talepler Kişisel Verilerin Korunması Kanunu (KVKK) ve Google Play Geliştirici Politikalarına uygun olarak yönetilir.</span>
-    </div>
-
+  <!-- ================= APPLE / IPHONE STİLİ DİNAMİK MAVİ ARKA PLAN ================= -->
+  <div class="ios-dynamic-bg" aria-hidden="true" id="iosDynamicBg">
+    <div class="ios-cursor-glow" id="iosCursorGlow"></div>
+    <div class="ios-orb ios-orb-1" id="iosOrb1"></div>
+    <div class="ios-orb ios-orb-2" id="iosOrb2"></div>
+    <div class="ios-orb ios-orb-3" id="iosOrb3"></div>
+    <div class="ios-orb ios-orb-4" id="iosOrb4"></div>
+    <div class="ios-orb ios-orb-5" id="iosOrb5"></div>
   </div>
 
+  <!-- ================= SAYFA İÇERİĞİ ================= -->
+  <div class="page-wrapper">
+    
+    <!-- Üst Navigasyon Çubuğu -->
+    <div class="top-bar">
+      <a href="index.html" class="back-btn" id="btnBackHome">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        Ana Sayfaya Dön
+      </a>
+
+      <div class="app-brand-pill">
+        <img src="app-logo.png" alt="Ehliyet Elinde">
+        <span>Ehliyet Elinde Destek</span>
+      </div>
+    </div>
+
+    <!-- Ana Kart -->
+    <main class="main-card">
+      
+      <!-- Başlık Bölümü -->
+      <div class="header-section">
+        <div class="header-logo-wrap">
+          <img src="app-logo.png" alt="Ehliyet Elinde Logo" class="app-main-logo">
+        </div>
+        <h1 class="page-title">Hesap ve Veri Silme</h1>
+        <p class="page-subtitle">
+          Kullanıcı haklarınıza, Google Play Veri Güvenliği politikalarına ve KVKK standartlarına tam uyumlu hesap kapatma ve veri imha rehberi.
+        </p>
+        <div class="compliance-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          Google Play & KVKK Doğrulanmış Güvenlik Prosedürü
+        </div>
+      </div>
+
+      <!-- Güvenlik Koruma Bildirimi (Neden Kimlik Doğrulaması Şart?) -->
+      <div class="security-notice-card">
+        <div class="security-icon-circle">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg>
+        </div>
+        <div class="security-text">
+          <h3>Hesabınızın Güvenliği En Büyük Önceliğimizdir</h3>
+          <p>
+            Kötü niyetli üçüncü kişilerin yalnızca e-posta adresinizi bilerek adınıza yetkisiz hesap silme talebi oluşturmasını engellemek amacıyla sistemimizde anonim açık formlar <strong>bulunmamaktadır</strong>. Silme işlemi yalnızca <strong>uygulama içerisinden onay verilerek</strong> veya <strong>kayıtlı e-posta adresinizden gönderilen doğrulanabilir talep</strong> ile gerçekleştirilir.
+          </p>
+        </div>
+      </div>
+
+      <!-- 2 Farklı Güvenli Silme Yolu -->
+      <div class="methods-container">
+        
+        <!-- YÖNTEM 1 (ÖNERİLEN & ANINDA): UYGULAMA İÇİNDEN DOĞRUDAN SİLME -->
+        <section class="method-card primary-method">
+          <div class="method-header">
+            <div class="method-title-wrap">
+              <span class="method-badge-num">1</span>
+              <h2 class="method-title">Uygulama İçinden Doğrudan Silme</h2>
+            </div>
+            <span class="tag-recommended">Önerilen &bull; Anında İşlem</span>
+          </div>
+
+          <p class="method-desc">
+            Hesabınız telefondaki uygulamada açık olduğu için kimliğiniz otomatik olarak doğrulanır. Başka kimsenin hesabınıza müdahale etme riski yoktur.
+          </p>
+
+          <div class="steps-list">
+            <div class="step-item">
+              <div class="step-icon-num">1</div>
+              <div class="step-content">
+                Telefonunuzdaki <strong>Ehliyet Elinde</strong> uygulamasını açın ve oturumunuzun açık olduğundan emin olun.
+              </div>
+            </div>
+
+            <div class="step-item">
+              <div class="step-icon-num">2</div>
+              <div class="step-content">
+                Alt gezinme çubuğunda bulunan <strong>Profil</strong> veya <strong>Ayarlar</strong> sekmesine dokunun.
+              </div>
+            </div>
+
+            <div class="step-item">
+              <div class="step-icon-num">3</div>
+              <div class="step-content">
+                Sayfanın en altındaki <strong>"Hesabımı ve Tüm Verilerimi Kalıcı Olarak Sil"</strong> butonuna tıklayın.
+              </div>
+            </div>
+
+            <div class="step-item">
+              <div class="step-icon-num">4</div>
+              <div class="step-content">
+                Ekrana gelen güvenlik onay penceresinde silme işlemini onaylayın. Hesabınız ve tüm verileriniz <strong>anında kalıcı olarak silinir</strong>.
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- YÖNTEM 2: KAYITLI E-POSTA İLE DOĞRULAMALI TALEP (UYGULAMA YÜKLÜ DEĞİLSE) -->
+        <section class="method-card">
+          <div class="method-header">
+            <div class="method-title-wrap">
+              <span class="method-badge-num">2</span>
+              <h2 class="method-title">Kayıtlı E-Posta ile Doğrulamalı Talep</h2>
+            </div>
+            <span class="tag-alt">Uygulamayı Sildiyseniz</span>
+          </div>
+
+          <p class="method-desc">
+            Uygulamayı cihazınızdan sildiyseniz veya telefonunuza erişemiyorsanız, sahte talepleri önlemek adına başvurunuzu <strong>yalnızca uygulamada kayıtlı e-posta adresinizden</strong> gönderebilirsiniz.
+          </p>
+
+          <div class="email-action-box">
+            <div class="email-badge-info">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+              <span>Talep yalnızca hesaba ait e-postadan gönderildiğinde doğrulanır ve işleme alınır.</span>
+            </div>
+
+            <div class="email-btn-row">
+              <a href="mailto:ehliyetelinde@gmail.com?subject=Ehliyet%20Elinde%20-%20Hesap%20ve%20Veri%20Silme%20Talebi&body=Merhaba%2C%0A%0AEhliyet%20Elinde%20uygulamas%C4%B1nda%20kulland%C4%B1%C4%9F%C4%B1m%20hesab%C4%B1m%C4%B1n%20ve%20bu%20e-posta%20adresime%20ba%C4%9Fl%C4%B1%20t%C3%BCm%20s%C4%B1nav%20verilerimin%20kal%C4%B1c%C4%B1%20olarak%20silinmesini%20talep%20ediyorum.%0A%0AUygulamaya%20Kay%C4%B1tl%C4%B1%20E-Posta%20Adresim%3A%20%0AAd%20Soyad%20%2F%20Kullan%C4%B1c%C4%B1%20Ad%C4%B1m%3A%20%0A" class="email-launch-btn" id="btnLaunchEmail">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                Kayıtlı E-Postanızla Talep Gönderin
+              </a>
+
+              <button type="button" class="copy-chip" id="btnCopyEmail" onclick="copySupportEmail()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                <span>ehliyetelinde@gmail.com</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+
+      <!-- VERİ ŞEFFAFLIĞI BİLGİLENDİRMESİ (GOOGLE PLAY POLİTİKASI GEREĞİ) -->
+      <section class="data-transparency-box">
+        <h3 class="transparency-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+            <polyline points="10 9 9 9 8 9"></polyline>
+          </svg>
+          Hangi Veriler Silinir ve Ne Kadar Sürede İmha Edilir?
+        </h3>
+
+        <div class="transparency-grid">
+          <div class="transparency-card">
+            <h4>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="3 6 5 6 21 6"></polyline>
+                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+              </svg>
+              Kalıcı Olarak Silinen Veriler
+            </h4>
+            <ul>
+              <li><strong>Hesap Profili:</strong> Ad, soyad, e-posta ve avatar bilgileri.</li>
+              <li><strong>Sınav Geçmişi:</strong> Çözülen denemeler, başarı yüzdesi ve skorlar.</li>
+              <li><strong>Özel Çalışma Havuzu:</strong> Yanlış yapılan ve favorilenen sorular.</li>
+              <li><strong>Liderlik ve Sıralamalar:</strong> Günlük çalışma serileri (streak) ve puanlar.</li>
+              <li><strong>Cihaz Oturumları:</strong> Aktif oturum anahtarları ve bağlantı logları.</li>
+            </ul>
+          </div>
+
+          <div class="transparency-card">
+            <h4>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 14 14"></polyline>
+              </svg>
+              İmha Süreci & Saklama Süresi
+            </h4>
+            <ul>
+              <li><strong>Uygulama İçi Silme:</strong> Teyit edildiği an veritabanından <strong>0 saniyede</strong> anında silinir.</li>
+              <li><strong>E-Posta Talepleri:</strong> Gönderen e-posta hesabı doğrulandıktan sonra en geç <strong>24-48 saat içinde</strong> silinir.</li>
+              <li><strong>Yedekleme & Arşiv:</strong> Silme onayından sonra verileriniz hiçbir sunucu yedeğinde tutulmaz, geri getirilemez.</li>
+              <li><strong>Üçüncü Taraflar:</strong> Veriler hiçbir reklam veya analiz servisine aktarılmaz.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="info-strip">
+          <strong>Önemli Uyarı:</strong> Silme işlemi geri alınamaz. Hesabınızı ve verilerinizi sildikten sonra geçmiş sınav puanlarınız veya çalışma seriniz yeniden yüklenemez. Dilediğiniz zaman sıfırdan yeni bir hesap oluşturabilirsiniz.
+        </div>
+      </section>
+
+      <!-- Sayfa Alt Bilgisi -->
+      <footer class="page-footer">
+        <div class="footer-links">
+          <a href="index.html#gizlilik-politikasi" class="footer-link">Gizlilik Politikası</a>
+          <span style="color: #3f3f46;">&bull;</span>
+          <a href="index.html#kullanim-kosullari" class="footer-link">Kullanım Koşulları</a>
+          <span style="color: #3f3f46;">&bull;</span>
+          <a href="mailto:ehliyetelinde@gmail.com" class="footer-link">Geliştirici İletişim</a>
+        </div>
+        <p class="footer-copyright">
+          Ehliyet Elinde &bull; Kişisel Verilerin Korunması Kanunu (KVKK) ve Google Play Geliştirici Politikaları Kapsamında Yayımlanmıştır.
+        </p>
+      </footer>
+
+    </main>
+  </div>
+
+  <!-- Kopyalandı Toast Bildirimi -->
+  <div class="toast-popup" id="copyToast">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="20 6 9 17 4 12"></polyline>
+    </svg>
+    <span>E-posta adresi panoya kopyalandı!</span>
+  </div>
+
+  <!-- ================= DİNAMİK ARKA PLAN VE ETKİLEŞİM SCRIPTLERİ ================= -->
   <script>
-    function handleDeletionSubmit(e) {
-      e.preventDefault();
-      const email = document.getElementById('userEmail').value.trim();
-      const submitBtn = document.getElementById('submitBtn');
-      const successMsg = document.getElementById('successMsg');
+    // 1. IPHONE STİLİ DİNAMİK MOUSE & DOKUNMATİK ARKA PLAN EFEKTİ
+    (function initIosDynamicBackground() {
+      const cursorGlow = document.getElementById('iosCursorGlow');
+      const orb1 = document.getElementById('iosOrb1');
+      const orb2 = document.getElementById('iosOrb2');
+      const orb3 = document.getElementById('iosOrb3');
+      const orb4 = document.getElementById('iosOrb4');
+      const orb5 = document.getElementById('iosOrb5');
+      const bg = document.getElementById('iosDynamicBg');
 
-      if (!email) return;
+      if (!cursorGlow || !bg) return;
 
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Talebiniz İletiliyor...';
+      let targetX = window.innerWidth / 2;
+      let targetY = window.innerHeight / 2;
+      let currentX = targetX;
+      let currentY = targetY;
+      let isMoving = false;
 
-      setTimeout(() => {
-        submitBtn.style.display = 'none';
-        successMsg.style.display = 'block';
-      }, 700);
+      function updatePointer(x, y) {
+        targetX = x;
+        targetY = y;
+        if (!isMoving) {
+          cursorGlow.classList.add('active');
+          isMoving = true;
+        }
+
+        const normX = (x / window.innerWidth) - 0.5;
+        const normY = (y / window.innerHeight) - 0.5;
+
+        if (orb1) orb1.style.transform = 'translate(' + (normX * 60) + 'px, ' + (normY * 60) + 'px)';
+        if (orb2) orb2.style.transform = 'translate(' + (normX * -75) + 'px, ' + (normY * -55) + 'px)';
+        if (orb3) orb3.style.transform = 'translate(' + (normX * 50) + 'px, ' + (normY * -40) + 'px)';
+        if (orb4) orb4.style.transform = 'translate(' + (normX * -60) + 'px, ' + (normY * 70) + 'px)';
+        if (orb5) orb5.style.transform = 'translate(' + (normX * 70) + 'px, ' + (normY * -60) + 'px)';
+      }
+
+      window.addEventListener('mousemove', (e) => {
+        updatePointer(e.clientX, e.clientY);
+      }, { passive: true });
+
+      // Mobil Dokunmatik Desteği
+      window.addEventListener('touchstart', (e) => {
+        if (e.touches && e.touches[0]) {
+          updatePointer(e.touches[0].clientX, e.touches[0].clientY);
+        }
+      }, { passive: true });
+
+      window.addEventListener('touchmove', (e) => {
+        if (e.touches && e.touches[0]) {
+          updatePointer(e.touches[0].clientX, e.touches[0].clientY);
+        }
+      }, { passive: true });
+
+      window.addEventListener('mouseleave', () => {
+        cursorGlow.classList.remove('active');
+        isMoving = false;
+      });
+
+      // Akıcı 60 FPS Lerp Fizik Takibi
+      function animateCursor() {
+        currentX += (targetX - currentX) * 0.085;
+        currentY += (targetY - currentY) * 0.085;
+
+        cursorGlow.style.left = currentX + 'px';
+        cursorGlow.style.top = currentY + 'px';
+
+        requestAnimationFrame(animateCursor);
+      }
+      requestAnimationFrame(animateCursor);
+
+      // Tıklamada / Dokunmada Arka Planda Zarif Şok Dalgası
+      window.addEventListener('click', (e) => {
+        const wave = document.createElement('div');
+        wave.className = 'ios-click-shockwave';
+        wave.style.left = e.clientX + 'px';
+        wave.style.top = e.clientY + 'px';
+        wave.style.width = '240px';
+        wave.style.height = '240px';
+        bg.appendChild(wave);
+        setTimeout(() => wave.remove(), 900);
+      });
+    })();
+
+    // 2. MAVİ TIKLAMA DALGASI (RIPPLE EFFECT)
+    document.addEventListener('click', function(e) {
+      const target = e.target.closest('a, button, .method-card, .step-item');
+      if (!target) return;
+      
+      const rect = target.getBoundingClientRect();
+      const ripple = document.createElement('span');
+      ripple.className = 'blue-click-ripple';
+      const size = Math.max(rect.width, rect.height) * 1.6;
+      ripple.style.width = ripple.style.height = size + 'px';
+      ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
+      ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
+      
+      target.appendChild(ripple);
+      setTimeout(() => ripple.remove(), 650);
+    });
+
+    // 3. DESTEK E-POSTASINI PANOMA KOPYALAMA
+    function copySupportEmail() {
+      const email = 'ehliyetelinde@gmail.com';
+      navigator.clipboard.writeText(email).then(() => {
+        const toast = document.getElementById('copyToast');
+        if (!toast) return;
+        toast.classList.add('show');
+        setTimeout(() => {
+          toast.classList.remove('show');
+        }, 2500);
+      }).catch(err => {
+        console.error('Kopyalama hatası:', err);
+      });
     }
   </script>
 
