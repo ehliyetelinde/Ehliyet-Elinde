@@ -2487,7 +2487,7 @@
 
   <!-- Ortak Footer -->
   <div class="footer">
-    &copy; 2026 Ehliyet Elinde &bull; İletişim & Destek: <a href="mailto:ehliyetelinde@gmail.com">ehliyetelinde@gmail.com</a>
+    &copy; 2026 Ehliyet Elinde &bull; İletişim & Destek: <a href="mailto:ehliyetelinde@gmail.com">ehliyetelinde@gmail.com</a> &bull; <a href="admin.html" style="color: #60A5FA; text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 4px;">🔒 Yönetici Girişi</a>
   </div>
 </div>
 
@@ -2881,6 +2881,44 @@
       bg.appendChild(wave);
       setTimeout(() => wave.remove(), 900);
     });
+  })();
+
+
+  // =======================================================
+  // 9. CANLI FIREBASE BAĞLANTISI (ÖĞRENCİ SAYISI & CANLI METRİKLER)
+  // =======================================================
+  (async function initFirebaseStats() {
+    const PROJECT_ID = 'ehliyet-elinde-f507a';
+    const API_KEY = 'AIzaSyCdQAbwounugH3l5DS_aXaHnTRuW_-GO9M';
+    const url = `https://firestore.googleapis.com/v1/projects/${PROJECT_ID}/databases/(default)/documents/leaderboard?key=${API_KEY}&pageSize=300`;
+
+    try {
+      const res = await fetch(url);
+      if (!res.ok) return;
+      const data = await res.json();
+      const docs = data.documents || [];
+      
+      const realUsers = docs.filter(d => {
+        const id = d.name ? d.name.split('/').pop() : '';
+        return id && id !== 'global_announcement' && id !== 'app_version_config' && !id.startsWith('supp_');
+      });
+
+      const userCount = realUsers.length;
+      if (userCount > 0) {
+        const sideBoxes = document.querySelectorAll('.side-metric-box');
+        if (sideBoxes.length >= 2) {
+          const countEl = sideBoxes[1].querySelector('.side-metric-num');
+          const labelEl = sideBoxes[1].querySelector('.side-metric-label');
+          if (countEl && labelEl) {
+            countEl.innerText = userCount + '+';
+            labelEl.innerText = 'Kayıtlı Öğrenci';
+          }
+        }
+        console.log(`[Firebase] Canlı Firestore senkronize edildi: ${userCount} öğrenci`);
+      }
+    } catch (err) {
+      console.log('[Firebase] Bağlantı durumu:', err);
+    }
   })();
 
 </script>
