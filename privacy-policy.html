@@ -93,14 +93,16 @@
     }
 
     .container {
-      max-width: 820px;
+      width: 100%;
+      max-width: 1540px;
       margin: 0 auto;
       background: var(--card-bg);
-      border-radius: 20px;
+      border-radius: 28px;
       box-shadow: var(--shadow);
-      border: 1px solid var(--border);
-      padding: 36px 28px;
+      border: 1.5px solid var(--border);
+      padding: clamp(32px, 4vw, 56px);
       position: relative;
+      box-sizing: border-box;
     }
 
     /* Üst Navigasyon Sekmeleri */
@@ -211,8 +213,21 @@
     }
 
     .tab-panel.active {
-      display: block;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
       animation: fadeIn 0.25s ease forwards;
+    }
+
+    .tab-panel .header {
+      grid-column: 1 / -1;
+    }
+
+    @media (max-width: 960px) {
+      .tab-panel.active {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
     }
 
     @keyframes fadeIn {
@@ -1499,10 +1514,17 @@
 
     /* Akordiyon Soru Kartları */
     .faq-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
       margin-bottom: 36px;
+    }
+
+    @media (max-width: 900px) {
+      .faq-list {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
     }
 
     .faq-card {
