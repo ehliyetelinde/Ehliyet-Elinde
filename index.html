@@ -915,19 +915,10 @@
     }
 
     /* 1020px ve üzeri tüm bilgisayar, laptop ve monitörlerde açıkça görünür */
-    @media (min-width: 1020px) {
-      .side-badge-card {
-        display: block;
-      }
-    }
+    
 
     /* Çok geniş ekranlarda (1280px+) kartı ortadaki kutunun hemen sağına zarifçe kenetle */
-    @media (min-width: 1280px) {
-      .side-badge-card {
-        left: calc(50% + 426px);
-        right: auto;
-      }
-    }
+    
 
     .side-badge-card:hover {
       border-color: #2563EB;
@@ -1001,11 +992,7 @@
       margin-top: 2px;
     }
 
-    @media (min-width: 1260px) {
-      .side-badge-card {
-        display: block;
-      }
-    }
+    
 
     .side-badge-rating {
       display: flex;
@@ -1170,17 +1157,19 @@
        ======================================================= */
     .hero-start-section {
       width: 100%;
-      max-width: 1140px;
-      margin: 12px auto 44px auto;
-      padding: 32px 20px 48px 20px;
+      max-width: 1540px;
+      margin: 16px auto 60px auto;
+      padding: 40px clamp(24px, 5vw, 80px);
       position: relative;
+      box-sizing: border-box;
     }
 
     .hero-layout-grid {
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 48px;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: clamp(40px, 6vw, 110px);
       align-items: center;
+      justify-content: space-between;
     }
 
     @media (max-width: 960px) {
@@ -1234,12 +1223,13 @@
     }
 
     .hero-brand-title {
-      font-size: clamp(40px, 5.8vw, 68px);
+      font-size: clamp(38px, 4.8vw, 68px);
       font-weight: 900;
-      line-height: 1.06;
-      letter-spacing: -2px;
+      line-height: 1.15;
+      letter-spacing: -1.8px;
       color: var(--text);
       margin: 0;
+      white-space: nowrap;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
     }
 
@@ -1504,14 +1494,11 @@
     .showcase-card-img {
       width: 100%;
       height: auto;
-      aspect-ratio: 580 / 1184;
       display: block;
-      object-fit: cover;
-      image-rendering: -webkit-optimize-contrast;
-      image-rendering: crisp-edges;
-      filter: contrast(1.04) saturate(1.05);
-      transition: opacity 0.28s ease, transform 0.28s ease;
-      border-radius: 26px;
+      border-radius: 22px;
+      transition: opacity 0.25s ease;
+      image-rendering: auto;
+      object-fit: contain;
     }
 
     .showcase-card-img.switching {
