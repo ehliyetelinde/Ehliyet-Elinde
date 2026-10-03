@@ -2324,6 +2324,66 @@
       transform: scale(0.92) translateY(6px);
     }
 
+  
+    /* =======================================================
+       GENEL BUTONLAR, SEKMELER VE NOKTALAR İÇİN ZIPLAMA & DÜŞME ANİMASYONLARI
+       (Gizlilik Politikası, Kullanım Koşulları, Play Store vb.)
+       ======================================================= */
+    @keyframes btnBounceJump {
+      0% { transform: scale(1) translateY(0); }
+      25% { transform: scale(0.92, 1.16) translateY(-8px); box-shadow: 0 12px 28px rgba(37, 99, 235, 0.45); }
+      52% { transform: scale(1.10, 0.90) translateY(4px); }
+      75% { transform: scale(0.97, 1.03) translateY(-2px); }
+      100% { transform: scale(1) translateY(0); }
+    }
+
+    @keyframes tabBounceJump {
+      0% { transform: scale(1) translateY(0); }
+      25% { transform: scale(0.93, 1.15) translateY(-7px); box-shadow: 0 8px 22px rgba(37, 99, 235, 0.4); }
+      52% { transform: scale(1.08, 0.92) translateY(3px); }
+      75% { transform: scale(0.98, 1.02) translateY(-1px); }
+      100% { transform: scale(1) translateY(0); }
+    }
+
+    @keyframes dotBounceJump {
+      0% { transform: scale(1); }
+      35% { transform: scale(1.65) translateY(-5px); }
+      65% { transform: scale(0.85) translateY(2px); }
+      100% { transform: scale(1) translateY(0); }
+    }
+
+    @keyframes fabBounceJump {
+      0% { transform: scale(1) translateY(0); }
+      25% { transform: scale(0.92, 1.18) translateY(-12px); box-shadow: 0 16px 38px rgba(37, 99, 235, 0.6); }
+      52% { transform: scale(1.12, 0.88) translateY(5px); }
+      75% { transform: scale(0.98, 1.03) translateY(-2px); }
+      100% { transform: scale(1) translateY(0); }
+    }
+
+    .btn-bounce-active {
+      animation: btnBounceJump 0.52s cubic-bezier(0.2, 0.8, 0.2, 1.3) forwards !important;
+    }
+
+    .tab-bounce-active {
+      animation: tabBounceJump 0.50s cubic-bezier(0.2, 0.8, 0.2, 1.3) forwards !important;
+    }
+
+    .dot-bounce-active {
+      animation: dotBounceJump 0.45s cubic-bezier(0.2, 0.8, 0.2, 1.3) forwards !important;
+    }
+
+    .fab-bounce-active {
+      animation: fabBounceJump 0.55s cubic-bezier(0.2, 0.8, 0.2, 1.3) forwards !important;
+    }
+
+    /* SSS Açıldığında İkonun Zıplaması */
+    .faq-card.open .faq-icon-box {
+      animation: dotBounceJump 0.48s cubic-bezier(0.2, 0.8, 0.2, 1.3) forwards !important;
+      background: rgba(37, 99, 235, 0.2) !important;
+      color: #2563EB !important;
+      border-color: #2563EB !important;
+    }
+
   </style>
 </head>
 <body>
@@ -3318,6 +3378,61 @@
       console.log('[Firebase] Bağlantı durumu:', err);
     }
   })();
+
+
+  // =======================================================
+  // GENEL ZIPLAMA & DÜŞME ANİMASYON TETİKLEYİCİSİ
+  // =======================================================
+  function triggerBounce(el, type = 'btn') {
+    if (!el) return;
+    const cls = type === 'tab' ? 'tab-bounce-active' :
+                type === 'dot' ? 'dot-bounce-active' :
+                type === 'fab' ? 'fab-bounce-active' : 'btn-bounce-active';
+    el.classList.remove(cls);
+    void el.offsetWidth; // Reflow zorla
+    el.classList.add(cls);
+    setTimeout(() => el.classList.remove(cls), 550);
+  }
+
+  // Sayfadaki tuşlara dinamik tıklama dinleyicileri
+  function initButtonBounceAnimations() {
+    // 1. Üst Sekmeler (Gizlilik Politikası / Kullanım Koşulları)
+    document.querySelectorAll('.nav-tab').forEach(tab => {
+      tab.addEventListener('click', function() { triggerBounce(this, 'tab'); });
+    });
+
+    // 2. Hero Hızlı Geçiş Butonları
+    document.querySelectorAll('.hero-nav-btn').forEach(btn => {
+      btn.addEventListener('click', function() { triggerBounce(this, 'btn'); });
+    });
+
+    // 3. Google Play Butonları (Hero, Alt Vitrin ve Sabit FAB)
+    document.querySelectorAll('.hero-play-btn, .playstore-inline-btn').forEach(btn => {
+      btn.addEventListener('click', function() { triggerBounce(this, 'btn'); });
+    });
+
+    const fabBtn = document.querySelector('.playstore-fab');
+    if (fabBtn) {
+      fabBtn.addEventListener('click', function() { triggerBounce(this, 'fab'); });
+    }
+
+    // 4. Vitrin Noktaları (Showcase Dots)
+    document.querySelectorAll('.showcase-dot').forEach(dot => {
+      dot.addEventListener('click', function() { triggerBounce(this, 'dot'); });
+    });
+
+    // 5. Aşağı Kaydır İpucu
+    const scrollPrompt = document.querySelector('.hero-scroll-prompt');
+    if (scrollPrompt) {
+      scrollPrompt.addEventListener('click', function() { triggerBounce(this, 'btn'); });
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initButtonBounceAnimations);
+  } else {
+    initButtonBounceAnimations();
+  }
 
 </script>
 
