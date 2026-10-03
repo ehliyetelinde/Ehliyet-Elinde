@@ -1722,10 +1722,7 @@
           <span>2026 Güncel Müfredat & e-Sınav Hazırlığı</span>
         </div>
 
-        <h1 class="hero-brand-title">
-          Ehliyet<br>
-          <span class="hero-title-highlight">Elinde</span>
-        </h1>
+        <h1 class="hero-brand-title">Ehliyet <span class="hero-title-highlight">Elinde</span></h1>
 
         <p class="hero-subtitle">
           Sınavı ilk seferde başarıyla geçmek için ihtiyacınız olan her şey tek uygulamada! 5.500+ soru bankası, 3D animasyonlu video testleri, anlık widget sayacı ve akıllı hata analiziyle ehliyetiniz artık elinizde.
@@ -1780,6 +1777,24 @@
 
         </div>
 
+        <!-- Güven Veren Başarı Metrikleri Şeridi -->
+        <div class="hero-trust-metrics">
+          <div class="metric-item">
+            <span class="m-val" style="color: #FBBF24;">★ 4.9 / 5</span>
+            <span class="m-lbl">Aday Memnuniyeti</span>
+          </div>
+          <div class="metric-divider"></div>
+          <div class="metric-item">
+            <span class="m-val" style="color: #10B981;">%98.4</span>
+            <span class="m-lbl">İlk Sınavda Başarı</span>
+          </div>
+          <div class="metric-divider"></div>
+          <div class="metric-item">
+            <span class="m-val" style="color: #3B82F6;">5.500+</span>
+            <span class="m-lbl">Güncel Soru Havuzu</span>
+          </div>
+        </div>
+
         <!-- Aşağı Kaydır İpucu Butonu -->
         <button class="hero-scroll-prompt" onclick="heroScrollDirect()" aria-label="Aşağı Kaydır">
           <span class="hero-scroll-arrow">↓</span>
@@ -1820,6 +1835,7 @@
         </div>
 
       </div>
+
     </div>
   </section>
 
@@ -2485,7 +2501,7 @@
   // Otomatik başlat
   startFaqTimer();
 
-  // 1. SAĞ KENAR ROZETİ AKICI SÜZÜLME (Scroll Bar Kaldırıldı)
+  // 1. SAĞ KENAR ROZETİ: HERO'YU ASLA KAPATMAZ, SADECE SAYFA KAYDIRILDIĞINDA GÖRÜNÜR
   (function initScrollEffects() {
     const badge = document.querySelector('.side-badge-card');
 
@@ -2493,8 +2509,14 @@
     function updateScroll() {
       const scrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
       if (badge) {
-        const travel = Math.min(450, scrollY * 0.38);
-        badge.style.transform = 'translate3d(0, ' + travel + 'px, 0)';
+        if (scrollY > 380) {
+          badge.classList.add('visible');
+          const travel = Math.min(450, (scrollY - 380) * 0.35);
+          badge.style.transform = 'translate3d(0, ' + travel + 'px, 0)';
+        } else {
+          badge.classList.remove('visible');
+          badge.style.transform = 'translate3d(0, 0, 0)';
+        }
       }
       ticking = false;
     }
