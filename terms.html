@@ -1077,16 +1077,7 @@
       justify-content: space-between;
     }
 
-    @media (max-width: 960px) {
-      .hero-layout-grid {
-        grid-template-columns: 1fr;
-        gap: 36px;
-        text-align: center;
-      }
-      .hero-start-section {
-        padding: 16px 12px 32px 12px;
-      }
-    }
+    
 
     /* Sol Taraf: Marka & Tipografi */
     .hero-content-col {
@@ -1096,11 +1087,7 @@
       gap: 18px;
     }
 
-    @media (max-width: 960px) {
-      .hero-content-col {
-        align-items: center;
-      }
-    }
+    
 
     .hero-pill-badge {
       display: inline-flex;
@@ -1161,11 +1148,7 @@
       margin-top: 4px;
     }
 
-    @media (max-width: 960px) {
-      .hero-feature-tags {
-        justify-content: center;
-      }
-    }
+    
 
     .hero-feat-tag {
       font-size: 12px;
@@ -1189,11 +1172,7 @@
       width: 100%;
     }
 
-    @media (max-width: 960px) {
-      .hero-action-buttons {
-        justify-content: center;
-      }
-    }
+    
 
     .hero-play-btn {
       display: inline-flex;
@@ -1965,6 +1944,265 @@
     /* Tıklamada veya odakta mavi/siyah tarayıcı çerçevelerini kaldırma */
     *:focus, *:focus-visible {
       outline: none !important;
+    }
+
+  
+    /* =======================================================
+       DESKTOP & GENİŞ EKRAN METRİK STİLLERİ
+       ======================================================= */
+    .hero-trust-metrics {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      padding: 10px 16px;
+      border-radius: 14px;
+      background: var(--info-box-bg);
+      border: 1px solid var(--border);
+      margin-top: 8px;
+    }
+    .metric-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .metric-item .m-val {
+      font-size: 14.5px;
+      font-weight: 850;
+      letter-spacing: -0.3px;
+    }
+    .metric-item .m-lbl {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+    .metric-divider {
+      width: 1px;
+      height: 22px;
+      background: var(--border);
+    }
+
+    /* =======================================================
+       TELEFON & MOBİL İÇİN YAN YANA (SIDE-BY-SIDE) HERO DÜZENİ
+       (Görsel Yana Hizalı, Taşma Yok, %100 Kusursuz Uyum)
+       ======================================================= */
+    @media (max-width: 768px) {
+      .hero-start-section {
+        padding: 16px 10px 24px 10px !important;
+        margin: 6px auto 26px auto !important;
+      }
+      .hero-layout-grid {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1.18fr) minmax(0, 0.82fr) !important;
+        gap: 12px !important;
+        align-items: center !important;
+        text-align: left !important;
+      }
+      .hero-content-col {
+        align-items: flex-start !important;
+        text-align: left !important;
+        gap: 8px !important;
+        min-width: 0 !important;
+      }
+      .hero-pill-badge {
+        padding: 3px 8px !important;
+        font-size: 10px !important;
+        letter-spacing: 0.1px !important;
+        gap: 5px !important;
+      }
+      .hero-pill-pulse {
+        width: 6px !important;
+        height: 6px !important;
+      }
+      .hero-brand-title {
+        font-size: clamp(20px, 5.6vw, 27px) !important;
+        letter-spacing: -0.8px !important;
+        line-height: 1.12 !important;
+        white-space: normal !important;
+        margin: 0 !important;
+      }
+      .hero-subtitle {
+        font-size: 11.5px !important;
+        line-height: 1.45 !important;
+        color: var(--text-muted) !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+      }
+      .hero-feature-tags {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 4px !important;
+        margin-top: 2px !important;
+        justify-content: flex-start !important;
+      }
+      .hero-feat-tag {
+        font-size: 10px !important;
+        padding: 3px 6px !important;
+        border-radius: 6px !important;
+        gap: 3px !important;
+      }
+      .hero-action-buttons {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 6px !important;
+        margin-top: 4px !important;
+        width: 100% !important;
+        justify-content: flex-start !important;
+      }
+      .hero-play-btn {
+        padding: 8px 10px !important;
+        border-radius: 10px !important;
+        gap: 8px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        justify-content: flex-start !important;
+      }
+      .hero-play-btn svg {
+        width: 18px !important;
+        height: 20px !important;
+        flex-shrink: 0 !important;
+      }
+      .hero-play-text .sub {
+        font-size: 8px !important;
+        letter-spacing: 0.4px !important;
+      }
+      .hero-play-text .main {
+        font-size: 12px !important;
+      }
+      .hero-nav-btn {
+        padding: 6px 10px !important;
+        border-radius: 10px !important;
+        font-size: 11px !important;
+        gap: 6px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        justify-content: flex-start !important;
+      }
+      .hero-nav-btn svg {
+        width: 13px !important;
+        height: 13px !important;
+        flex-shrink: 0 !important;
+      }
+      .hero-trust-metrics {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        gap: 6px !important;
+        padding: 6px 8px !important;
+        border-radius: 10px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        justify-content: space-between !important;
+        margin-top: 4px !important;
+      }
+      .hero-trust-metrics .metric-item {
+        font-size: 10px !important;
+      }
+      .hero-trust-metrics .m-val {
+        font-size: 11.5px !important;
+      }
+      .hero-trust-metrics .m-lbl {
+        font-size: 8px !important;
+      }
+      .hero-trust-metrics .metric-divider {
+        height: 16px !important;
+      }
+      .hero-scroll-prompt {
+        display: none !important;
+      }
+
+      /* Sağ Kolon: Görsel Yana Tam Oturtulmuş */
+      .hero-mockup-col {
+        width: 100% !important;
+        min-width: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+      .hero-phone-container {
+        width: 100% !important;
+        max-width: 170px !important;
+        margin: 0 auto !important;
+        perspective: none !important;
+      }
+      .hero-phone-glow {
+        width: 140px !important;
+        height: 240px !important;
+        filter: blur(24px) !important;
+      }
+      .hero-showcase-frame {
+        border-radius: 16px !important;
+        border: 1.5px solid var(--border) !important;
+        animation: none !important;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+      }
+      .showcase-card-img {
+        border-radius: 14px !important;
+        width: 100% !important;
+        height: auto !important;
+        object-fit: contain !important;
+      }
+      .phone-showcase-caption {
+        margin-top: 6px !important;
+        max-width: 170px !important;
+        width: 100% !important;
+        text-align: center !important;
+      }
+      .caption-screen-title {
+        font-size: 11px !important;
+        font-weight: 750 !important;
+        margin-bottom: 2px !important;
+        line-height: 1.2 !important;
+      }
+      .caption-screen-desc {
+        display: none !important;
+      }
+      .showcase-control-bar {
+        gap: 6px !important;
+        margin-top: 4px !important;
+      }
+      .showcase-arrow-btn {
+        width: 22px !important;
+        height: 22px !important;
+        font-size: 10px !important;
+      }
+      .showcase-dot-list {
+        gap: 3px !important;
+      }
+      .showcase-dot {
+        width: 4px !important;
+        height: 4px !important;
+      }
+      .showcase-dot.active {
+        width: 12px !important;
+        border-radius: 4px !important;
+      }
+    }
+
+    /* 380px ve Altı Dar Ekranlar İçin Hassas Uyum */
+    @media (max-width: 380px) {
+      .hero-layout-grid {
+        gap: 8px !important;
+        grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr) !important;
+      }
+      .hero-brand-title {
+        font-size: 19px !important;
+      }
+      .hero-subtitle {
+        font-size: 10.5px !important;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 3 !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+      }
+      .hero-feat-tag:nth-child(n+3) {
+        display: none !important;
+      }
+      .hero-phone-container {
+        max-width: 140px !important;
+      }
+      .phone-showcase-caption {
+        max-width: 140px !important;
+      }
     }
 
   </style>
