@@ -1910,6 +1910,41 @@
       z-index: 10;
     }
 
+  
+    /* YAZI YAZMA İMLECİ (CARET) VE İSTENMEYEN METİN SEÇİMİNİ ENGELLEME */
+    html, body {
+      caret-color: transparent !important;
+    }
+
+    body, h1, h2, h3, h4, p, span, div, button, a, 
+    .hero-brand-title, .hero-subtitle, .hero-pill-badge, .hero-feat-tag,
+    .faq-question, .faq-title-text, .faq-card, .faq-answer,
+    .nav-tab, .section-card, .quote-box, .app-showcase-box,
+    .feature-pill-card, .side-badge-card, .phone-showcase-caption,
+    .metric-item, .meta-pill, .badge {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      -webkit-touch-callout: none;
+      -webkit-tap-highlight-color: transparent;
+      caret-color: transparent !important;
+      cursor: default;
+    }
+
+    /* Tıklanabilir Öğelere Özel İşaretçi */
+    a, button, [role="button"], 
+    .nav-tab, .faq-card, .faq-question, .hero-nav-btn, .hero-play-btn, 
+    .playstore-fab, .playstore-inline-btn, .showcase-arrow-btn, .showcase-dot,
+    .hero-scroll-prompt {
+      cursor: pointer !important;
+    }
+
+    /* Tıklamada veya odakta mavi/siyah tarayıcı çerçevelerini kaldırma */
+    *:focus, *:focus-visible {
+      outline: none !important;
+    }
+
   </style>
 </head>
 <body>
