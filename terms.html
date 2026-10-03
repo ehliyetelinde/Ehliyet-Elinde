@@ -2205,6 +2205,125 @@
       }
     }
 
+  
+    /* =======================================================
+       CANLI ZIPLAMA & DÜŞME ANİMASYONLU TAM ORTALI OK BUTONLARI
+       ======================================================= */
+    .phone-showcase-caption {
+      margin-top: 14px;
+      text-align: center;
+      width: 100%;
+      max-width: 330px;
+      margin-left: auto;
+      margin-right: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+    }
+
+    .showcase-control-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 10px;
+      width: 100%;
+    }
+
+    .showcase-arrow-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--card-bg);
+      border: 1.5px solid var(--border);
+      color: var(--text);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      padding: 0;
+      line-height: 1;
+      transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+      position: relative;
+      overflow: visible;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .showcase-arrow-btn svg {
+      width: 17px;
+      height: 17px;
+      display: block;
+      margin: auto;
+      stroke: currentColor;
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+      pointer-events: none;
+    }
+
+    .showcase-arrow-btn:hover {
+      background: #2563EB;
+      color: #FFFFFF;
+      border-color: #2563EB;
+      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.45);
+    }
+
+    .showcase-arrow-btn.prev-btn:hover svg {
+      transform: translateX(-2.5px);
+    }
+
+    .showcase-arrow-btn.next-btn:hover svg {
+      transform: translateX(2.5px);
+    }
+
+    .showcase-arrow-btn:active {
+      transform: scale(0.88);
+    }
+
+    /* Zıplama & Düşme (Bounce & Drop) Fiziği */
+    .showcase-arrow-btn.bounce-jump-left {
+      animation: arrowJumpLeft 0.55s cubic-bezier(0.2, 0.8, 0.2, 1.3) forwards !important;
+    }
+
+    .showcase-arrow-btn.bounce-jump-right {
+      animation: arrowJumpRight 0.55s cubic-bezier(0.2, 0.8, 0.2, 1.3) forwards !important;
+    }
+
+    @keyframes arrowJumpLeft {
+      0% { transform: scale(1) translateY(0) rotate(0deg); }
+      25% { transform: scale(0.82, 1.28) translateY(-10px) rotate(-9deg); background: #2563EB; color: #FFFFFF; border-color: #2563EB; box-shadow: 0 10px 24px rgba(37, 99, 235, 0.5); }
+      55% { transform: scale(1.2, 0.82) translateY(5px) rotate(4deg); }
+      75% { transform: scale(0.95, 1.05) translateY(-2px) rotate(-1deg); }
+      100% { transform: scale(1) translateY(0) rotate(0deg); }
+    }
+
+    @keyframes arrowJumpRight {
+      0% { transform: scale(1) translateY(0) rotate(0deg); }
+      25% { transform: scale(0.82, 1.28) translateY(-10px) rotate(9deg); background: #2563EB; color: #FFFFFF; border-color: #2563EB; box-shadow: 0 10px 24px rgba(37, 99, 235, 0.5); }
+      55% { transform: scale(1.2, 0.82) translateY(5px) rotate(-4deg); }
+      75% { transform: scale(0.95, 1.05) translateY(-2px) rotate(1deg); }
+      100% { transform: scale(1) translateY(0) rotate(0deg); }
+    }
+
+    /* Görsel Değişirken Telefon Ekranının Yaylanarak Gelmesi (Spring Pop) */
+    .showcase-card-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 22px;
+      transition: opacity 0.25s ease, transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+      image-rendering: auto;
+      object-fit: contain;
+      will-change: transform, opacity;
+    }
+
+    .showcase-card-img.switching {
+      opacity: 0.25;
+      transform: scale(0.92) translateY(6px);
+    }
+
   </style>
 </head>
 <body>
@@ -2333,7 +2452,11 @@
           
           <!-- Navigasyon Okları & Noktalar -->
           <div class="showcase-control-bar">
-            <button class="showcase-arrow-btn" onclick="prevHeroSlide()" aria-label="Önceki Ekran">&larr;</button>
+            <button class="showcase-arrow-btn prev-btn" onclick="prevHeroSlide(this)" aria-label="Önceki Ekran">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
             <div class="showcase-dot-list" id="heroDotsList">
               <span class="showcase-dot active" onclick="jumpHeroSlide(0)"></span>
               <span class="showcase-dot" onclick="jumpHeroSlide(1)"></span>
@@ -2343,7 +2466,11 @@
               <span class="showcase-dot" onclick="jumpHeroSlide(5)"></span>
               <span class="showcase-dot" onclick="jumpHeroSlide(6)"></span>
             </div>
-            <button class="showcase-arrow-btn" onclick="nextHeroSlide()" aria-label="Sonraki Ekran">&rarr;</button>
+            <button class="showcase-arrow-btn next-btn" onclick="nextHeroSlide(this)" aria-label="Sonraki Ekran">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
           </div>
         </div>
 
@@ -2914,14 +3041,25 @@
     startHeroTimer();
   }
 
-  function prevHeroSlide() {
+  function prevHeroSlide(btn) {
+    triggerArrowBounce(btn || document.querySelector('.showcase-arrow-btn.prev-btn'), 'left');
     renderHeroSlide(currentHeroIndex - 1);
     restartHeroTimer();
   }
 
-  function nextHeroSlide() {
+  function nextHeroSlide(btn) {
+    triggerArrowBounce(btn || document.querySelector('.showcase-arrow-btn.next-btn'), 'right');
     renderHeroSlide(currentHeroIndex + 1);
     restartHeroTimer();
+  }
+
+  function triggerArrowBounce(el, dir) {
+    if (!el) return;
+    const animClass = dir === 'left' ? 'bounce-jump-left' : 'bounce-jump-right';
+    el.classList.remove('bounce-jump-left', 'bounce-jump-right');
+    void el.offsetWidth; // Force reflow
+    el.classList.add(animClass);
+    setTimeout(() => el.classList.remove(animClass), 550);
   }
 
   function jumpToHeroSlide(index) {
