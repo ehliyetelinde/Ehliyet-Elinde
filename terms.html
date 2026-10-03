@@ -610,116 +610,6 @@
 
   
     
-    /* EN ÇOK SORULAN SORULAR & ALT VİTRİN STİLLERİ */
-    .bottom-showcase-container {
-      margin-top: 40px;
-      padding-top: 32px;
-      border-top: 2px dashed var(--border);
-    }
-
-    .bottom-section-header {
-      text-align: center;
-      margin-bottom: 24px;
-    }
-
-    .bottom-section-title {
-      font-size: 22px;
-      font-weight: 800;
-      color: var(--primary);
-      letter-spacing: -0.5px;
-      margin-bottom: 6px;
-    }
-
-    .bottom-section-subtitle {
-      font-size: 14.5px;
-      color: var(--text-muted);
-    }
-
-    /* Akordiyon Soru Kartları */
-    .faq-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-bottom: 36px;
-    }
-
-    .faq-card {
-      background: var(--section-bg);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      overflow: hidden;
-      transition: border-color 0.2s ease;
-    }
-
-    .faq-card:hover {
-      border-color: var(--quote-border);
-    }
-
-    .faq-question {
-      width: 100%;
-      text-align: left;
-      padding: 16px 18px;
-      background: transparent;
-      border: none;
-      color: var(--text);
-      font-size: 15px;
-      font-weight: 700;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      font-family: inherit;
-    }
-
-    .faq-icon {
-      width: 22px;
-      height: 22px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      background: var(--quote-bg);
-      border: 1px solid var(--border);
-      font-size: 13px;
-      flex-shrink: 0;
-      transition: transform 0.2s ease;
-    }
-
-    .faq-card.open .faq-icon {
-      transform: rotate(45deg);
-    }
-
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s ease;
-      background: var(--quote-bg);
-      border-top: 1px solid transparent;
-      padding: 0 18px;
-      font-size: 14px;
-      line-height: 1.65;
-      color: var(--text-muted);
-    }
-
-    .faq-card.open .faq-answer {
-      max-height: 240px;
-      padding: 14px 18px;
-      border-top-color: var(--border);
-      color: var(--text);
-    }
-
-    .faq-tag {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 700;
-      padding: 2px 8px;
-      border-radius: 4px;
-      background: #2563EB;
-      color: #FFFFFF;
-      margin-right: 6px;
-    }
-
     /* GELİŞMİŞ UYGULAMA VİTRİN KUTUSU */
     .app-showcase-box {
       background: var(--section-bg);
@@ -1234,11 +1124,10 @@
     }
 
     .hero-title-highlight {
-      background: linear-gradient(135deg, #2563EB 0%, #3B82F6 40%, #60A5FA 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      display: inline-block;
-      text-shadow: 0 10px 30px rgba(37, 99, 235, 0.2);
+      color: inherit;
+      background: none;
+      -webkit-text-fill-color: initial;
+      text-shadow: none;
     }
 
     .hero-subtitle {
@@ -1621,74 +1510,95 @@
       border: 1px solid var(--border);
       border-radius: 14px;
       overflow: hidden;
-      transition: border-color 0.2s ease;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
     }
 
     .faq-card:hover {
-      border-color: var(--quote-border);
+      border-color: #2563EB;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
     }
 
     .faq-question {
       width: 100%;
       text-align: left;
-      padding: 16px 18px;
+      padding: 16px 20px;
       background: transparent;
       border: none;
       color: var(--text);
-      font-size: 15px;
+      font-size: 15.5px;
       font-weight: 700;
       cursor: pointer;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 12px;
+      gap: 16px;
       font-family: inherit;
+      user-select: none;
     }
 
-    .faq-tag {
-      font-size: 11.5px;
-      font-weight: 700;
-      padding: 3px 8px;
-      border-radius: 6px;
-      background: var(--badge-bg);
-      color: var(--badge-text);
-      margin-right: 6px;
-      display: inline-block;
+    .faq-title-text {
+      flex: 1;
+      line-height: 1.45;
+      color: var(--text);
     }
 
-    .faq-icon {
-      width: 22px;
-      height: 22px;
+    .faq-icon-box {
+      width: 30px;
+      height: 30px;
+      min-width: 30px;
       display: flex;
       align-items: center;
       justify-content: center;
       border-radius: 50%;
       background: var(--quote-bg);
       border: 1px solid var(--border);
-      font-size: 13px;
+      color: var(--text-muted);
       flex-shrink: 0;
-      transition: transform 0.2s ease;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
     }
 
-    .faq-card.open .faq-icon {
-      transform: rotate(45deg);
+    .faq-card:hover .faq-icon-box {
+      border-color: #2563EB;
+      color: #2563EB;
+    }
+
+    .faq-arrow-icon {
+      display: block;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .faq-card.open {
+      border-color: #2563EB;
+    }
+
+    .faq-card.open .faq-icon-box {
+      background: rgba(37, 99, 235, 0.12);
+      border-color: #2563EB;
+      color: #2563EB;
+    }
+
+    .faq-card.open .faq-arrow-icon {
+      transform: rotate(180deg);
     }
 
     .faq-answer {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s ease;
+      opacity: 0;
+      transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s ease, opacity 0.3s ease;
       background: var(--quote-bg);
       border-top: 1px solid transparent;
-      padding: 0 18px;
-      font-size: 14px;
-      line-height: 1.65;
+      padding: 0 20px;
+      font-size: 14.5px;
+      line-height: 1.7;
       color: var(--text-muted);
     }
 
     .faq-card.open .faq-answer {
-      max-height: 240px;
-      padding: 14px 18px;
+      max-height: 600px;
+      opacity: 1;
+      padding: 16px 20px 20px 20px;
       border-top-color: var(--border);
       color: var(--text);
     }
@@ -1709,7 +1619,7 @@
           <span>2026 Güncel Müfredat & e-Sınav Hazırlığı</span>
         </div>
 
-        <h1 class="hero-brand-title">Ehliyet <span class="hero-title-highlight">Elinde</span></h1>
+        <h1 class="hero-brand-title">Ehliyet Elinde</h1>
 
         <p class="hero-subtitle">
           Sınavı ilk seferde başarıyla geçmek için ihtiyacınız olan her şey tek uygulamada! 5.500+ soru bankası, 3D animasyonlu video testleri, anlık widget sayacı ve akıllı hata analiziyle ehliyetiniz artık elinizde.
@@ -1728,11 +1638,11 @@
           
           <!-- Google Play Butonu -->
           <a href="https://play.google.com/store/apps/details?id=com.ehliyetelinde.app" target="_blank" rel="noopener noreferrer" class="hero-play-btn" aria-label="Google Play'den İndir">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-              <path d="M3.609 1.814L13.792 12 3.61 22.185C3.25 21.787 3 21.196 3 20.443V3.557C3 2.804 3.25 2.213 3.609 1.814Z" fill="#2196F3"/>
-              <path d="M17.185 8.608L13.792 12l3.393 3.392 3.842-2.176c1.096-.62 1.096-1.636 0-2.257L17.185 8.608Z" fill="#FFC107"/>
-              <path d="M3.609 22.186L13.792 12l3.393 3.393-9.569 5.424c-.58.329-1.27.357-1.854.062l4.847-4.847-6.999 6.154z" fill="#4CAF50"/>
-              <path d="M3.609 1.814L10.608 7.97l-6.999 6.154 4.847-4.847L3.609 1.814z" fill="#F44336"/>
+            <svg width="22" height="24" viewBox="0 0 29 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M.12 2.66a3.46 3.46 0 0 0-.12.92v24.84a3.66 3.66 0 0 0 .12.92L14 15.64Z" fill="#4285f4"/>
+              <path d="m13.64 16 6.94-6.85L5.5.51A3.72 3.72 0 0 0 3.63 0 3.64 3.64 0 0 0 .12 2.65Z" fill="#34a853"/>
+              <path d="m27.11 12.89-6.53-3.74-7.35 6.45 7.38 7.28 6.48-3.7a3.55 3.55 0 0 0 0-6.29z" fill="#fbbc04"/>
+              <path d="M13.54 15.28.12 29.34a3.64 3.64 0 0 0 5.33 2.16l15.1-8.6z" fill="#ea4335"/>
             </svg>
             <div class="hero-play-text">
               <span class="sub">HEMEN İNDİR</span>
@@ -2006,7 +1916,7 @@
   
   
   
-  <!-- ================= SAYFA ALTI: EN ÇOK SORULAN SORULAR & UYGULAMA VİTRİNİ ================= -->
+    <!-- ================= SAYFA ALTI: EN ÇOK SORULAN SORULAR & UYGULAMA VİTRİNİ ================= -->
   <div class="bottom-showcase-container">
     
     <!-- Başlık -->
@@ -2021,10 +1931,14 @@
       
       <!-- Soru 1 -->
       <div class="faq-card" onclick="toggleFaq(this)">
-        <button class="faq-question">
-          <span><span class="faq-tag">Trafik</span> Kavşaklarda geçiş hakkı ve geçiş üstünlüğü sırası nasıldır?</span>
-          <span class="faq-icon">+</span>
-        </button>
+        <div class="faq-question">
+          <span class="faq-title-text">Kavşaklarda geçiş hakkı ve geçiş üstünlüğü sırası nasıldır?</span>
+          <div class="faq-icon-box">
+            <svg class="faq-arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+        </div>
         <div class="faq-answer">
           1. Ambulans/Cankurtaran, İtfaiye, Polis gibi geçiş üstünlüklü araçlar her zaman ilk geçer.<br>
           2. Kontrolsüz kavşakta düz giden araçlar, dönüş yapan araçlara göre önceliklidir.<br>
@@ -2035,10 +1949,14 @@
 
       <!-- Soru 2 -->
       <div class="faq-card" onclick="toggleFaq(this)">
-        <button class="faq-question">
-          <span><span class="faq-tag">e-Sınav</span> Sınavda yanlışlar doğruyu götürür mü? Geçme notu kaçtır?</span>
-          <span class="faq-icon">+</span>
-        </button>
+        <div class="faq-question">
+          <span class="faq-title-text">Sınavda yanlışlar doğruyu götürür mü? Geçme notu kaçtır?</span>
+          <div class="faq-icon-box">
+            <svg class="faq-arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+        </div>
         <div class="faq-answer">
           <strong>Hayır, yanlışlar doğruları kesinlikle götürmez!</strong> Bu nedenle emin olmasanız bile hiçbir soruyu boş bırakmayın. Sınavda toplam <strong>50 soru</strong> sorulur ve sınav süresi 45 dakikadır. Başarılı sayılmak için en az <strong>35 doğru (70 puan)</strong> almanız gerekir.
         </div>
@@ -2046,10 +1964,14 @@
 
       <!-- Soru 3 -->
       <div class="faq-card" onclick="toggleFaq(this)">
-        <button class="faq-question">
-          <span><span class="faq-tag">Trafik</span> Takip mesafesi kuralı nedir ve nasıl hesaplanır?</span>
-          <span class="faq-icon">+</span>
-        </button>
+        <div class="faq-question">
+          <span class="faq-title-text">Takip mesafesi kuralı nedir ve nasıl hesaplanır?</span>
+          <div class="faq-icon-box">
+            <svg class="faq-arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+        </div>
         <div class="faq-answer">
           Güvenli takip mesafesi, aracın kilometre cinsinden <strong>hızının en az yarısı</strong> kadar metredir. Örneğin 90 km/s hızla seyreden bir araç öndeki araçla arasına en az 45 metre mesafe koymalıdır. Ayrıca arka arkaya sayılan <strong>"88 - 89" kuralı (2 saniye mesafesi)</strong> ile kontrol edilir.
         </div>
@@ -2057,10 +1979,14 @@
 
       <!-- Soru 4 -->
       <div class="faq-card" onclick="toggleFaq(this)">
-        <button class="faq-question">
-          <span><span class="faq-tag">İlk Yardım</span> Temel yaşam desteğinde kalp masajı ve suni solunum oranı kaçtır?</span>
-          <span class="faq-icon">+</span>
-        </button>
+        <div class="faq-question">
+          <span class="faq-title-text">Temel yaşam desteğinde kalp masajı ve suni solunum oranı kaçtır?</span>
+          <div class="faq-icon-box">
+            <svg class="faq-arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+        </div>
         <div class="faq-answer">
           Tüm yaş gruplarında (yetişkin, çocuk ve bebek) temel yaşam desteğinde <strong>30 Kalp Masajı : 2 Suni Solunum</strong> (30:2) kuralı uygulanır. Göğüs basısı dakikada 100 bası hızında ve göğüs yüksekliğinin 1/3'ü (yetişkinde yaklaşık 5 cm) çökecek şekilde ritmik olarak yapılmalıdır.
         </div>
@@ -2068,10 +1994,14 @@
 
       <!-- Soru 5 -->
       <div class="faq-card" onclick="toggleFaq(this)">
-        <button class="faq-question">
-          <span><span class="faq-tag">Animasyon</span> Yeni nesil 3D animasyonlu video soruları kaç tanedir?</span>
-          <span class="faq-icon">+</span>
-        </button>
+        <div class="faq-question">
+          <span class="faq-title-text">Yeni nesil 3D animasyonlu video soruları kaç tanedir?</span>
+          <div class="faq-icon-box">
+            <svg class="faq-arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+        </div>
         <div class="faq-answer">
           Resmi e-sınavda yaklaşık <strong>5 adet videolu/animasyonlu soru</strong> sorulmaktadır. Bu sorularda araçların sinyal vermesi, takip mesafesi, yayaya yol verilmesi gibi durumlar hareketli video senaryosu olarak sunulur. Ehliyet Elinde uygulamasında bu video sorularının tamamı interaktif olarak yer almaktadır.
         </div>
@@ -2185,11 +2115,11 @@
       <!-- Temaya Tam Uyumlu Şık Google Play Butonu -->
       <a href="https://play.google.com/store/apps/details?id=com.ehliyetelinde.app" target="_blank" rel="noopener noreferrer" class="playstore-inline-btn">
         <div class="btn-svg-wrap">
-          <svg viewBox="0 0 24 24" width="24" height="24" xmlns="http://www.w3.org/2000/svg">
-            <path fill="#4285F4" d="M3.609 1.814L13.793 12 3.61 22.186c-.367-.384-.61-.98-.61-1.786V3.6c0-.806.243-1.402.61-1.786z"/>
-            <path fill="#FBBC04" d="M17.18 8.614l-3.387 3.386 3.387 3.386 3.82-2.17c1.096-.622 1.096-1.78 0-2.432l-3.82-2.17z"/>
-            <path fill="#EA4335" d="M3.609 22.186L13.793 12 17.18 15.386l-11.458 6.51c-.722.41-1.478.435-2.113.29z"/>
-            <path fill="#34A853" d="M17.18 8.614L13.793 12 3.609 1.814c.635-.145 1.391-.12 2.113.29l11.458 6.51z"/>
+          <svg viewBox="0 0 29 32" width="22" height="24" xmlns="http://www.w3.org/2000/svg" fill="none">
+            <path d="M.12 2.66a3.46 3.46 0 0 0-.12.92v24.84a3.66 3.66 0 0 0 .12.92L14 15.64Z" fill="#4285f4"/>
+            <path d="m13.64 16 6.94-6.85L5.5.51A3.72 3.72 0 0 0 3.63 0 3.64 3.64 0 0 0 .12 2.65Z" fill="#34a853"/>
+            <path d="m27.11 12.89-6.53-3.74-7.35 6.45 7.38 7.28 6.48-3.7a3.55 3.55 0 0 0 0-6.29z" fill="#fbbc04"/>
+            <path d="M13.54 15.28.12 29.34a3.64 3.64 0 0 0 5.33 2.16l15.1-8.6z" fill="#ea4335"/>
           </svg>
         </div>
         Google Play'den Ücretsiz Yükle
@@ -2212,16 +2142,12 @@
    class="playstore-fab" 
    title="Google Play'den Ehliyet Elinde İndir">
   <div class="playstore-icon-wrap">
-    <svg viewBox="0 0 24 24" width="24" height="24" xmlns="http://www.w3.org/2000/svg">
-      <!-- Mavi Sol Kanat -->
-      <path fill="#4285F4" d="M3.609 1.814L13.793 12 3.61 22.186c-.367-.384-.61-.98-.61-1.786V3.6c0-.806.243-1.402.61-1.786z"/>
-      <!-- Sarı Sağ Uç -->
-      <path fill="#FBBC04" d="M17.18 8.614l-3.387 3.386 3.387 3.386 3.82-2.17c1.096-.622 1.096-1.78 0-2.432l-3.82-2.17z"/>
-      <!-- Kırmızı Alt Kanat -->
-      <path fill="#EA4335" d="M3.609 22.186L13.793 12 17.18 15.386l-11.458 6.51c-.722.41-1.478.435-2.113.29z"/>
-      <!-- Yeşil Üst Kanat -->
-      <path fill="#34A853" d="M17.18 8.614L13.793 12 3.609 1.814c.635-.145 1.391-.12 2.113.29l11.458 6.51z"/>
-    </svg>
+    <svg viewBox="0 0 29 32" width="22" height="24" xmlns="http://www.w3.org/2000/svg" fill="none">
+            <path d="M.12 2.66a3.46 3.46 0 0 0-.12.92v24.84a3.66 3.66 0 0 0 .12.92L14 15.64Z" fill="#4285f4"/>
+            <path d="m13.64 16 6.94-6.85L5.5.51A3.72 3.72 0 0 0 3.63 0 3.64 3.64 0 0 0 .12 2.65Z" fill="#34a853"/>
+            <path d="m27.11 12.89-6.53-3.74-7.35 6.45 7.38 7.28 6.48-3.7a3.55 3.55 0 0 0 0-6.29z" fill="#fbbc04"/>
+            <path d="M13.54 15.28.12 29.34a3.64 3.64 0 0 0 5.33 2.16l15.1-8.6z" fill="#ea4335"/>
+          </svg>
   </div>
   <div class="playstore-info">
     <span class="tag">Google Play'den</span>
@@ -2260,21 +2186,11 @@
           top: topPos,
           behavior: 'smooth'
         });
-
-        // Hedef karta hafif bir parlama vurgusu ver
-        targetContainer.style.transition = 'box-shadow 0.4s ease, border-color 0.4s ease';
-        targetContainer.style.borderColor = '#2563EB';
-        targetContainer.style.boxShadow = '0 0 35px rgba(37, 99, 235, 0.25)';
-        setTimeout(() => {
-          targetContainer.style.borderColor = '';
-          targetContainer.style.boxShadow = '';
-        }, 1200);
       }
-
-      if (btnElement) {
-        btnElement.classList.remove('nav-loading');
-      }
-      isNavigating = false;
+      setTimeout(() => {
+        if (btnElement) btnElement.classList.remove('nav-loading');
+        isNavigating = false;
+      }, 700);
     }, 1000);
   }
 
@@ -2348,33 +2264,20 @@
 
     setTimeout(() => {
       currentHeroIndex = (index + heroScreens.length) % heroScreens.length;
-      phoneImg.src = heroScreens[currentHeroIndex].img;
-      titleEl.textContent = heroScreens[currentHeroIndex].title;
-      descEl.textContent = heroScreens[currentHeroIndex].desc;
+      const screen = heroScreens[currentHeroIndex];
 
-      dots.forEach((dot, i) => {
-        dot.classList.toggle('active', i === currentHeroIndex);
+      phoneImg.src = screen.img;
+      titleEl.textContent = screen.title;
+      descEl.textContent = screen.desc;
+
+      dots.forEach((d, i) => {
+        d.classList.toggle('active', i === currentHeroIndex);
       });
 
       phoneImg.classList.remove('switching');
       titleEl.style.opacity = '1';
       descEl.style.opacity = '1';
-    }, 200);
-  }
-
-  function nextHeroSlide() {
-    renderHeroSlide(currentHeroIndex + 1);
-    restartHeroTimer();
-  }
-
-  function prevHeroSlide() {
-    renderHeroSlide(currentHeroIndex - 1);
-    restartHeroTimer();
-  }
-
-  function jumpHeroSlide(index) {
-    renderHeroSlide(index);
-    restartHeroTimer();
+    }, 280);
   }
 
   function pauseHeroMockup() {
@@ -2385,6 +2288,21 @@
   function resumeHeroMockup() {
     isHeroPaused = false;
     startHeroTimer();
+  }
+
+  function prevHeroSlide() {
+    renderHeroSlide(currentHeroIndex - 1);
+    restartHeroTimer();
+  }
+
+  function nextHeroSlide() {
+    renderHeroSlide(currentHeroIndex + 1);
+    restartHeroTimer();
+  }
+
+  function jumpToHeroSlide(index) {
+    renderHeroSlide(index);
+    restartHeroTimer();
   }
 
   function startHeroTimer() {
@@ -2404,16 +2322,21 @@
   // Otomatik başlat
   startHeroTimer();
 
-
+  // =======================================================
+  // 3. EN ÇOK SORULAN SORULAR AKORDİYON GEÇİŞLERİ
+  // =======================================================
   function toggleFaq(card) {
+    if (!card) return;
     const wasOpen = card.classList.contains('open');
-    // Close other FAQs if desired, or allow multiple
     document.querySelectorAll('.faq-card').forEach(c => c.classList.remove('open'));
     if (!wasOpen) {
       card.classList.add('open');
     }
   }
 
+  // =======================================================
+  // 4. TAB GEÇİŞLERİ (GİZLİLİK POLİTİKASI & KULLANIM KOŞULLARI)
+  // =======================================================
   function switchTab(tab) {
     const btnPrivacy = document.getElementById('tabBtnPrivacy');
     const btnTerms = document.getElementById('tabBtnTerms');
@@ -2435,7 +2358,6 @@
       window.location.hash = 'gizlilik-politikasi';
       document.title = "Ehliyet Elinde - Gizlilik Politikası ve KVKK Aydınlatma Metni";
     }
-    // scrollTo handled by hero navigation
   }
 
   // URL Hash veya Sayfa Adı Kontrolü
@@ -2449,46 +2371,7 @@
     }
   })();
 
-  }
-
-  function prevFaqQuestion() {
-    renderFaq(currentFaqIndex - 1);
-    restartFaqTimer();
-  }
-
-  function jumpToFaq(index) {
-    renderFaq(index);
-    restartFaqTimer();
-  }
-
-  function pauseFaqRotation() {
-    isFaqPaused = true;
-    if (faqTimer) clearInterval(faqTimer);
-  }
-
-  function resumeFaqRotation() {
-    isFaqPaused = false;
-    startFaqTimer();
-  }
-
-  function startFaqTimer() {
-    if (faqTimer) clearInterval(faqTimer);
-    faqTimer = setInterval(() => {
-      if (!isFaqPaused) {
-        renderFaq(currentFaqIndex + 1);
-      }
-    }, 4500);
-  }
-
-  function restartFaqTimer() {
-    if (faqTimer) clearInterval(faqTimer);
-    startFaqTimer();
-  }
-
-  // Otomatik başlat
-  startFaqTimer();
-
-  // 1. SAĞ KENAR ROZETİ: HERO'YU ASLA KAPATMAZ, SADECE SAYFA KAYDIRILDIĞINDA GÖRÜNÜR
+  // 5. SAĞ KENAR ROZETİ: HERO'YU ASLA KAPATMAZ, SADECE SAYFA KAYDIRILDIĞINDA GÖRÜNÜR
   (function initScrollEffects() {
     const badge = document.querySelector('.side-badge-card');
 
@@ -2518,7 +2401,7 @@
     updateScroll();
   })();
 
-  // 2. SCROLL REVEAL (AŞAĞI KAYDIRDIKÇA YUMUŞAKÇA AÇILAN KARTLAR)
+  // 6. SCROLL REVEAL (AŞAĞI KAYDIRDIKÇA YUMUŞAKÇA AÇILAN KARTLAR)
   (function initScrollReveal() {
     const targets = document.querySelectorAll(
       '.section-card, .faq-card, .app-showcase-box, .feature-pill-card, .header, .bottom-section-header'
@@ -2526,7 +2409,6 @@
 
     targets.forEach((el, index) => {
       el.classList.add('reveal');
-      // Çocuk kartlara basamaklı gecikme (stagger effect)
       if (el.classList.contains('feature-pill-card')) {
         el.style.transitionDelay = ((index % 6) * 0.06) + 's';
       }
