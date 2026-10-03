@@ -1749,6 +1749,7 @@
   
     /* =======================================================
        APPLE / IPHONE STİLİ DİNAMİK İNTERAKTİF MAVİ ARKA PLAN
+       (Dengelenmiş Zarif Mavi Tonları & Mobil Uyumlu)
        ======================================================= */
     .ios-dynamic-bg {
       position: fixed;
@@ -1759,17 +1760,17 @@
       overflow: hidden;
       pointer-events: none;
       z-index: 0;
-      background: radial-gradient(circle at 50% 15%, #080d1a 0%, #03060c 55%, #000000 100%);
+      background: #000000;
     }
 
-    /* Mouse Takip Eden İnteraktif Neon Mavi Işık Haresi */
+    /* Mouse / Dokunmatik Takip Eden İnteraktif Neon Mavi Işık Haresi */
     .ios-cursor-glow {
       position: absolute;
-      width: 580px;
-      height: 580px;
+      width: 440px;
+      height: 440px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(37, 99, 235, 0.35) 0%, rgba(59, 130, 246, 0.18) 35%, rgba(14, 165, 233, 0.08) 60%, transparent 75%);
-      filter: blur(65px);
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.22) 0%, rgba(59, 130, 246, 0.10) 38%, rgba(14, 165, 233, 0.04) 60%, transparent 75%);
+      filter: blur(55px);
       transform: translate(-50%, -50%);
       pointer-events: none;
       opacity: 0;
@@ -1781,103 +1782,103 @@
       opacity: 1;
     }
 
-    /* iPhone Tarzı Yüzen Yumuşak Renkli Orblar */
+    /* iPhone Tarzı Yüzen Yumuşak Renkli Orblar (Dengeli Opasite) */
     .ios-orb {
       position: absolute;
       border-radius: 50%;
       filter: blur(95px);
       pointer-events: none;
-      opacity: 0.88;
+      opacity: 0.38;
       will-change: transform;
-      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     /* 1. Sol Üst Hero Orbu */
     .ios-orb-1 {
-      top: -10%;
-      left: -6%;
-      width: 680px;
-      height: 680px;
-      background: radial-gradient(circle, rgba(37, 99, 235, 0.42) 0%, rgba(30, 64, 175, 0.20) 50%, transparent 75%);
+      top: -8%;
+      left: -5%;
+      width: 620px;
+      height: 620px;
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.24) 0%, rgba(30, 64, 175, 0.10) 50%, transparent 75%);
       animation: floatOrb1 16s ease-in-out infinite alternate;
     }
 
     /* 2. Sağ Üst / Vitrin Yanı Orbu */
     .ios-orb-2 {
-      top: 14%;
-      right: -8%;
-      width: 640px;
-      height: 640px;
-      background: radial-gradient(circle, rgba(14, 165, 233, 0.35) 0%, rgba(37, 99, 235, 0.18) 50%, transparent 75%);
+      top: 15%;
+      right: -6%;
+      width: 580px;
+      height: 580px;
+      background: radial-gradient(circle, rgba(14, 165, 233, 0.18) 0%, rgba(37, 99, 235, 0.08) 50%, transparent 75%);
       animation: floatOrb2 19s ease-in-out infinite alternate;
     }
 
     /* 3. Orta Gövde / Politika Kartları Arkası Orbu */
     .ios-orb-3 {
-      top: 46%;
-      left: 10%;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(79, 70, 229, 0.28) 0%, rgba(37, 99, 235, 0.16) 50%, transparent 75%);
+      top: 48%;
+      left: 12%;
+      width: 540px;
+      height: 540px;
+      background: radial-gradient(circle, rgba(79, 70, 229, 0.15) 0%, rgba(37, 99, 235, 0.08) 50%, transparent 75%);
       animation: floatOrb3 22s ease-in-out infinite alternate;
     }
 
     /* 4. Sol Alt / SSS Bölümü Orbu */
     .ios-orb-4 {
-      bottom: 6%;
-      left: -8%;
-      width: 660px;
-      height: 660px;
-      background: radial-gradient(circle, rgba(37, 99, 235, 0.38) 0%, rgba(59, 130, 246, 0.18) 50%, transparent 75%);
+      bottom: 8%;
+      left: -6%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.20) 0%, rgba(59, 130, 246, 0.09) 50%, transparent 75%);
       animation: floatOrb4 18s ease-in-out infinite alternate;
     }
 
     /* 5. Sağ Alt / İndirme Kutusu Arkası Orbu */
     .ios-orb-5 {
-      bottom: -8%;
-      right: -5%;
-      width: 680px;
-      height: 680px;
-      background: radial-gradient(circle, rgba(14, 165, 233, 0.34) 0%, rgba(79, 70, 229, 0.20) 50%, transparent 75%);
+      bottom: -6%;
+      right: -4%;
+      width: 620px;
+      height: 620px;
+      background: radial-gradient(circle, rgba(14, 165, 233, 0.16) 0%, rgba(79, 70, 229, 0.09) 50%, transparent 75%);
       animation: floatOrb5 20s ease-in-out infinite alternate;
     }
 
     @keyframes floatOrb1 {
       0% { transform: translate(0, 0) scale(1); }
-      50% { transform: translate(50px, 65px) scale(1.12); }
-      100% { transform: translate(-35px, 35px) scale(0.95); }
+      50% { transform: translate(45px, 55px) scale(1.08); }
+      100% { transform: translate(-30px, 30px) scale(0.96); }
     }
 
     @keyframes floatOrb2 {
       0% { transform: translate(0, 0) scale(1); }
-      50% { transform: translate(-55px, 50px) scale(1.1); }
-      100% { transform: translate(-25px, -45px) scale(0.92); }
+      50% { transform: translate(-45px, 40px) scale(1.06); }
+      100% { transform: translate(-20px, -35px) scale(0.94); }
     }
 
     @keyframes floatOrb3 {
       0% { transform: translate(0, 0) scale(1); }
-      50% { transform: translate(65px, -40px) scale(1.15); }
-      100% { transform: translate(-50px, 45px) scale(0.96); }
+      50% { transform: translate(50px, -30px) scale(1.08); }
+      100% { transform: translate(-40px, 35px) scale(0.95); }
     }
 
     @keyframes floatOrb4 {
       0% { transform: translate(0, 0) scale(1); }
-      50% { transform: translate(45px, -55px) scale(1.1); }
-      100% { transform: translate(-30px, -25px) scale(0.94); }
+      50% { transform: translate(35px, -45px) scale(1.07); }
+      100% { transform: translate(-25px, -20px) scale(0.95); }
     }
 
     @keyframes floatOrb5 {
       0% { transform: translate(0, 0) scale(1); }
-      50% { transform: translate(-60px, -40px) scale(1.14); }
-      100% { transform: translate(35px, 50px) scale(0.98); }
+      50% { transform: translate(-45px, -30px) scale(1.08); }
+      100% { transform: translate(30px, 40px) scale(0.96); }
     }
 
-    /* Tıklamada Arka Planda Yayılan Şok Dalgası */
+    /* Tıklamada / Dokunmada Yayılan Zarif Mavi Şok Dalgası */
     .ios-click-shockwave {
       position: absolute;
       border-radius: 50%;
-      border: 2px solid rgba(59, 130, 246, 0.65);
-      background: radial-gradient(circle, rgba(37, 99, 235, 0.28) 0%, transparent 70%);
+      border: 1.5px solid rgba(59, 130, 246, 0.45);
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.16) 0%, transparent 70%);
       pointer-events: none;
       transform: translate(-50%, -50%) scale(0.1);
       animation: shockwaveExpand 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -1885,8 +1886,22 @@
     }
 
     @keyframes shockwaveExpand {
-      0% { transform: translate(-50%, -50%) scale(0.1); opacity: 1; border-width: 3px; }
-      100% { transform: translate(-50%, -50%) scale(2.8); opacity: 0; border-width: 0px; }
+      0% { transform: translate(-50%, -50%) scale(0.1); opacity: 1; border-width: 2px; }
+      100% { transform: translate(-50%, -50%) scale(2.6); opacity: 0; border-width: 0px; }
+    }
+
+    /* Mobil Ekranlar İçin Hassas Boyut ve Opasite */
+    @media (max-width: 768px) {
+      .ios-orb {
+        filter: blur(65px);
+        opacity: 0.30;
+      }
+      .ios-orb-1 { width: 360px; height: 360px; top: -6%; left: -10%; }
+      .ios-orb-2 { width: 320px; height: 320px; top: 22%; right: -12%; }
+      .ios-orb-3 { width: 300px; height: 300px; top: 48%; left: 4%; }
+      .ios-orb-4 { width: 340px; height: 340px; bottom: 10%; left: -12%; }
+      .ios-orb-5 { width: 340px; height: 340px; bottom: -6%; right: -10%; }
+      .ios-cursor-glow { width: 300px; height: 300px; filter: blur(42px); }
     }
 
     /* İçerik katmanlarının arka planın üstünde kalması */
