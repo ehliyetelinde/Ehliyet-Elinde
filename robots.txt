@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ehliyetelinde.github.io/Ehliyet-Elinde/sitemap.xml
