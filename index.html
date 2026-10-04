@@ -2436,246 +2436,168 @@
       border-color: #2563EB !important;
     }
 
-    /* ================= YOUTUBE TANITIM VİDEOSU BÖLÜMÜ ================= */
-    .video-showcase-section {
-      width: 100%;
-      padding: 20px 20px 50px 20px;
-      display: flex;
-      justify-content: center;
-      position: relative;
-      z-index: 10;
-    }
-
-    .video-showcase-wrapper {
-      width: 100%;
-      max-width: 920px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .video-header {
-      margin-bottom: 24px;
-    }
-
-    .video-pill-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 16px;
-      border-radius: 50px;
-      background: rgba(239, 68, 68, 0.1);
-      border: 1px solid rgba(239, 68, 68, 0.25);
-      color: #EF4444;
-      font-size: 13px;
-      font-weight: 700;
-      margin-bottom: 12px;
-    }
-
-    .video-title {
-      font-size: 28px;
-      font-weight: 800;
-      color: var(--primary);
-      margin-bottom: 8px;
-      letter-spacing: -0.5px;
-    }
-
-    .video-subtitle {
-      font-size: 15px;
-      color: var(--text-muted);
-      max-width: 620px;
-      margin: 0 auto;
-      line-height: 1.5;
-    }
-
-    .video-player-card {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      border-radius: 24px;
-      overflow: hidden;
-      background: #000000;
-      box-shadow: 0 16px 42px rgba(0, 0, 0, 0.22), 0 0 0 1px var(--border);
-      cursor: pointer;
-      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
-    }
-
-    .video-player-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 24px 50px rgba(239, 68, 68, 0.24), 0 0 0 1.5px rgba(239, 68, 68, 0.6);
-    }
-
-    .video-poster-box {
+    /* ================= GÖRSELLERİN SOL ALTINDAKİ YOUTUBE BUTONU & VİDEO MODALI ================= */
+    .showcase-yt-badge {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .video-cover-img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.4s ease, filter 0.4s ease;
-    }
-
-    .video-player-card:hover .video-cover-img {
-      transform: scale(1.03);
-      filter: brightness(0.92);
-    }
-
-    .video-poster-glow {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle at center, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.6) 100%);
-      pointer-events: none;
-    }
-
-    .video-play-center {
-      position: relative;
-      z-index: 5;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 14px;
-      text-align: center;
-      pointer-events: none;
-    }
-
-    .yt-play-button-wrap {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-
-    .video-player-card:hover .yt-play-button-wrap {
-      transform: scale(1.14);
-    }
-
-    .yt-svg-bg {
-      fill: #FF0000;
-      transition: fill 0.2s ease;
-    }
-
-    .video-player-card:hover .yt-svg-bg {
-      fill: #CC0000;
-    }
-
-    .yt-pulse-ring {
-      position: absolute;
-      width: 90px;
-      height: 90px;
-      border-radius: 50%;
-      background: rgba(255, 0, 0, 0.35);
-      animation: ytPulseAnim 2.2s infinite ease-out;
-      z-index: -1;
-    }
-
-    @keyframes ytPulseAnim {
-      0% { transform: scale(0.8); opacity: 0.8; }
-      50% { transform: scale(1.35); opacity: 0.2; }
-      100% { transform: scale(1.7); opacity: 0; }
-    }
-
-    .video-prompt-text {
-      background: rgba(17, 24, 39, 0.85);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      padding: 8px 22px;
-      border-radius: 50px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 2px;
-    }
-
-    .video-prompt-main {
-      font-size: 15px;
-      font-weight: 700;
-      color: #FFFFFF;
-      letter-spacing: -0.2px;
-    }
-
-    .video-prompt-sub {
-      font-size: 11.5px;
-      color: rgba(255, 255, 255, 0.75);
-      font-weight: 500;
-    }
-
-    .video-iframe-holder {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      display: none;
-      z-index: 10;
-      background: #000;
-    }
-
-    .video-iframe-element {
-      width: 100%;
-      height: 100%;
-      border: 0;
-      border-radius: 24px;
-    }
-
-    /* Hero YouTube Butonu */
-    .hero-yt-btn {
+      bottom: 14px;
+      left: 14px;
+      z-index: 25;
       display: inline-flex;
       align-items: center;
       gap: 9px;
-      background: var(--card-bg);
-      color: var(--text) !important;
-      padding: 12px 22px;
+      padding: 8px 16px;
       border-radius: 50px;
-      font-size: 14px;
-      font-weight: 700;
-      text-decoration: none !important;
-      border: 1px solid var(--border);
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
-      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      background: rgba(15, 23, 42, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1.5px solid rgba(255, 255, 255, 0.22);
+      color: #FFFFFF !important;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
       cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
     }
 
-    .hero-yt-btn:hover {
-      transform: translateY(-2px);
+    .showcase-yt-badge:hover {
+      transform: translateY(-3px) scale(1.06);
+      background: rgba(0, 0, 0, 0.95);
+      border-color: #FF0000;
+      box-shadow: 0 10px 28px rgba(255, 0, 0, 0.4);
+    }
+
+    .showcase-yt-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      filter: drop-shadow(0 2px 6px rgba(255, 0, 0, 0.5));
+      transition: transform 0.2s ease;
+    }
+
+    .showcase-yt-badge:hover .showcase-yt-icon {
+      transform: scale(1.15);
+    }
+
+    .showcase-yt-text {
+      font-size: 13px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: -0.2px;
+      white-space: nowrap;
+    }
+
+    /* Video Popup Modal (Lightbox) */
+    .video-modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 99999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .video-modal-overlay.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .video-modal-dialog {
+      position: relative;
+      width: 100%;
+      max-width: 860px;
+      background: #111827;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+      transform: scale(0.92);
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .video-modal-overlay.active .video-modal-dialog {
+      transform: scale(1);
+    }
+
+    .video-modal-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      z-index: 10;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .video-modal-close:hover {
+      background: rgba(239, 68, 68, 0.9);
       border-color: #EF4444;
-      box-shadow: 0 6px 18px rgba(239, 68, 68, 0.18);
-      color: #EF4444 !important;
+      transform: scale(1.08);
+    }
+
+    .video-modal-header {
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #0B0F19;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .video-modal-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #FFFFFF;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .video-modal-content {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000000;
+    }
+
+    .video-modal-iframe-wrap {
+      width: 100%;
+      height: 100%;
+    }
+
+    .video-modal-iframe-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
     }
 
     @media (max-width: 640px) {
-      .video-title {
-        font-size: 22px;
+      .showcase-yt-badge {
+        bottom: 10px;
+        left: 10px;
+        padding: 6px 12px;
       }
-      .video-subtitle {
-        font-size: 13.5px;
+      .showcase-yt-text {
+        font-size: 11.5px;
       }
-      .video-player-card {
-        border-radius: 16px;
-      }
-      .video-iframe-element {
-        border-radius: 16px;
-      }
-      .video-prompt-main {
-        font-size: 13px;
-      }
-      .video-prompt-sub {
-        font-size: 10.5px;
+      .video-modal-dialog {
+        border-radius: 18px;
       }
     }
 
@@ -2762,14 +2684,6 @@
             <div class="btn-loader-bar"></div>
           </button>
 
-          <!-- YouTube Tanıtım Videosu Butonu -->
-          <a href="#videoShowcaseSection" class="hero-yt-btn" onclick="scrollToPromoVideo(event)">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="#FF0000">
-              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-            </svg>
-            <span>Tanıtım Videosu</span>
-          </a>
-
         </div>
 
         <!-- Güven Veren Başarı Metrikleri Şeridi -->
@@ -2805,6 +2719,16 @@
           
           <div class="hero-showcase-frame">
             <img src="assets/screen-1.png" alt="Ehliyet Elinde Uygulama Tanıtımı" class="showcase-card-img" id="heroPhoneImg">
+            
+            <!-- Görsellerin Sol Altındaki YouTube Butonu -->
+            <button class="showcase-yt-badge" onclick="openPromoVideoModal(event)" aria-label="Tanıtım Videosunu İzle" title="Ehliyet Elinde Tanıtım Videosunu İzle">
+              <div class="showcase-yt-icon">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="#FF0000">
+                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+              </div>
+              <span class="showcase-yt-text">Tanıtım Videosu</span>
+            </button>
           </div>
         </div>
 
@@ -2839,48 +2763,6 @@
 
       </div>
 
-    </div>
-  </section>
-
-  <!-- ================= RESMİ TANITIM VİDEOSU BÖLÜMÜ (YOUTUBE) ================= -->
-  <section class="video-showcase-section" id="videoShowcaseSection">
-    <div class="video-showcase-wrapper">
-      <div class="video-header">
-        <div class="video-pill-badge">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="#FF0000">
-            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-          </svg>
-          <span>Resmi Tanıtım Videosu</span>
-        </div>
-        <h2 class="video-title">Ehliyet Elinde Uygulamasını Keşfedin</h2>
-        <p class="video-subtitle">5.500+ güncel soru bankası, yeni nesil 3D animasyonlu testler ve gerçek sınav simülasyonunu tanıtım videomuzda izleyin.</p>
-      </div>
-
-      <!-- YouTube Video Oynatıcı Kartı (Kapak Fotoğraflı & Tıklayınca Otomatik Oynatılan) -->
-      <div class="video-player-card" id="videoPlayerCard" onclick="playPromoVideo()" role="button" tabindex="0" aria-label="Tanıtım videosunu izle">
-        <div class="video-poster-box" id="videoPosterBox">
-          <img src="https://img.youtube.com/vi/_UvWSna-Yg4/maxresdefault.jpg" alt="Ehliyet Elinde Resmi Tanıtım Videosu" class="video-cover-img" id="videoCoverImg" loading="lazy" onerror="this.src='https://img.youtube.com/vi/_UvWSna-Yg4/hqdefault.jpg'">
-          
-          <div class="video-poster-glow"></div>
-          
-          <div class="video-play-center">
-            <div class="yt-play-button-wrap">
-              <svg class="yt-svg-icon" viewBox="0 0 68 48" width="76" height="54">
-                <path class="yt-svg-bg" d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z"></path>
-                <path d="M 45,24 27,14 27,34" fill="#FFFFFF"></path>
-              </svg>
-              <div class="yt-pulse-ring"></div>
-            </div>
-            <div class="video-prompt-text">
-              <span class="video-prompt-main">Tanıtım Videosunu Başlat</span>
-              <span class="video-prompt-sub">Tıklayarak YouTube üzerinden izleyin</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Tıklayınca Açılan Dinamik YouTube Iframe Alanı -->
-        <div class="video-iframe-holder" id="videoIframeHolder"></div>
-      </div>
     </div>
   </section>
 
@@ -3773,31 +3655,40 @@
     }
   }
 
-  // YouTube Tanıtım Videosu Oynatma ve Kaydırma Fonksiyonları
-  function playPromoVideo() {
-    const poster = document.getElementById('videoPosterBox');
-    const holder = document.getElementById('videoIframeHolder');
-    if (!holder) return;
-    
-    if (poster) {
-      poster.style.display = 'none';
-    }
-    holder.style.display = 'block';
-    if (!holder.querySelector('iframe')) {
-      holder.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/_UvWSna-Yg4?autoplay=1&rel=0&modestbranding=1" title="Ehliyet Elinde Resmi Tanıtım Videosu" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="video-iframe-element"></iframe>';
+  // =======================================================
+  // YOUTUBE VİDEO MODAL (POPUP) YÖNETİMİ
+  // =======================================================
+  function openPromoVideoModal(e) {
+    if (e) e.stopPropagation();
+    const modal = document.getElementById('promoVideoModal');
+    const wrap = document.getElementById('videoModalIframeWrap');
+    if (!modal || !wrap) return;
+
+    wrap.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/_UvWSna-Yg4?autoplay=1&rel=0&modestbranding=1" title="Ehliyet Elinde Resmi Tanıtım Videosu" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closePromoVideoModal(e) {
+    if (e) e.stopPropagation();
+    const modal = document.getElementById('promoVideoModal');
+    const wrap = document.getElementById('videoModalIframeWrap');
+    if (!modal) return;
+
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (wrap) {
+      wrap.innerHTML = ''; // Video sesini ve oynatmayı anında durdurur
     }
   }
 
-  function scrollToPromoVideo(e) {
-    if (e) e.preventDefault();
-    const section = document.getElementById('videoShowcaseSection');
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      setTimeout(() => {
-        playPromoVideo();
-      }, 700);
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closePromoVideoModal();
     }
-  }
+  });
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initButtonBounceAnimations);
@@ -3837,6 +3728,29 @@
     2026 Güncel Sınav
   </div>
 </aside>
+
+<!-- ================= YOUTUBE VİDEO MODAL (POPUP) ================= -->
+<div class="video-modal-overlay" id="promoVideoModal" onclick="closePromoVideoModal(event)" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="video-modal-dialog" onclick="event.stopPropagation()">
+    <button class="video-modal-close" onclick="closePromoVideoModal(event)" aria-label="Kapat">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+    <div class="video-modal-header">
+      <div class="video-modal-brand">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#FF0000">
+          <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+        </svg>
+        <span>Ehliyet Elinde &bull; Resmi Tanıtım Videosu</span>
+      </div>
+    </div>
+    <div class="video-modal-content">
+      <div class="video-modal-iframe-wrap" id="videoModalIframeWrap"></div>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
