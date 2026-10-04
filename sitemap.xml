@@ -1,10 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://ehliyetelinde.github.io/Ehliyet-Elinde/</loc>
     <lastmod>2026-10-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://ehliyetelinde.github.io/Ehliyet-Elinde/app-logo.png</image:loc>
+      <image:title>Ehliyet Elinde Logo</image:title>
+      <image:caption>Ehliyet Elinde - 2026 Ehliyet Sınav Soruları ve Mobil Uygulama Logosu</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://ehliyetelinde.github.io/Ehliyet-Elinde/assets/screen-1.png</image:loc>
+      <image:title>Ehliyet Elinde Çıkmış Sınav Soruları ve Denemeler</image:title>
+      <image:caption>Ehliyet Elinde mobil uygulaması gerçek e-sınav simülasyonu</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://ehliyetelinde.github.io/Ehliyet-Elinde/assets/screen-2.png</image:loc>
+      <image:title>Ehliyet Elinde Yeni Nesil Animasyonlu Sınav Soruları</image:title>
+      <image:caption>3D video destekli MEB müfredatı animasyonlu ehliyet soruları</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://ehliyetelinde.github.io/Ehliyet-Elinde/assets/screen-3.png</image:loc>
+      <image:title>Ehliyet Elinde Güncel Trafik Levhaları ve Anlamları</image:title>
+      <image:caption>Tüm trafik işaretleri, ikaz ve uyarı levhaları</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://ehliyetelinde.github.io/Ehliyet-Elinde/assets/screen-4.png</image:loc>
+      <image:title>Ehliyet Elinde Direksiyon Sınavı Rehberi</image:title>
+      <image:caption>Araç tanıtımı, kaput, bagaj ve hata tablosu rehberi</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://ehliyetelinde.github.io/Ehliyet-Elinde/assets/screen-5.png</image:loc>
+      <image:title>Ehliyet Elinde Canlı Sınav Widget Desteği</image:title>
+      <image:caption>Ana ekrandan anlık soru çözme interaktif widget'ı</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://ehliyetelinde.github.io/Ehliyet-Elinde/assets/screen-6.png</image:loc>
+      <image:title>Ehliyet Elinde Akıllı Sınav Geri Sayımı</image:title>
+      <image:caption>Kişisel sınav tarihi ve kalan gün takibi</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://ehliyetelinde.github.io/Ehliyet-Elinde/assets/screen-7.png</image:loc>
+      <image:title>Ehliyet Elinde Türkiye Geneli Liderlik Tablosu</image:title>
+      <image:caption>Diğer adaylarla yarışma ve seviye puan sıralaması</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://ehliyetelinde.github.io/Ehliyet-Elinde/privacy-policy.html</loc>
