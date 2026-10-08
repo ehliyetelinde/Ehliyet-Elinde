@@ -4082,11 +4082,14 @@
   // =======================================================
   // GOOGLE PLAY SHOWCASE MODAL YÖNETİMİ
   // =======================================================
-  function openPlayStoreModal(e) {
+  window.openPlayStoreModal = function(e) {
     if (e && e.preventDefault) e.preventDefault();
     if (e && e.stopPropagation) e.stopPropagation();
     const modal = document.getElementById('playStoreModal');
-    if (!modal) return;
+    if (!modal) {
+      window.open('https://play.google.com/store/apps/details?id=com.ehliyetelinde.app', '_blank');
+      return;
+    }
 
     modal.classList.add('active');
     modal.setAttribute('aria-hidden', 'false');
@@ -4098,9 +4101,13 @@
       video.currentTime = 0;
       video.play().catch(function() {});
     }
+  };
+
+  function openPlayStoreModal(e) {
+    return window.openPlayStoreModal(e);
   }
 
-  function closePlayStoreModal(e) {
+  window.closePlayStoreModal = function(e) {
     if (e && e.stopPropagation) e.stopPropagation();
     const modal = document.getElementById('playStoreModal');
     if (!modal) return;
@@ -4114,6 +4121,10 @@
     if (video) {
       video.pause();
     }
+  };
+
+  function closePlayStoreModal(e) {
+    return window.closePlayStoreModal(e);
   }
 
   // İnteraktif Şık Tıklaması
@@ -4237,6 +4248,8 @@
       <div class="video-modal-iframe-wrap" id="videoModalIframeWrap"></div>
     </div>
   </div>
+</div>
+
 <!-- ================= GOOGLE PLAY SHOWCASE MODAL (ANDROİD & ANİMASYONLU SORU) ================= -->
 <style>
   /* =========================================================
