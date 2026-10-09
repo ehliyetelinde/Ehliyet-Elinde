@@ -4,7 +4,7 @@
 <script>
   (function() {
     try {
-      var saved = localStorage.getItem('ehliyet_theme_pref');
+      var saved = localStorage.getItem('ehliyet_theme_pref') || localStorage.getItem('userTheme');
       if (saved === 'dark') {
         document.documentElement.setAttribute('data-theme', 'dark');
       } else if (saved === 'light') {
@@ -3048,16 +3048,35 @@
       padding: 0 16px;
       display: flex;
       align-items: center;
-      justify-content: flex-start; /* Tüm butonlar sol tarafta düzenli */
+      justify-content: space-between; /* Sol boşluk, orta ikonlar, sağ tema butonu */
       gap: 10px;
     }
 
-    /* Sol Taraf İkon Grubu: Yan yana, düzenli, kontrollü yuvarlak çerçeveli */
+    /* Sol simetri boşluğu (ikon grubunun tam merkezde kalması için) */
+    .site-top-spacer {
+      width: 42px;
+      height: 42px;
+      flex-shrink: 0;
+    }
+
+    /* Orta İkon Grubu: Ortalanmış, yan yana, düzenli, kontrollü yuvarlak çerçeveli */
     .site-top-links {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 10px;
       flex-wrap: nowrap;
+      margin: 0 auto;
+    }
+
+    /* Sağ Slot: En sağda tek tema butonu */
+    .site-top-right {
+      width: 42px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex-shrink: 0;
     }
 
     /* Tüm Butonlar Yuvarlak, Şık ve Yanında Yazı Yok */
@@ -3114,67 +3133,23 @@
       transform: scale(0.94);
     }
 
-    /* Tema Geçiş Yuvarlak Butonları (Beyaz ve Siyah) */
-    .nav-divider {
-      width: 1px;
-      height: 22px;
-      background: var(--nav-border);
-      margin: 0 2px;
-      display: inline-block;
-      flex-shrink: 0;
+    /* Tek Tema Butonu (Güneş / Ay İkonu) */
+    .nav-theme-toggle-btn {
+      background: var(--circle-icon-bg);
+      border: 1.5px solid var(--circle-icon-border);
     }
 
-    .nav-theme-circle {
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-      flex-shrink: 0;
-      padding: 0;
+    [data-theme="dark"] .theme-icon-sun {
+      display: block;
     }
-
-    .nav-theme-white {
-      background: #FFFFFF !important;
-      border: 2px solid #D4D4D8 !important;
+    [data-theme="dark"] .theme-icon-moon {
+      display: none;
     }
-
-    .nav-theme-black {
-      background: #121212 !important;
-      border: 2px solid #3F3F46 !important;
+    [data-theme="light"] .theme-icon-sun {
+      display: none;
     }
-
-    .theme-dot-white {
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      background: #F4F4F5;
-      border: 1px solid #E4E4E7;
-      display: inline-block;
-    }
-
-    .theme-dot-black {
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      background: #181818;
-      border: 1px solid #2A2A2A;
-      display: inline-block;
-    }
-
-    [data-theme="light"] .nav-theme-white {
-      border-color: #2563EB !important;
-      box-shadow: 0 0 0 2.5px rgba(37, 99, 235, 0.4) !important;
-      transform: scale(1.05);
-    }
-
-    [data-theme="dark"] .nav-theme-black {
-      border-color: #38BDF8 !important;
-      box-shadow: 0 0 0 2.5px rgba(56, 189, 248, 0.45) !important;
-      transform: scale(1.05);
+    [data-theme="light"] .theme-icon-moon {
+      display: block;
     }
 
     /* ==========================================================================
@@ -3791,12 +3766,13 @@
 </head>
 <body>
   <!-- ================= ÜST GÖREV ÇUBUĞU (NAVBAR) ================= -->
-  
-  <!-- ================= ÜST GÖREV ÇUBUĞU (NAVBAR) ================= -->
   <header class="site-top-bar" id="siteTopBar">
     <div class="site-top-bar-container">
       
-      <!-- Sol Taraf: Tüm Butonlar Yuvarlak, Yanlarında Yazı Yok, Düzenli ve Kontrollü -->
+      <!-- Sol Simetri Boşluğu (Ortadaki ikonların tam merkezde kalması için) -->
+      <div class="site-top-spacer" aria-hidden="true"></div>
+
+      <!-- Orta: Tüm Butonlar Yuvarlak, Yanlarında Yazı Yok, Tam Ortada -->
       <nav class="site-top-links" aria-label="Ana Gezinti Menüsü">
         
         <!-- 1. Ana Sayfa Butonu -->
@@ -3841,15 +3817,7 @@
           </svg>
         </a>
 
-        <!-- 6. Site & Tema Ayarları Butonu -->
-        <button type="button" class="nav-circle-btn" onclick="openSettingsModal()" title="Tema ve Görünüm Ayarları" aria-label="Tema Ayarları">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="3"></circle>
-            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-          </svg>
-        </button>
-
-        <!-- 7. Google Play Butonu -->
+        <!-- 6. Google Play Butonu -->
         <a href="https://play.google.com/store/apps/details?id=com.ehliyetelinde.app" target="_blank" rel="noopener noreferrer" class="nav-circle-btn nav-play-circle" onclick="openPlayStoreModal(event); return false;" title="Google Play'den İndir" aria-label="Google Play Mobil Uygulaması">
           <svg width="19" height="20" viewBox="0 0 29 32" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M.12 2.66a3.46 3.46 0 0 0-.12.92v24.84a3.66 3.66 0 0 0 .12.92L14 15.64Z" fill="#4285F4"/>
@@ -3859,20 +3827,30 @@
           </svg>
         </a>
 
-        <!-- Ayırıcı Çizgi -->
-        <span class="nav-divider"></span>
-
-        <!-- 8. Yuvarlak Beyaz Tema Butonu -->
-        <button type="button" class="nav-circle-btn nav-theme-circle nav-theme-white" onclick="setSiteTheme('light')" title="Açık Beyaz Tema" aria-label="Açık Beyaz Tema">
-          <span class="theme-dot-white"></span>
-        </button>
-
-        <!-- 9. Yuvarlak Siyah Tema Butonu -->
-        <button type="button" class="nav-circle-btn nav-theme-circle nav-theme-black" onclick="setSiteTheme('dark')" title="Saf AMOLED Siyah Tema" aria-label="Saf AMOLED Siyah Tema">
-          <span class="theme-dot-black"></span>
-        </button>
-
       </nav>
+
+      <!-- Sağ Taraf: En Sağa Alınmış Tek Tema Butonu (Güneş / Ay) -->
+      <div class="site-top-right">
+        <button type="button" class="nav-circle-btn nav-theme-toggle-btn" id="siteThemeToggleBtn" onclick="toggleSiteTheme()" title="Temayı Değiştir" aria-label="Temayı Değiştir">
+          <!-- Güneş İkonu (Koyu Moddayken Görünür - Açık Moda Geçiş İçin) -->
+          <svg class="theme-icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FBBF24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <!-- Ay İkonu (Açık Moddayken Görünür - Koyu Moda Geçiş İçin) -->
+          <svg class="theme-icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#374151" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </div>
+
     </div>
   </header>
 
@@ -6384,7 +6362,7 @@
     // ========================================================
     function getStoredTheme() {
       try {
-        return localStorage.getItem('ehliyet_theme_pref') || 'system';
+        return localStorage.getItem('ehliyet_theme_pref') || localStorage.getItem('userTheme') || 'system';
       } catch (e) {
         return 'system';
       }
@@ -6393,21 +6371,42 @@
     function applyCurrentTheme(pref) {
       if (!pref) pref = getStoredTheme();
       
+      var effectiveTheme = 'light';
       if (pref === 'dark') {
+        effectiveTheme = 'dark';
         document.documentElement.setAttribute('data-theme', 'dark');
       } else if (pref === 'light') {
+        effectiveTheme = 'light';
         document.documentElement.setAttribute('data-theme', 'light');
       } else {
-        const isSysDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        document.documentElement.setAttribute('data-theme', isSysDark ? 'dark' : 'light');
+        var isSysDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        effectiveTheme = isSysDark ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', effectiveTheme);
       }
 
       updateThemeModalUI(pref);
     }
 
+    function setSiteTheme(pref) {
+      try {
+        localStorage.setItem('ehliyet_theme_pref', pref);
+        localStorage.setItem('userTheme', pref);
+      } catch (e) {}
+      applyCurrentTheme(pref);
+    }
+
+    function toggleSiteTheme() {
+      var current = document.documentElement.getAttribute('data-theme') || 'dark';
+      var next = (current === 'dark') ? 'light' : 'dark';
+      setSiteTheme(next);
+    }
+
     function selectTheme(pref) {
       try {
         localStorage.setItem('ehliyet_theme_pref', pref);
+        if (pref === 'dark' || pref === 'light') {
+          localStorage.setItem('userTheme', pref);
+        }
       } catch (e) {}
       applyCurrentTheme(pref);
     }
@@ -6454,6 +6453,16 @@
         }
       });
     }
+
+    // Uygulama (/app/) ile site arasında iki yönlü anlık tema senkronizasyonu
+    window.addEventListener('storage', function(e) {
+      if (e.key === 'ehliyet_theme_pref' || e.key === 'userTheme') {
+        var newTheme = localStorage.getItem('ehliyet_theme_pref') || localStorage.getItem('userTheme');
+        if (newTheme) {
+          applyCurrentTheme(newTheme);
+        }
+      }
+    });
 
     document.addEventListener('DOMContentLoaded', function() {
       applyCurrentTheme(getStoredTheme());
