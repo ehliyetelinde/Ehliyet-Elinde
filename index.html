@@ -2111,16 +2111,19 @@
       }
       .hero-layout-grid {
         display: grid !important;
-        grid-template-columns: minmax(0, 1.18fr) minmax(0, 0.82fr) !important;
-        gap: 12px !important;
-        align-items: center !important;
+        grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr) !important;
+        gap: 10px !important;
+        align-items: stretch !important;
         text-align: left !important;
       }
       .hero-content-col {
         align-items: flex-start !important;
         text-align: left !important;
-        gap: 8px !important;
+        gap: 7px !important;
         min-width: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
       }
       .hero-pill-badge {
         padding: 3px 8px !important;
@@ -2149,15 +2152,17 @@
       .hero-feature-tags {
         display: flex !important;
         flex-wrap: wrap !important;
-        gap: 4px !important;
+        gap: 4px 6px !important;
         margin-top: 2px !important;
+        margin-bottom: 2px !important;
         justify-content: flex-start !important;
       }
       .hero-feat-tag {
-        font-size: 10px !important;
-        padding: 3px 6px !important;
+        font-size: 9.5px !important;
+        padding: 3px 7px !important;
         border-radius: 6px !important;
-        gap: 3px !important;
+        font-weight: 600 !important;
+        white-space: nowrap !important;
       }
       .hero-action-buttons {
         display: flex !important;
@@ -2166,6 +2171,25 @@
         margin-top: 4px !important;
         width: 100% !important;
         justify-content: flex-start !important;
+      }
+      .hero-webapp-btn {
+        padding: 8px 10px !important;
+        border-radius: 10px !important;
+        gap: 8px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        justify-content: flex-start !important;
+      }
+      .hero-webapp-logo-img {
+        width: 22px !important;
+        height: 22px !important;
+        border-radius: 6px !important;
+      }
+      .hero-webapp-new-badge {
+        top: -7px !important;
+        right: 10px !important;
+        font-size: 8px !important;
+        padding: 1px 6px !important;
       }
       .hero-play-btn {
         padding: 8px 10px !important;
@@ -2180,11 +2204,13 @@
         height: 20px !important;
         flex-shrink: 0 !important;
       }
-      .hero-play-text .sub {
+      .hero-play-text .sub,
+      .hero-webapp-btn .hero-play-text .sub {
         font-size: 8px !important;
         letter-spacing: 0.4px !important;
       }
-      .hero-play-text .main {
+      .hero-play-text .main,
+      .hero-webapp-btn .hero-play-text .main {
         font-size: 12px !important;
       }
       .hero-nav-btn {
@@ -2228,41 +2254,64 @@
         display: none !important;
       }
 
-      /* Sağ Kolon: Görsel Yana Tam Oturtulmuş */
+      /* Sağ Kolon: Görsel Aşşağı Doğru Büyütülmüş & Sütuna Tam Sığdırılmış */
       .hero-mockup-col {
         width: 100% !important;
         min-width: 0 !important;
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
-        justify-content: center !important;
+        justify-content: flex-start !important;
+        align-self: stretch !important;
       }
       .hero-phone-container {
         width: 100% !important;
-        max-width: 170px !important;
+        max-width: 220px !important;
         margin: 0 auto !important;
         perspective: none !important;
       }
       .hero-phone-glow {
-        width: 140px !important;
-        height: 240px !important;
-        filter: blur(24px) !important;
+        width: 180px !important;
+        height: 320px !important;
+        filter: blur(28px) !important;
       }
       .hero-showcase-frame {
-        border-radius: 16px !important;
+        border-radius: 18px !important;
         border: 1.5px solid var(--border) !important;
         animation: none !important;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+        box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45) !important;
       }
       .showcase-card-img {
-        border-radius: 14px !important;
+        border-radius: 16px !important;
         width: 100% !important;
         height: auto !important;
-        object-fit: contain !important;
+        object-fit: cover !important;
+      }
+      
+      /* Üst Görev Çubuğu Mobil Düzenleme */
+      .site-top-bar {
+        height: 52px !important;
+      }
+      .site-top-bar-container {
+        padding: 0 8px !important;
+        justify-content: flex-start !important;
+      }
+      .nav-item-btn {
+        padding: 5px 9px !important;
+        font-size: 11px !important;
+        gap: 5px !important;
+        border-radius: 16px !important;
+      }
+      .nav-item-btn svg {
+        width: 14px !important;
+        height: 14px !important;
+      }
+      .nav-btn-label {
+        font-size: 11px !important;
       }
       .phone-showcase-caption {
         margin-top: 6px !important;
-        max-width: 170px !important;
+        max-width: 220px !important;
         width: 100% !important;
         text-align: center !important;
       }
@@ -3048,93 +3097,83 @@
       padding: 0 16px;
       display: flex;
       align-items: center;
-      justify-content: space-between; /* Sol boşluk, orta ikonlar, sağ tema butonu */
-      gap: 10px;
+      justify-content: center;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
     }
 
-    /* Sol simetri boşluğu (ikon grubunun tam merkezde kalması için) */
-    .site-top-spacer {
-      width: 42px;
-      height: 42px;
-      flex-shrink: 0;
+    .site-top-bar-container::-webkit-scrollbar {
+      display: none;
     }
 
-    /* Orta İkon Grubu: Ortalanmış, yan yana, düzenli, kontrollü yuvarlak çerçeveli */
+    /* Orta İkon & Başlık Grubu: Ortalanmış, yan yana, düzenli */
     .site-top-links {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
+      gap: 8px;
       flex-wrap: nowrap;
       margin: 0 auto;
+      white-space: nowrap;
     }
 
-    /* Sağ Slot: En sağda tek tema butonu */
-    .site-top-right {
-      width: 42px;
-      height: 42px;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      flex-shrink: 0;
-    }
-
-    /* Tüm Butonlar Yuvarlak, Şık ve Yanında Yazı Yok */
-    .nav-circle-btn,
-    .nav-brand-circle {
+    /* İsimli ve İkonlu Gezinti Butonları */
+    .nav-item-btn {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
+      gap: 7px;
+      padding: 7px 14px;
+      border-radius: 20px;
       background: var(--circle-icon-bg);
       border: 1.5px solid var(--circle-icon-border);
       color: var(--circle-icon-color);
       text-decoration: none;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
       cursor: pointer;
       position: relative;
       flex-shrink: 0;
-      padding: 0;
       outline: none;
       user-select: none;
       -webkit-tap-highlight-color: transparent;
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1;
     }
 
-    .nav-circle-btn:hover,
-    .nav-brand-circle:hover {
-      transform: translateY(-2px) scale(1.08);
+    .nav-item-btn:hover {
+      transform: translateY(-2px);
       border-color: #2563EB;
       color: #2563EB;
-      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.22);
     }
 
-    .nav-circle-btn:active,
-    .nav-brand-circle:active {
-      transform: scale(0.94);
+    .nav-item-btn:active {
+      transform: scale(0.96);
     }
 
-    /* Google Play Yuvarlak Butonu */
-    .nav-play-circle {
+    .nav-btn-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: inherit;
+      white-space: nowrap;
+    }
+
+    /* Google Play Navigasyon Hapı */
+    .nav-playstore-pill {
       background: var(--circle-icon-bg);
-      border: 1.5px solid var(--circle-icon-border);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      border-color: var(--circle-icon-border);
     }
 
-    .nav-play-circle:hover {
-      transform: translateY(-2px) scale(1.08);
+    .nav-playstore-pill:hover {
       border-color: #38BDF8;
-      box-shadow: 0 4px 16px rgba(56, 189, 248, 0.35);
+      box-shadow: 0 4px 16px rgba(56, 189, 248, 0.3);
     }
 
-    .nav-play-circle:active {
-      transform: scale(0.94);
-    }
-
-    /* Tek Tema Butonu (Güneş / Ay İkonu) */
-    .nav-theme-toggle-btn {
+    /* Tema Butonları */
+    .nav-theme-pill,
+    .nav-theme-quick-btn {
       background: var(--circle-icon-bg);
       border: 1.5px solid var(--circle-icon-border);
     }
@@ -3150,6 +3189,57 @@
     }
     [data-theme="light"] .theme-icon-moon {
       display: block;
+    }
+
+    /* ==========================================================================
+       YENİ WEB UYGULAMASI BUTONU (HERO AKSİYON ALANI)
+       ========================================================================== */
+    .hero-webapp-btn {
+      position: relative !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 12px !important;
+      background: var(--playstore-btn-bg) !important;
+      color: var(--playstore-btn-text) !important;
+      border: 1.5px solid rgba(59, 130, 246, 0.5) !important;
+      padding: 12px 22px !important;
+      border-radius: 14px !important;
+      text-decoration: none !important;
+      box-shadow: 0 4px 20px rgba(37, 99, 235, 0.18), inset 0 0 12px rgba(59, 130, 246, 0.05) !important;
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      overflow: visible !important;
+    }
+
+    .hero-webapp-btn:hover {
+      transform: translateY(-2px) !important;
+      border-color: #2563EB !important;
+      box-shadow: 0 8px 28px rgba(37, 99, 235, 0.35), inset 0 0 16px rgba(59, 130, 246, 0.1) !important;
+    }
+
+    .hero-webapp-logo-img {
+      width: 26px !important;
+      height: 26px !important;
+      border-radius: 8px !important;
+      object-fit: cover !important;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18) !important;
+      flex-shrink: 0 !important;
+    }
+
+    .hero-webapp-new-badge {
+      position: absolute !important;
+      top: -9px !important;
+      right: 12px !important;
+      background: linear-gradient(135deg, #2563EB, #3B82F6) !important;
+      color: #FFFFFF !important;
+      font-size: 9.5px !important;
+      font-weight: 800 !important;
+      padding: 2px 8px !important;
+      border-radius: 10px !important;
+      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.5) !important;
+      letter-spacing: 0.5px !important;
+      text-transform: uppercase !important;
+      pointer-events: none !important;
+      z-index: 2 !important;
     }
 
     /* ==========================================================================
@@ -3175,11 +3265,13 @@
       box-shadow: 0 8px 24px rgba(37, 99, 235, 0.25) !important;
     }
 
-    .hero-play-btn .hero-play-text .sub {
+    .hero-play-btn .hero-play-text .sub,
+    .hero-webapp-btn .hero-play-text .sub {
       color: var(--playstore-sub-text) !important;
     }
 
-    .hero-play-btn .hero-play-text .main {
+    .hero-play-btn .hero-play-text .main,
+    .hero-webapp-btn .hero-play-text .main {
       color: var(--playstore-btn-text) !important;
     }
 
@@ -3768,72 +3860,78 @@
   <!-- ================= ÜST GÖREV ÇUBUĞU (NAVBAR) ================= -->
   <header class="site-top-bar" id="siteTopBar">
     <div class="site-top-bar-container">
-      
-      <!-- Sol Simetri Boşluğu (Ortadaki ikonların tam merkezde kalması için) -->
-      <div class="site-top-spacer" aria-hidden="true"></div>
-
-      <!-- Orta: Tüm Butonlar Yuvarlak, Yanlarında Yazı Yok, Tam Ortada -->
       <nav class="site-top-links" aria-label="Ana Gezinti Menüsü">
         
-        <!-- 1. Ana Sayfa Butonu -->
-        <a href="#heroStartSection" class="nav-circle-btn" onclick="scrollToHero(event)" title="Ana Sayfa" aria-label="Ana Sayfa">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <!-- 1. Ana Sayfa -->
+        <a href="#heroStartSection" class="nav-item-btn" onclick="scrollToHero(event)" title="Ana Sayfa">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
             <polyline points="9 22 9 12 15 12 15 22"></polyline>
           </svg>
+          <span class="nav-btn-label">Ana Sayfa</span>
         </a>
 
-        <!-- 2. Tanıtım & 3D Vitrin Butonu -->
-        <a href="#heroStartSection" class="nav-circle-btn" onclick="scrollToShowcase(event)" title="Tanıtım Vitrini & Özellikler" aria-label="Tanıtım Vitrini ve Özellikler">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <!-- 2. Tanıtım Vitrini -->
+        <a href="#heroStartSection" class="nav-item-btn" onclick="scrollToShowcase(event)" title="Tanıtım Vitrini & Özellikler">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <rect x="5" y="2" width="14" height="20" rx="3" ry="3"></rect>
             <line x1="12" y1="18" x2="12.01" y2="18"></line>
           </svg>
+          <span class="nav-btn-label">Tanıtım</span>
         </a>
 
-        <!-- 3. Web Uygulaması Butonu -->
-        <a href="./app/" class="nav-circle-btn" title="Web Uygulaması (Tarayıcıda Soru Çöz)" aria-label="Web Uygulaması">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <!-- 3. Web Uygulaması / Online Sınav -->
+        <a href="./app/" class="nav-item-btn" title="Online Sınav Çöz">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="10"></circle>
             <line x1="2" y1="12" x2="22" y2="12"></line>
             <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
           </svg>
+          <span class="nav-btn-label">Online Sınav</span>
         </a>
 
-        <!-- 4. Kullanım Koşulları Butonu -->
-        <a href="#terms" class="nav-circle-btn" onclick="heroNavigateTo('terms', this); return false;" title="Kullanım Koşulları" aria-label="Kullanım Koşulları">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <!-- 4. Kullanım Koşulları -->
+        <a href="#terms" class="nav-item-btn" onclick="heroNavigateTo('terms', this); return false;" title="Kullanım Koşulları">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
             <polyline points="14 2 14 8 20 8"></polyline>
             <line x1="16" y1="13" x2="8" y2="13"></line>
             <line x1="16" y1="17" x2="8" y2="17"></line>
           </svg>
+          <span class="nav-btn-label">Kullanım Koşulları</span>
         </a>
 
-        <!-- 5. Gizlilik Politikası Butonu -->
-        <a href="#privacy" class="nav-circle-btn" onclick="heroNavigateTo('privacy', this); return false;" title="Gizlilik Politikası" aria-label="Gizlilik Politikası">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <!-- 5. Gizlilik Politikası -->
+        <a href="#privacy" class="nav-item-btn" onclick="heroNavigateTo('privacy', this); return false;" title="Gizlilik Politikası">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
           </svg>
+          <span class="nav-btn-label">Gizlilik</span>
         </a>
 
-        <!-- 6. Google Play Butonu -->
-        <a href="https://play.google.com/store/apps/details?id=com.ehliyetelinde.app" target="_blank" rel="noopener noreferrer" class="nav-circle-btn nav-play-circle" onclick="openPlayStoreModal(event); return false;" title="Google Play'den İndir" aria-label="Google Play Mobil Uygulaması">
-          <svg width="19" height="20" viewBox="0 0 29 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- 6. Google Play -->
+        <a href="https://play.google.com/store/apps/details?id=com.ehliyetelinde.app" target="_blank" rel="noopener noreferrer" class="nav-item-btn nav-playstore-pill" onclick="openPlayStoreModal(event); return false;" title="Google Play">
+          <svg width="16" height="17" viewBox="0 0 29 32" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M.12 2.66a3.46 3.46 0 0 0-.12.92v24.84a3.66 3.66 0 0 0 .12.92L14 15.64Z" fill="#4285F4"/>
             <path d="m13.64 16 6.94-6.85L5.5.51A3.72 3.72 0 0 0 3.63 0 3.64 3.64 0 0 0 .12 2.65Z" fill="#34A853"/>
             <path d="m27.11 12.89-6.53-3.74-7.35 6.45 7.38 7.28 6.48-3.7a3.55 3.55 0 0 0 0-6.29z" fill="#FBBC04"/>
             <path d="M13.54 15.28.12 29.34a3.64 3.64 0 0 0 5.33 2.16l15.1-8.6z" fill="#EA4335"/>
           </svg>
+          <span class="nav-btn-label">Google Play</span>
         </a>
 
-      </nav>
+        <!-- 7. Tema Ayarı (Modal ve Görünüm) -->
+        <button type="button" class="nav-item-btn nav-theme-pill" onclick="openSettingsModal()" title="Tema ve Görünüm Ayarları">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+          </svg>
+          <span class="nav-btn-label">Tema Ayarı</span>
+        </button>
 
-      <!-- Sağ Taraf: En Sağa Alınmış Tek Tema Butonu (Güneş / Ay) -->
-      <div class="site-top-right">
-        <button type="button" class="nav-circle-btn nav-theme-toggle-btn" id="siteThemeToggleBtn" onclick="toggleSiteTheme()" title="Temayı Değiştir" aria-label="Temayı Değiştir">
-          <!-- Güneş İkonu (Koyu Moddayken Görünür - Açık Moda Geçiş İçin) -->
-          <svg class="theme-icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FBBF24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <!-- 8. Hızlı Tema Değiştirme Butonu (Güneş / Ay) -->
+        <button type="button" class="nav-item-btn nav-theme-quick-btn" id="siteThemeToggleBtn" onclick="toggleSiteTheme()" title="Açık/Koyu Tema Değiştir">
+          <svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FBBF24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="5"></circle>
             <line x1="12" y1="1" x2="12" y2="3"></line>
             <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -3844,13 +3942,13 @@
             <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
             <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
           </svg>
-          <!-- Ay İkonu (Açık Moddayken Görünür - Koyu Moda Geçiş İçin) -->
-          <svg class="theme-icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#374151" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#374151" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
           </svg>
+          <span class="nav-btn-label theme-label-text">Tema</span>
         </button>
-      </div>
 
+      </nav>
     </div>
   </header>
 
@@ -3887,18 +3985,28 @@
           Sınavı ilk seferde başarıyla geçmek için ihtiyacınız olan her şey tek uygulamada! 5.500+ soru bankası, 3D animasyonlu video testleri, anlık widget sayacı ve akıllı hata analiziyle ehliyetiniz artık elinizde.
         </p>
 
-        <!-- Öne Çıkan Özellik Rozetleri -->
+        <!-- Öne Çıkan Özellik Rozetleri (Emojiler kaldırıldı, tam oturtuldu) -->
         <div class="hero-feature-tags">
-          <span class="hero-feat-tag">📝 5.500+ Soru Havuzu</span>
-          <span class="hero-feat-tag">🎬 3D Animasyonlu Sorular</span>
-          <span class="hero-feat-tag">⏳ Sınav Tarihi Widget'ı</span>
-          <span class="hero-feat-tag">🧠 Akıllı Hata Çözümü</span>
+          <span class="hero-feat-tag">5.500+ Soru Havuzu</span>
+          <span class="hero-feat-tag">3D Animasyonlu Sorular</span>
+          <span class="hero-feat-tag">Sınav Tarihi Widget'ı</span>
+          <span class="hero-feat-tag">Akıllı Hata Çözümü</span>
         </div>
 
-        <!-- Buton Grubu: Google Play + 1 Saniye Gecikmeli Politika Butonları -->
+        <!-- Buton Grubu: Web Uygulaması (Yeni) + Google Play + Politikalar -->
         <div class="hero-action-buttons">
           
-          <!-- Google Play Butonu -->
+          <!-- 1. Web Uygulaması / Canlı Sınav Merkezi (YENİ Rozetli & Hafif Mavi Parıltılı) -->
+          <a href="./app/" class="hero-webapp-btn" aria-label="Tarayıcıda Online Sınav Çöz">
+            <span class="hero-webapp-new-badge">YENİ</span>
+            <img src="./app-logo.png" alt="Ehliyet Elinde Logo" class="hero-webapp-logo-img" />
+            <div class="hero-play-text">
+              <span class="sub">TARAYICIDA HEMEN ÇÖZ</span>
+              <span class="main">Online Sınav Merkezi</span>
+            </div>
+          </a>
+
+          <!-- 2. Google Play Butonu -->
           <a href="https://play.google.com/store/apps/details?id=com.ehliyetelinde.app" target="_blank" rel="noopener noreferrer" class="hero-play-btn" onclick="openPlayStoreModal(event); return false;" aria-label="Google Play'den İndir">
             <svg width="22" height="24" viewBox="0 0 29 32" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M.12 2.66a3.46 3.46 0 0 0-.12.92v24.84a3.66 3.66 0 0 0 .12.92L14 15.64Z" fill="#4285f4"/>
@@ -3912,9 +4020,7 @@
             </div>
           </a>
 
-          
-
-          <!-- Gizlilik Politikası Butonu (1 sn Gecikmeli Kaydırma) -->
+          <!-- 3. Gizlilik Politikası Butonu (1 sn Gecikmeli Kaydırma) -->
           <button class="hero-nav-btn" id="heroBtnPrivacy" onclick="heroNavigateTo('privacy', this)">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -3923,7 +4029,7 @@
             <div class="btn-loader-bar"></div>
           </button>
 
-          <!-- Kullanım Koşulları Butonu (1 sn Gecikmeli Kaydırma) -->
+          <!-- 4. Kullanım Koşulları Butonu (1 sn Gecikmeli Kaydırma) -->
           <button class="hero-nav-btn" id="heroBtnTerms" onclick="heroNavigateTo('terms', this)">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
