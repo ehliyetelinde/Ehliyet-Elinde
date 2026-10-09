@@ -3043,22 +3043,25 @@
 
     .site-top-bar-container {
       width: 100%;
-      max-width: 1140px;
+      max-width: 1240px;
       margin: 0 auto;
       padding: 0 16px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 12px;
+      justify-content: flex-start; /* Tüm butonlar sol tarafta düzenli */
+      gap: 10px;
     }
 
-    /* Sol Taraf: Ana Sayfa Butonu (Sadece Yuvarlak Çerçeve, Yanında Yazı Yok!) */
-    .nav-brand-left {
-      display: flex;
+    /* Sol Taraf İkon Grubu: Yan yana, düzenli, kontrollü yuvarlak çerçeveli */
+    .site-top-links {
+      display: inline-flex;
       align-items: center;
-      flex-shrink: 0;
+      gap: 10px;
+      flex-wrap: nowrap;
     }
 
+    /* Tüm Butonlar Yuvarlak, Şık ve Yanında Yazı Yok */
+    .nav-circle-btn,
     .nav-brand-circle {
       display: inline-flex;
       align-items: center;
@@ -3071,106 +3074,44 @@
       color: var(--circle-icon-color);
       text-decoration: none;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
       cursor: pointer;
       position: relative;
+      flex-shrink: 0;
+      padding: 0;
+      outline: none;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
     }
 
+    .nav-circle-btn:hover,
     .nav-brand-circle:hover {
-      transform: scale(1.08);
+      transform: translateY(-2px) scale(1.08);
       border-color: #2563EB;
       color: #2563EB;
       box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
     }
 
+    .nav-circle-btn:active,
     .nav-brand-circle:active {
-      transform: scale(0.95);
-    }
-
-    /* Sağ Taraf Link Grubu: Düzgün Sıralı & Yuvarlak Çerçeveli İkonlar */
-    .site-top-links {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: nowrap;
-    }
-
-    .nav-item-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      padding: 6px 12px 6px 7px;
-      border-radius: 30px;
-      background: rgba(125, 125, 125, 0.05);
-      border: 1px solid var(--nav-border);
-      color: var(--text);
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 600;
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-      cursor: pointer;
-      user-select: none;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .nav-item-btn:hover {
-      background: rgba(37, 99, 235, 0.08);
-      border-color: #2563EB;
-      color: #2563EB;
-      transform: translateY(-1px);
-    }
-
-    .nav-item-btn:active {
-      transform: scale(0.97);
-    }
-
-    /* Yuvarlak İkon Çerçevesi */
-    .nav-icon-circle {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      background: var(--circle-icon-bg);
-      border: 1px solid var(--circle-icon-border);
-      color: var(--circle-icon-color);
-      flex-shrink: 0;
-      transition: all 0.2s ease;
-    }
-
-    .nav-item-btn:hover .nav-icon-circle {
-      background: #2563EB;
-      border-color: #2563EB;
-      color: #FFFFFF;
+      transform: scale(0.94);
     }
 
     /* Google Play Yuvarlak Butonu */
     .nav-play-circle {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
       background: var(--circle-icon-bg);
       border: 1.5px solid var(--circle-icon-border);
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-      cursor: pointer;
-      flex-shrink: 0;
-      text-decoration: none;
-      margin-left: 2px;
     }
 
     .nav-play-circle:hover {
-      transform: translateY(-2px) scale(1.06);
+      transform: translateY(-2px) scale(1.08);
       border-color: #38BDF8;
       box-shadow: 0 4px 16px rgba(56, 189, 248, 0.35);
     }
 
     .nav-play-circle:active {
-      transform: scale(0.95);
+      transform: scale(0.94);
     }
 
     /* ==========================================================================
@@ -3587,14 +3528,13 @@
         padding: 0 12px;
         gap: 8px;
       }
-      .nav-item-btn {
-        padding: 5px 10px 5px 6px;
-        font-size: 12px;
-        gap: 5px;
+      .site-top-links {
+        gap: 8px;
       }
-      .nav-icon-circle {
-        width: 28px;
-        height: 28px;
+      .nav-circle-btn,
+      .nav-brand-circle {
+        width: 40px;
+        height: 40px;
       }
       .hero-start-section {
         padding-top: 76px !important;
@@ -3605,27 +3545,22 @@
       .site-top-bar {
         height: 56px;
       }
-      .nav-brand-circle {
-        width: 38px;
-        height: 38px;
+      .site-top-bar-container {
+        padding: 0 10px;
+        gap: 6px;
       }
       .site-top-links {
         gap: 6px;
       }
-      .nav-item-btn {
-        padding: 5px;
-        border-radius: 50%;
-      }
-      .nav-item-btn .nav-item-label {
-        display: none !important;
-      }
-      .nav-icon-circle {
-        width: 34px;
-        height: 34px;
-      }
-      .nav-play-circle {
+      .nav-circle-btn,
+      .nav-brand-circle {
         width: 36px;
         height: 36px;
+      }
+      .nav-circle-btn svg,
+      .nav-brand-circle svg {
+        width: 17px;
+        height: 17px;
       }
       .hero-start-section {
         padding-top: 70px !important;
@@ -3654,18 +3589,21 @@
 
     @media (max-width: 380px) {
       .site-top-bar-container {
-        padding: 0 8px;
+        padding: 0 6px;
+        gap: 4px;
       }
       .site-top-links {
         gap: 4px;
       }
-      .nav-icon-circle {
-        width: 32px;
-        height: 32px;
+      .nav-circle-btn,
+      .nav-brand-circle {
+        width: 33px;
+        height: 33px;
       }
-      .nav-play-circle {
-        width: 32px;
-        height: 32px;
+      .nav-circle-btn svg,
+      .nav-brand-circle svg {
+        width: 15px;
+        height: 15px;
       }
     }
   </style>
@@ -3795,68 +3733,62 @@
   <header class="site-top-bar" id="siteTopBar">
     <div class="site-top-bar-container">
       
-      <!-- Sol Taraf: Ana Sayfa Butonu (Yuvarlak Çerçeve, YANINDA YAZI YOK!) -->
-      <div class="nav-brand-left">
-        <a href="#heroStartSection" class="nav-brand-circle" onclick="scrollToHero(event)" title="Ana Sayfa" aria-label="Ana Sayfa">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+      <!-- Sol Taraf: Tüm Butonlar Yuvarlak, Yanlarında Yazı Yok, Düzenli ve Kontrollü -->
+      <nav class="site-top-links" aria-label="Ana Gezinti Menüsü">
+        
+        <!-- 1. Ana Sayfa Butonu -->
+        <a href="#heroStartSection" class="nav-circle-btn" onclick="scrollToHero(event)" title="Ana Sayfa" aria-label="Ana Sayfa">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
             <polyline points="9 22 9 12 15 12 15 22"></polyline>
           </svg>
         </a>
-      </div>
 
-      <!-- Görev Çubuğu Linkleri: Düzgün Sıralı, Yuvarlak İkon Çerçeveli -->
-      <nav class="site-top-links" aria-label="Ana Gezinti">
-        
-        <!-- 1. Web Uygulama Butonu -->
-        <a href="./app/" class="nav-item-btn" aria-label="Web Uygulaması" title="Tarayıcıda Soru Çöz">
-          <span class="nav-icon-circle">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"></circle>
-              <line x1="2" y1="12" x2="22" y2="12"></line>
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-            </svg>
-          </span>
-          <span class="nav-item-label">Web Uygulama</span>
+        <!-- 2. Tanıtım & 3D Vitrin Butonu -->
+        <a href="#heroStartSection" class="nav-circle-btn" onclick="scrollToShowcase(event)" title="Tanıtım Vitrini & Özellikler" aria-label="Tanıtım Vitrini ve Özellikler">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="5" y="2" width="14" height="20" rx="3" ry="3"></rect>
+            <line x1="12" y1="18" x2="12.01" y2="18"></line>
+          </svg>
         </a>
 
-        <!-- 2. Kullanım Koşulları Butonu -->
-        <a href="#terms" class="nav-item-btn" onclick="heroNavigateTo('terms', this); return false;" aria-label="Kullanım Koşulları" title="Kullanım Koşulları Metni">
-          <span class="nav-icon-circle">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-              <polyline points="14 2 14 8 20 8"></polyline>
-              <line x1="16" y1="13" x2="8" y2="13"></line>
-              <line x1="16" y1="17" x2="8" y2="17"></line>
-            </svg>
-          </span>
-          <span class="nav-item-label">Kullanım Koşulları</span>
+        <!-- 3. Web Uygulaması Butonu -->
+        <a href="./app/" class="nav-circle-btn" title="Web Uygulaması (Tarayıcıda Soru Çöz)" aria-label="Web Uygulaması">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
         </a>
 
-        <!-- 3. Gizlilik Politikası Butonu -->
-        <a href="#privacy" class="nav-item-btn" onclick="heroNavigateTo('privacy', this); return false;" aria-label="Gizlilik Politikası" title="Gizlilik Politikası Metni">
-          <span class="nav-icon-circle">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-            </svg>
-          </span>
-          <span class="nav-item-label">Gizlilik Politikası</span>
+        <!-- 4. Kullanım Koşulları Butonu -->
+        <a href="#terms" class="nav-circle-btn" onclick="heroNavigateTo('terms', this); return false;" title="Kullanım Koşulları" aria-label="Kullanım Koşulları">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+          </svg>
         </a>
 
-        <!-- 4. Site ve Tema Ayarları Butonu -->
-        <button type="button" class="nav-item-btn" onclick="openSettingsModal()" aria-label="Site & Tema Ayarları" title="Tema ve Görünüm Ayarları">
-          <span class="nav-icon-circle">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="3"></circle>
-              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-            </svg>
-          </span>
-          <span class="nav-item-label">Ayarlar</span>
+        <!-- 5. Gizlilik Politikası Butonu -->
+        <a href="#privacy" class="nav-circle-btn" onclick="heroNavigateTo('privacy', this); return false;" title="Gizlilik Politikası" aria-label="Gizlilik Politikası">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg>
+        </a>
+
+        <!-- 6. Site & Tema Ayarları Butonu -->
+        <button type="button" class="nav-circle-btn" onclick="openSettingsModal()" title="Tema ve Görünüm Ayarları" aria-label="Tema Ayarları">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+          </svg>
         </button>
 
-        <!-- 5. Google Play Yuvarlak Butonu -->
-        <a href="https://play.google.com/store/apps/details?id=com.ehliyetelinde.app" target="_blank" rel="noopener noreferrer" class="nav-play-circle" onclick="openPlayStoreModal(event); return false;" title="Google Play Mobil Uygulaması" aria-label="Google Play Mobil Uygulaması">
-          <svg width="18" height="19" viewBox="0 0 29 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- 7. Google Play Butonu -->
+        <a href="https://play.google.com/store/apps/details?id=com.ehliyetelinde.app" target="_blank" rel="noopener noreferrer" class="nav-circle-btn nav-play-circle" onclick="openPlayStoreModal(event); return false;" title="Google Play'den İndir" aria-label="Google Play Mobil Uygulaması">
+          <svg width="19" height="20" viewBox="0 0 29 32" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M.12 2.66a3.46 3.46 0 0 0-.12.92v24.84a3.66 3.66 0 0 0 .12.92L14 15.64Z" fill="#4285F4"/>
             <path d="m13.64 16 6.94-6.85L5.5.51A3.72 3.72 0 0 0 3.63 0 3.64 3.64 0 0 0 .12 2.65Z" fill="#34A853"/>
             <path d="m27.11 12.89-6.53-3.74-7.35 6.45 7.38 7.28 6.48-3.7a3.55 3.55 0 0 0 0-6.29z" fill="#FBBC04"/>
@@ -4472,6 +4404,24 @@
       hero.scrollIntoView({ behavior: 'smooth' });
     } else {
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
+
+  function scrollToShowcase(e) {
+    if (e) e.preventDefault();
+    const mockupCol = document.querySelector('.hero-mockup-col') || document.querySelector('.hero-phone-container') || document.getElementById('heroStartSection');
+    if (mockupCol) {
+      mockupCol.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      const phone = document.querySelector('.hero-phone-container');
+      if (phone) {
+        phone.style.transition = 'transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease';
+        phone.style.transform = 'scale(1.05)';
+        phone.style.boxShadow = '0 0 45px rgba(37, 99, 235, 0.5)';
+        setTimeout(() => {
+          phone.style.transform = '';
+          phone.style.boxShadow = '';
+        }, 1200);
+      }
     }
   }
 
