@@ -35,7 +35,7 @@
   <link rel="icon" type="image/x-icon" href="https://ehliyetelinde.github.io/Ehliyet-Elinde/favicon.ico">
 
   <!-- ================= BAŞLIK, AÇIKLAMA & MARKA ARAMA KELİMELERİ ================= -->
-  <title>Ehliyet Elinde - 2026 Ehliyet Sınav Soruları, Çıkmış Sorular & MEB E-Sınav</title>
+  <title>Ehliyet Elinde</title>
   <meta name="description" content="Ehliyet Elinde (Ehleyet Elinde) resmi web sitesi. 2026 MEB ehliyet sınav soruları, çıkmış sorular, yeni nesil 3D animasyonlu video testleri ve deneme sınavları ile ehliyetinizi ilk seferde kazanın!">
   <meta name="keywords" content="ehliyet elinde, ehleyet elinde, ehliyetelinde, ehliyet sınav soruları, 2026 ehliyet soruları, meb ehliyet soruları, çıkmış ehliyet soruları, animasyonlu ehliyet soruları, ehliyet deneme sınavı, ehliyet elinde apk, ehliyet elinde indir, ehliyet çıkmış sorular">
   <meta name="author" content="Ehliyet Elinde">
@@ -3992,7 +3992,7 @@
             <span class="hero-webapp-new-badge">YENİ</span>
             <img src="./app-logo.png" alt="Ehliyet Elinde Logo" class="hero-webapp-logo-img" />
             <div class="hero-play-text">
-              <span class="sub">ÜCRETSİZ & ANINDA</span>
+              <span class="sub">HEMEN TEST ET</span>
               <span class="main">Soru Çözmeye Başla</span>
             </div>
           </a>
@@ -4556,6 +4556,10 @@
     } else {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+    if (history.replaceState) {
+      history.replaceState(null, '', window.location.pathname);
+    }
+    document.title = "Ehliyet Elinde";
   }
 
   function scrollToShowcase(e) {
@@ -4790,7 +4794,7 @@
   // =======================================================
   // 4. TAB GEÇİŞLERİ (GİZLİLİK POLİTİKASI & KULLANIM KOŞULLARI)
   // =======================================================
-  function switchTab(tab) {
+  function switchTab(tab, updateHashAndTitle = true) {
     const btnPrivacy = document.getElementById('tabBtnPrivacy');
     const btnTerms = document.getElementById('tabBtnTerms');
     const panelPrivacy = document.getElementById('panelPrivacy');
@@ -4801,15 +4805,19 @@
       btnPrivacy && btnPrivacy.classList.remove('active');
       panelTerms && panelTerms.classList.add('active');
       panelPrivacy && panelPrivacy.classList.remove('active');
-      window.location.hash = 'kullanim-kosullari';
-      document.title = "Ehliyet Elinde - Kullanım Koşulları ve Sözleşmesi";
+      if (updateHashAndTitle) {
+        window.location.hash = 'kullanim-kosullari';
+        document.title = "Ehliyet Elinde - Kullanım Koşulları";
+      }
     } else {
       btnPrivacy && btnPrivacy.classList.add('active');
       btnTerms && btnTerms.classList.remove('active');
       panelPrivacy && panelPrivacy.classList.add('active');
       panelTerms && panelTerms.classList.remove('active');
-      window.location.hash = 'gizlilik-politikasi';
-      document.title = "Ehliyet Elinde - Gizlilik Politikası ve KVKK Aydınlatma Metni";
+      if (updateHashAndTitle) {
+        window.location.hash = 'gizlilik-politikasi';
+        document.title = "Ehliyet Elinde - Gizlilik Politikası";
+      }
     }
   }
 
@@ -4818,9 +4826,12 @@
     const hash = window.location.hash;
     const pathname = window.location.pathname.toLowerCase();
     if (hash === '#kullanim-kosullari' || pathname.endsWith('terms.html')) {
-      switchTab('terms');
+      switchTab('terms', true);
+    } else if (hash === '#gizlilik-politikasi' || pathname.endsWith('privacy-policy.html')) {
+      switchTab('privacy', true);
     } else {
-      switchTab('privacy');
+      switchTab('privacy', false);
+      document.title = "Ehliyet Elinde";
     }
   })();
 
