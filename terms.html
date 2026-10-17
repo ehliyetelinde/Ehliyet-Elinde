@@ -2542,7 +2542,7 @@
     </div>
   </section>
 
-<div class="container">
+<div class="container" id="legal-container">
   <!-- Üst Sekmeler (Emojisiz, Şık) -->
     <!-- Üst Navigasyon Sekmeleri -->
     <!-- Üst Navigasyon Sekmeleri -->
@@ -3188,14 +3188,45 @@
   }
 
   // URL Hash veya Sayfa Adı Kontrolü
-  (function initTab() {
-    const hash = window.location.hash;
-    const pathname = window.location.pathname.toLowerCase();
-    if (hash === '#kullanim-kosullari' || pathname.endsWith('terms.html')) {
-      switchTab('terms');
-    } else {
-      switchTab('privacy');
+  function scrollToLegalSection() {
+    const target = document.getElementById('legal-container') || document.querySelector('.container') || document.getElementById('panelTerms') || document.getElementById('panelPrivacy');
+    if (target) {
+      const topPos = target.getBoundingClientRect().top + window.pageYOffset - 20;
+      window.scrollTo({ top: Math.max(0, topPos), behavior: 'smooth' });
     }
+  }
+
+  // URL Hash veya Sayfa Adı Kontrolü & DOĞRUDAN METNE ODAKLANMA (Scroll)
+  (function initTab() {
+    const hash = (window.location.hash || '').toLowerCase();
+    const pathname = (window.location.pathname || '').toLowerCase();
+    const isTerms = hash === '#terms' || hash === '#kullanim-kosullari' || pathname.endsWith('terms.html');
+    const isPrivacy = hash === '#privacy' || hash === '#gizlilik-politikasi' || pathname.endsWith('privacy-policy.html');
+
+    if (isTerms) {
+      if (typeof switchTab === 'function') switchTab('terms');
+      setTimeout(scrollToLegalSection, 60);
+      setTimeout(scrollToLegalSection, 250);
+      setTimeout(scrollToLegalSection, 600);
+    } else if (isPrivacy) {
+      if (typeof switchTab === 'function') switchTab('privacy');
+      setTimeout(scrollToLegalSection, 60);
+      setTimeout(scrollToLegalSection, 250);
+      setTimeout(scrollToLegalSection, 600);
+    } else {
+      if (typeof switchTab === 'function') switchTab('privacy');
+    }
+
+    window.addEventListener('hashchange', function() {
+      const curHash = (window.location.hash || '').toLowerCase();
+      if (curHash === '#terms' || curHash === '#kullanim-kosullari') {
+        if (typeof switchTab === 'function') switchTab('terms');
+        scrollToLegalSection();
+      } else if (curHash === '#privacy' || curHash === '#gizlilik-politikasi') {
+        if (typeof switchTab === 'function') switchTab('privacy');
+        scrollToLegalSection();
+      }
+    });
   })();
 
   // 5. SAĞ KENAR ROZETİ: HERO'YU ASLA KAPATMAZ, SADECE SAYFA KAYDIRILDIĞINDA GÖRÜNÜR
