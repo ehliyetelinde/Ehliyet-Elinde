@@ -3196,25 +3196,29 @@
     }
   }
 
-  // URL Hash veya Sayfa Adı Kontrolü & DOĞRUDAN METNE ODAKLANMA (Scroll)
+  // URL Hash veya Uygulama Parametresi Kontrolü & Sadece Uygulamadan Tıklanınca Metne Odaklanma
   (function initTab() {
     const hash = (window.location.hash || '').toLowerCase();
-    const pathname = (window.location.pathname || '').toLowerCase();
-    const isTerms = hash === '#terms' || hash === '#kullanim-kosullari' || pathname.endsWith('terms.html');
-    const isPrivacy = hash === '#privacy' || hash === '#gizlilik-politikasi' || pathname.endsWith('privacy-policy.html');
+    const search = (window.location.search || '').toLowerCase();
+    const isFromApp = search.includes('from=app') || search.includes('src=app') || Boolean(hash && (hash.includes('gizlilik') || hash.includes('kullanim') || hash.includes('terms') || hash.includes('privacy')));
 
-    if (isTerms) {
+    const isTerms = hash === '#terms' || hash === '#kullanim-kosullari';
+    const isPrivacy = hash === '#privacy' || hash === '#gizlilik-politikasi';
+
+    if (isTerms && isFromApp) {
       if (typeof switchTab === 'function') switchTab('terms');
       setTimeout(scrollToLegalSection, 60);
       setTimeout(scrollToLegalSection, 250);
       setTimeout(scrollToLegalSection, 600);
-    } else if (isPrivacy) {
+    } else if (isPrivacy && isFromApp) {
       if (typeof switchTab === 'function') switchTab('privacy');
       setTimeout(scrollToLegalSection, 60);
       setTimeout(scrollToLegalSection, 250);
       setTimeout(scrollToLegalSection, 600);
     } else {
-      if (typeof switchTab === 'function') switchTab('privacy');
+      // Normal siteye giren kullanıcı: Sayfa doğrudan en üstte (Tanıtımda) başlar, hiçbir yere otomatik kaymaz!
+      if (typeof switchTab === 'function') switchTab('terms');
+      window.scrollTo({ top: 0, behavior: 'instant' });
     }
 
     window.addEventListener('hashchange', function() {
